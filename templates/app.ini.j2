@@ -1,0 +1,80 @@
+APP_NAME = {{ gitea_app_name }}
+RUN_USER = {{ gitea_run_user }}
+RUN_MODE = {{ gitea_run_mode }}
+
+[server]
+HTTP_ADDR        = {{ gitea_http_addr }}
+HTTP_PORT        = {{ gitea_http_port }}
+DOMAIN           = {{ gitea_domain }}
+PROTOCOL         = {{ gitea_protocol }}
+ROOT_URL         = {{ gitea_root_url }}
+SSH_DOMAIN       = {{ gitea_ssh_domain }}
+
+DISABLE_SSH      = {{ gitea_server_disable_ssh|lower }}
+LFS_START_SERVER = {{ gitea_server_lfs_start_server|lower }}
+LFS_CONTENT_PATH = {{ gitea_server_lfs_content_path }}
+LFS_JWT_SECRET   = {{ gitea_lfs_jwt_secret }}
+OFFLINE_MODE     = {{ gitea_server_offline_mode|lower }}
+
+[security]
+SECRET_KEY     = {{ gitea_secret_key }}
+INTERNAL_TOKEN = {{ gitea_internal_token }}
+INSTALL_LOCK   = {{ gitea_security_install_lock|lower }}
+
+[database]
+DB_TYPE  = {{ gitea_database_db_type }}
+HOST     = {{ gitea_database_host }}
+NAME     = {{ gitea_database_name }}
+USER     = {{ gitea_database_user }}
+PASSWD   = {{ gitea_database_passwd}}
+SSL_MODE = {{ gitea_database_ssl_mode }}
+PATH     = {{ gitea_database_path }}
+
+[repository]
+ROOT = {{ gitea_repository_root }}
+
+[mailer]
+ENABLED = {{ gitea_mailer_enabled|lower }}
+HOST    = {{ gitea_mailer_host }}
+FROM    = {{ gitea_mailer_from }}
+USER    = {{ gitea_mailer_user }}
+PASSWD  = {{ gitea_mailer_passwd }}
+
+[service]
+REGISTER_EMAIL_CONFIRM            = {{ gitea_service_register_email_confirm|lower }}
+ENABLE_NOTIFY_MAIL                = {{ gitea_service_enable_notify_mail|lower }}
+DISABLE_REGISTRATION              = {{ gitea_service_disable_registration|lower }}
+ALLOW_ONLY_EXTERNAL_REGISTRATION  = {{ gitea_service_allow_only_external_registration|lower }}
+ENABLE_CAPTCHA                    = {{ gitea_service_enable_captcha|lower }}
+REQUIRE_SIGNIN_VIEW               = {{ gitea_service_require_signin_view|lower }}
+DEFAULT_KEEP_EMAIL_PRIVATE        = {{ gitea_service_default_keep_email_private|lower }}
+DEFAULT_ALLOW_CREATE_ORGANIZATION = {{ gitea_service_default_allow_create_organization|lower }}
+DEFAULT_ENABLE_TIMETRACKING       = {{ gitea_service_default_enable_timetracking|lower }}
+NO_REPLY_ADDRESS                  = {{ gitea_service_no_reply_address }}
+
+[picture]
+DISABLE_GRAVATAR        = {{ gitea_picture_disable_gravatar|lower }}
+ENABLE_FEDERATED_AVATAR = {{ gitea_picture_enable_federated_avatar|lower }}
+
+[openid]
+ENABLE_OPENID_SIGNIN = {{ gitea_openid_enable_openid_signin|lower }}
+ENABLE_OPENID_SIGNUP = {{ gitea_openid_enable_openid_signup|lower }}
+
+[session]
+PROVIDER = {{ gitea_session_provider}}
+
+[log]
+MODE      = {{ gitea_log_mode }}
+LEVEL     = {{ gitea_log_level }}
+ROOT_PATH = {{ gitea_log_root_path }}
+
+[ui]
+EXPLORE_PAGING_NUM   = {{ gitea_ui_explore_paging_num }}
+ISSUE_PAGING_NUM     = {{ gitea_ui_issue_paging_num }}
+FEED_MAX_COMMIT_NUM  = {{ gitea_ui_feed_max_commit_num }}
+GRAPH_MAX_COMMIT_NUM = {{ gitea_ui_graph_max_commit_num }}
+DEFAULT_THEME        = {{ gitea_ui_default_theme }}
+
+[metrics]
+ENABLED = {{gitea_metrics_enabled|lower}}
+TOKEN   = {{gitea_metrics_token}}

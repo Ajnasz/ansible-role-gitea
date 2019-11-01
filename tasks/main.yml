@@ -1,0 +1,49 @@
+---
+
+- name: "Include armv7 vars"
+  include_vars:
+    file: "armv7.yml"
+  when: ansible_architecture == "armv7l"
+
+- name: "Gitea: Create {{ gitea_user }} user"
+  user:
+    name: "{{ gitea_user }}"
+    shell: "/bin/bash"
+
+- name: "Gitea: Create gitea custom directory"
+  file:
+    path: "/home/{{ gitea_user }}/custom"
+    state: "directory"
+
+- name: "Gitea: Download Gitea"
+  get_url:
+    url: "{{ gitea_download_url }}"
+    checksum: "{{ gitea_checksum_url }}"
+    dest: "/home/{{ gitea_user }}/gitea"
+    mode: "0755"
+    owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
+  notify:
+    - "restart gitea"
+
+- name: "Gitea: Add service file"
+  copy:
+    src: "gitea.service"
+    dest: "/etc/systemd/system/gitea.service"
+  notify:
+    - "enable gitea"
+
+- name: "Gitea: Create gitea config directory"
+  file:
+    path: "/home/{{ gitea_user }}/custom/conf"
+    state: "directory"
+
+- name: "Create gitea config"
+  template:
+    src: "app.ini.j2"
+    dest: "/home/{{ gitea_user }}/custom/conf/app.ini"
+  notify:
+    - "reload systemd"
+    - "restart gitea"
+
+    # vi:ts=2:sw=2:expandtab
