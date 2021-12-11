@@ -70,3 +70,7 @@ gitea_ui_default_theme: gitea
 
 gitea_metrics_enabled: false
 gitea_metrics_token: ""
+
+gitea_do_backup: true
+gitea_systemd_timer_on_calendar: '*-*-* 02:00:00'
+gitea_systemd_timer_randomized_delay_sec: 0

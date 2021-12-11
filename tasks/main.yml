@@ -46,4 +46,7 @@
     - "reload systemd"
     - "restart gitea"
 
-    # vi:ts=2:sw=2:expandtab
+- include_tasks: backup.yml
+  when: gitea_do_backup
+
+# vi:ts=2:sw=2:expandtab

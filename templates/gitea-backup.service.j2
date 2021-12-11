@@ -1,0 +1,12 @@
+[Unit]
+Description=Gitea backup
+
+[Service]
+Type=oneshot
+User={{ gitea_user }}
+Group={{ gitea_group }}
+WorkingDirectory={{ gitea_home }}
+CPUQuota={{ 25 * ansible_processor_vcpus }}%
+ExecStart={{ gitea_home }}/gitea dump -f {{ gitea_home }}/gitea.dump.tar.gz --type tar.gz
+
+# vi:ft=systemd

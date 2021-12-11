@@ -1,0 +1,23 @@
+---
+
+- name: Add systemd service for gitea-backup
+  template:
+    src: gitea-backup.service.j2
+    dest: /etc/systemd/system/gitea-backup.service
+    mode: '0644'
+  notify: reload systemd
+
+- name: Add systemd timer for gitea backup
+  template:
+    src: gitea-backup.timer.j2
+    dest: /etc/systemd/system/gitea-backup.timer
+    mode: '0644'
+  notify: reload systemd
+
+- name: Enable and start gitea timer
+  systemd:
+    name: gitea-backup.timer
+    enabled: true
+    state: started
+
+# vi:ts=2:sw=2:expandtab
