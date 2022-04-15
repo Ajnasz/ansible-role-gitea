@@ -2,7 +2,7 @@
 gitea_user: "git"
 gitea_group: "git"
 
-gitea_version: "1.15.8"
+gitea_version: "1.16.5"
 
 gitea_app_name: "Gitea: Git with a cup of tea"
 gitea_run_user: "{{ gitea_user }}"
