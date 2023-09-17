@@ -5,6 +5,17 @@
     file: "armv7.yml"
   when: ansible_architecture == "armv7l"
 
+
+- name: "Include arm64 vars"
+  include_vars:
+    file: "aarch64.yml"
+  when: ansible_architecture == "aarch64"
+
+
+- name: "Install git"
+  ansible.builtin.apt:
+    name: git
+
 - name: "Gitea: Create {{ gitea_user }} user"
   user:
     name: "{{ gitea_user }}"
@@ -14,6 +25,8 @@
   file:
     path: "/home/{{ gitea_user }}/custom"
     state: "directory"
+    owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
 
 - name: "Gitea: Download Gitea"
   get_url:
@@ -37,11 +50,15 @@
   file:
     path: "/home/{{ gitea_user }}/custom/conf"
     state: "directory"
+    owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
 
 - name: "Create gitea config"
   template:
     src: "app.ini.j2"
     dest: "/home/{{ gitea_user }}/custom/conf/app.ini"
+    owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
   notify:
     - "reload systemd"
     - "restart gitea"

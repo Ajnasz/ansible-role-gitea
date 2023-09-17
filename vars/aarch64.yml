@@ -1,0 +1,4 @@
+---
+gitea_download_url: "https://dl.gitea.io/gitea/{{ gitea_version }}/gitea-{{ gitea_version }}-linux-arm64"
+gitea_checksum_url: "sha256:https://dl.gitea.io/gitea/{{ gitea_version }}/gitea-{{ gitea_version }}-linux-arm64.sha256"
+

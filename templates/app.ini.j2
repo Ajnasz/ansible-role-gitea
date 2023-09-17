@@ -12,9 +12,11 @@ SSH_DOMAIN       = {{ gitea_ssh_domain }}
 
 DISABLE_SSH      = {{ gitea_server_disable_ssh|lower }}
 LFS_START_SERVER = {{ gitea_server_lfs_start_server|lower }}
-LFS_CONTENT_PATH = {{ gitea_server_lfs_content_path }}
 LFS_JWT_SECRET   = {{ gitea_lfs_jwt_secret }}
 OFFLINE_MODE     = {{ gitea_server_offline_mode|lower }}
+
+[lfs]
+PATH = {{ gitea_server_lfs_content_path }}
 
 [security]
 SECRET_KEY     = {{ gitea_secret_key }}
@@ -35,7 +37,8 @@ ROOT = {{ gitea_repository_root }}
 
 [mailer]
 ENABLED = {{ gitea_mailer_enabled|lower }}
-HOST    = {{ gitea_mailer_host }}
+SMTP_ADDR    = {{ gitea_mailer_smtp_addr }}
+SMTP_PORT    = {{ gitea_mailer_smtp_port }}
 FROM    = {{ gitea_mailer_from }}
 USER    = {{ gitea_mailer_user }}
 PASSWD  = {{ gitea_mailer_passwd }}
