@@ -5,12 +5,10 @@
     file: "armv7.yml"
   when: ansible_architecture == "armv7l"
 
-
 - name: "Include arm64 vars"
   include_vars:
     file: "aarch64.yml"
   when: ansible_architecture == "aarch64"
-
 
 - name: "Install git"
   ansible.builtin.apt:
