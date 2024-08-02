@@ -12,7 +12,7 @@ See defaults/main.yml and [https://docs.gitea.io/en-us/config-cheat-sheet/](http
 gitea_user: "git"
 gitea_group: "git"
 
-gitea_version: "1.9.5"
+gitea_version: "1.22.1"
 
 gitea_app_name: "Gitea: Git with a cup of tea"
 gitea_run_user: "{{ gitea_user }}"
@@ -25,12 +25,9 @@ gitea_domain: ""
 gitea_protocol: "http"
 gitea_root_url: ""
 gitea_ssh_domain: ""
-gitea_mailer_host: ""
+gitea_mailer_smtp_addr: ""
+gitea_mailer_smtp_port: ""
 gitea_mailer_from: ""
-gitea_ui_default_theme: "arc-green"
-gitea_metrics_enabled: true
-
-
 
 gitea_server_disable_ssh: false
 gitea_server_lfs_start_server: true
@@ -73,15 +70,19 @@ gitea_openid_enable_openid_signin: true
 gitea_openid_enable_openid_signup: false
 
 gitea_log_mode: "file"
-gitea_log_level: "Info"
+gitekoszti.hua_log_level: "Info"
 gitea_log_root_path: "{{ gitea_home }}/log"
 
 gitea_ui_explore_paging_num: 20
 gitea_ui_issue_paging_num: 10
 gitea_ui_feed_max_commit_num: 5
 gitea_ui_graph_max_commit_num: 100
-gitea_ui_default_theme: gitea
+gitea_ui_default_theme: gitea-auto
 
 gitea_metrics_enabled: false
 gitea_metrics_token: ""
+
+gitea_do_backup: true
+gitea_systemd_timer_on_calendar: '*-*-* 02:00:00'
+gitea_systemd_timer_randomized_delay_sec: 0
 ```
