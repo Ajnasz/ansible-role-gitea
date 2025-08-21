@@ -2,7 +2,7 @@
 gitea_user: "git"
 gitea_group: "git"
 
-gitea_version: "1.23.8"
+gitea_version: "1.24.3"
 
 gitea_app_name: "Gitea: Git with a cup of tea"
 gitea_run_user: "{{ gitea_user }}"
@@ -75,3 +75,13 @@ gitea_metrics_token: ""
 gitea_do_backup: true
 gitea_systemd_timer_on_calendar: '*-*-* 02:00:00'
 gitea_systemd_timer_randomized_delay_sec: 0
+
+gitea_webhook_queue_length: 1000
+gitea_webhook_deliver_timeout: 5
+gitea_webhook_allowed_host_list: []
+gitea_webhook_skip_tls_verify: false
+gitea_webhook_paging_num: 10
+gitea_webhook_proxy_url: ""
+gitea_webhook_proxy_hosts: []
+
+gitea_actions_enabled: false

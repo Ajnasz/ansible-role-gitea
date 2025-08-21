@@ -81,3 +81,16 @@ DEFAULT_THEME        = {{ gitea_ui_default_theme }}
 [metrics]
 ENABLED = {{gitea_metrics_enabled|lower}}
 TOKEN   = {{gitea_metrics_token}}
+
+[webhook]
+
+QUEUE_LENGTH: {{ gitea_webhook_queue_length }}
+DELIVER_TIMEOUT: {{ gitea_webhook_deliver_timeout }}
+ALLOWED_HOST_LIST: {{ gitea_webhook_allowed_host_list | join(',') }}
+SKIP_TLS_VERIFY: {{ gitea_webhook_skip_tls_verify }}
+PAGING_NUM: {{ gitea_webhook_paging_num }}
+PROXY_URL: {{ gitea_webhook_proxy_url }}
+PROXY_HOSTS: {{ gitea_webhook_proxy_hosts }}
+
+[actions]
+ENABLED = {{ gitea_actions_enabled }}
