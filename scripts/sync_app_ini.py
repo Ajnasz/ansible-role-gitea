@@ -133,11 +133,17 @@ def var_name_for(section: str, key: str) -> str:
 
 
 def infer_kind(value: str) -> str:
-    """Return 'bool' if the upstream default looks boolean, else 'other'.
-    Only used to decide whether the template needs a `|lower` filter -
-    the ansible default itself is always null (see module docstring)."""
+    """Return 'bool' for boolean-looking defaults, 'list' for comma-separated
+    ones, else 'other'. Only used to pick the right template filter
+    (|lower / |join(',')) - the ansible default itself is always null (see
+    module docstring). A caller is expected to pass a real ansible list for
+    'list' kind vars, matching how the rest of this role represents
+    comma-separated ini values (e.g. gitea_webhook_allowed_host_list) -
+    that's easier to read/maintain than a pre-joined string."""
     if value.lower() in ("true", "false"):
         return "bool"
+    if "," in value:
+        return "list"
     return "other"
 
 
@@ -188,7 +194,12 @@ def build_additions(upstream, coverage, existing_var_names, gitea_version):
             kind = infer_kind(value)
             section_default_lines.append(f"{var}: ~{yaml_comment_for(value)}")
 
-            rendered_value = f"{{{{ {var}|lower }}}}" if kind == "bool" else f"{{{{ {var} }}}}"
+            if kind == "bool":
+                rendered_value = f"{{{{ {var}|lower }}}}"
+            elif kind == "list":
+                rendered_value = f"{{{{ {var}|join(',') }}}}"
+            else:
+                rendered_value = f"{{{{ {var} }}}}"
             section_template_lines.append(f"{{% if {var} is not none %}}")
             section_template_lines.append(f"{key} = {rendered_value}")
             section_template_lines.append("{% endif %}")

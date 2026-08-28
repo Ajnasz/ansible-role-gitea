@@ -58,7 +58,7 @@ SSL_MIN_VERSION = {{ gitea_server_ssl_min_version }}
 SSL_MAX_VERSION = {{ gitea_server_ssl_max_version }}
 {% endif %}
 {% if gitea_server_ssl_curve_preferences is not none %}
-SSL_CURVE_PREFERENCES = {{ gitea_server_ssl_curve_preferences }}
+SSL_CURVE_PREFERENCES = {{ gitea_server_ssl_curve_preferences|join(',') }}
 {% endif %}
 {% if gitea_server_ssl_cipher_suites is not none %}
 SSL_CIPHER_SUITES = {{ gitea_server_ssl_cipher_suites }}
@@ -118,13 +118,13 @@ SSH_SERVER_KEY_EXCHANGES = {{ gitea_server_ssh_server_key_exchanges }}
 SSH_SERVER_MACS = {{ gitea_server_ssh_server_macs }}
 {% endif %}
 {% if gitea_server_ssh_server_host_keys is not none %}
-SSH_SERVER_HOST_KEYS = {{ gitea_server_ssh_server_host_keys }}
+SSH_SERVER_HOST_KEYS = {{ gitea_server_ssh_server_host_keys|join(',') }}
 {% endif %}
 {% if gitea_server_ssh_authorized_keys_backup is not none %}
 SSH_AUTHORIZED_KEYS_BACKUP = {{ gitea_server_ssh_authorized_keys_backup|lower }}
 {% endif %}
 {% if gitea_server_ssh_authorized_principals_allow is not none %}
-SSH_AUTHORIZED_PRINCIPALS_ALLOW = {{ gitea_server_ssh_authorized_principals_allow }}
+SSH_AUTHORIZED_PRINCIPALS_ALLOW = {{ gitea_server_ssh_authorized_principals_allow|join(',') }}
 {% endif %}
 {% if gitea_server_ssh_authorized_principals_backup is not none %}
 SSH_AUTHORIZED_PRINCIPALS_BACKUP = {{ gitea_server_ssh_authorized_principals_backup|lower }}
@@ -279,7 +279,7 @@ REVERSE_PROXY_AUTHENTICATION_FULL_NAME = {{ gitea_security_reverse_proxy_authent
 REVERSE_PROXY_LIMIT = {{ gitea_security_reverse_proxy_limit }}
 {% endif %}
 {% if gitea_security_reverse_proxy_trusted_proxies is not none %}
-REVERSE_PROXY_TRUSTED_PROXIES = {{ gitea_security_reverse_proxy_trusted_proxies }}
+REVERSE_PROXY_TRUSTED_PROXIES = {{ gitea_security_reverse_proxy_trusted_proxies|join(',') }}
 {% endif %}
 {% if gitea_security_min_password_length is not none %}
 MIN_PASSWORD_LENGTH = {{ gitea_security_min_password_length }}
@@ -326,10 +326,11 @@ X_CONTENT_TYPE_OPTIONS = {{ gitea_security_x_content_type_options }}
 {% if gitea_security_content_security_policy_general is not none %}
 CONTENT_SECURITY_POLICY_GENERAL = {{ gitea_security_content_security_policy_general }}
 {% endif %}
-{% if gitea_security_allowed_host_list is not none %}
-ALLOWED_HOST_LIST = {{ gitea_security_allowed_host_list }}
+{% set gitea_security_allowed_host_list_effective = gitea_security_allowed_host_list if gitea_security_allowed_host_list is not none else (gitea_webhook_allowed_host_list if gitea_webhook_allowed_host_list | length > 0 else none) %}
+{% if gitea_security_allowed_host_list_effective is not none %}
+ALLOWED_HOST_LIST = {{ gitea_security_allowed_host_list_effective|join(',') }}
 {% endif %}
-{% if gitea_security_x_content_type_options is not none or gitea_security_content_security_policy_general is not none or gitea_security_allowed_host_list is not none %}
+{% if gitea_security_x_content_type_options is not none or gitea_security_content_security_policy_general is not none or gitea_security_allowed_host_list_effective is not none %}
 
 {% endif %}
 [database]
@@ -390,7 +391,7 @@ ROOT = {{ gitea_repository_root }}
 SCRIPT_TYPE = {{ gitea_repository_script_type }}
 {% endif %}
 {% if gitea_repository_detected_charsets_order is not none %}
-DETECTED_CHARSETS_ORDER = {{ gitea_repository_detected_charsets_order }}
+DETECTED_CHARSETS_ORDER = {{ gitea_repository_detected_charsets_order|join(',') }}
 {% endif %}
 {% if gitea_repository_ansi_charset is not none %}
 ANSI_CHARSET = {{ gitea_repository_ansi_charset }}
@@ -408,7 +409,7 @@ DEFAULT_PUSH_CREATE_PRIVATE = {{ gitea_repository_default_push_create_private|lo
 MAX_CREATION_LIMIT = {{ gitea_repository_max_creation_limit }}
 {% endif %}
 {% if gitea_repository_preferred_licenses is not none %}
-PREFERRED_LICENSES = {{ gitea_repository_preferred_licenses }}
+PREFERRED_LICENSES = {{ gitea_repository_preferred_licenses|join(',') }}
 {% endif %}
 {% if gitea_repository_disable_http_git is not none %}
 DISABLE_HTTP_GIT = {{ gitea_repository_disable_http_git|lower }}
@@ -435,16 +436,16 @@ ENABLE_PUSH_CREATE_ORG = {{ gitea_repository_enable_push_create_org|lower }}
 DISABLED_REPO_UNITS = {{ gitea_repository_disabled_repo_units }}
 {% endif %}
 {% if gitea_repository_default_repo_units is not none %}
-DEFAULT_REPO_UNITS = {{ gitea_repository_default_repo_units }}
+DEFAULT_REPO_UNITS = {{ gitea_repository_default_repo_units|join(',') }}
 {% endif %}
 {% if gitea_repository_default_fork_repo_units is not none %}
-DEFAULT_FORK_REPO_UNITS = {{ gitea_repository_default_fork_repo_units }}
+DEFAULT_FORK_REPO_UNITS = {{ gitea_repository_default_fork_repo_units|join(',') }}
 {% endif %}
 {% if gitea_repository_default_mirror_repo_units is not none %}
-DEFAULT_MIRROR_REPO_UNITS = {{ gitea_repository_default_mirror_repo_units }}
+DEFAULT_MIRROR_REPO_UNITS = {{ gitea_repository_default_mirror_repo_units|join(',') }}
 {% endif %}
 {% if gitea_repository_default_template_repo_units is not none %}
-DEFAULT_TEMPLATE_REPO_UNITS = {{ gitea_repository_default_template_repo_units }}
+DEFAULT_TEMPLATE_REPO_UNITS = {{ gitea_repository_default_template_repo_units|join(',') }}
 {% endif %}
 {% if gitea_repository_prefix_archive_files is not none %}
 PREFIX_ARCHIVE_FILES = {{ gitea_repository_prefix_archive_files|lower }}
@@ -644,7 +645,7 @@ DEFAULT_USER_IS_RESTRICTED = {{ gitea_service_default_user_is_restricted|lower }
 DEFAULT_USER_VISIBILITY = {{ gitea_service_default_user_visibility }}
 {% endif %}
 {% if gitea_service_allowed_user_visibility_modes is not none %}
-ALLOWED_USER_VISIBILITY_MODES = {{ gitea_service_allowed_user_visibility_modes }}
+ALLOWED_USER_VISIBILITY_MODES = {{ gitea_service_allowed_user_visibility_modes|join(',') }}
 {% endif %}
 {% if gitea_service_default_org_visibility is not none %}
 DEFAULT_ORG_VISIBILITY = {{ gitea_service_default_org_visibility }}
@@ -683,7 +684,7 @@ AUTO_WATCH_ON_CHANGES = {{ gitea_service_auto_watch_on_changes|lower }}
 USER_DELETE_WITH_COMMENTS_MAX_TIME = {{ gitea_service_user_delete_with_comments_max_time }}
 {% endif %}
 {% if gitea_service_valid_site_url_schemes is not none %}
-VALID_SITE_URL_SCHEMES = {{ gitea_service_valid_site_url_schemes }}
+VALID_SITE_URL_SCHEMES = {{ gitea_service_valid_site_url_schemes|join(',') }}
 {% endif %}
 {% if gitea_service_active_code_live_minutes is not none or gitea_service_reset_passwd_code_live_minutes is not none or gitea_service_register_manual_confirm is not none or gitea_service_email_domain_allowlist is not none or gitea_service_email_domain_blocklist is not none or gitea_service_allow_only_internal_registration is not none or gitea_service_enable_basic_authentication is not none or gitea_service_enable_password_signin_form is not none or gitea_service_enable_passkey_authentication is not none or gitea_service_enable_reverse_proxy_authentication is not none or gitea_service_enable_reverse_proxy_authentication_api is not none or gitea_service_enable_reverse_proxy_auto_registration is not none or gitea_service_enable_reverse_proxy_email is not none or gitea_service_enable_reverse_proxy_full_name is not none or gitea_service_require_captcha_for_login is not none or gitea_service_captcha_type is not none or gitea_service_recaptcha_url is not none or gitea_service_recaptcha_secret is not none or gitea_service_recaptcha_sitekey is not none or gitea_service_hcaptcha_secret is not none or gitea_service_hcaptcha_sitekey is not none or gitea_service_mcaptcha_url is not none or gitea_service_mcaptcha_secret is not none or gitea_service_mcaptcha_sitekey is not none or gitea_service_cf_turnstile_sitekey is not none or gitea_service_cf_turnstile_secret is not none or gitea_service_default_user_is_restricted is not none or gitea_service_default_user_visibility is not none or gitea_service_allowed_user_visibility_modes is not none or gitea_service_default_org_visibility is not none or gitea_service_default_org_member_visible is not none or gitea_service_default_enable_dependencies is not none or gitea_service_allow_cross_repository_dependencies is not none or gitea_service_enable_user_heatmap is not none or gitea_service_enable_timetracking is not none or gitea_service_default_allow_only_contributors_to_track_time is not none or gitea_service_show_registration_button is not none or gitea_service_show_milestones_dashboard_page is not none or gitea_service_auto_watch_new_repos is not none or gitea_service_auto_watch_on_changes is not none or gitea_service_user_delete_with_comments_max_time is not none or gitea_service_valid_site_url_schemes is not none %}
 
@@ -740,10 +741,10 @@ BUFFER_LEN = {{ gitea_log_buffer_len }}
 logger.access.MODE = {{ gitea_log_logger_access_mode }}
 {% endif %}
 {% if gitea_log_logger_router_mode is not none %}
-logger.router.MODE = {{ gitea_log_logger_router_mode }}
+logger.router.MODE = {{ gitea_log_logger_router_mode|join(',') }}
 {% endif %}
 {% if gitea_log_logger_xorm_mode is not none %}
-logger.xorm.MODE = {{ gitea_log_logger_xorm_mode }}
+logger.xorm.MODE = {{ gitea_log_logger_xorm_mode|join(',') }}
 {% endif %}
 {% if gitea_log_enable_ssh_log is not none %}
 ENABLE_SSH_LOG = {{ gitea_log_enable_ssh_log|lower }}
@@ -792,13 +793,13 @@ FILE_ICON_THEME = {{ gitea_ui_file_icon_theme }}
 FOLDER_ICON_THEME = {{ gitea_ui_folder_icon_theme }}
 {% endif %}
 {% if gitea_ui_reactions is not none %}
-REACTIONS = {{ gitea_ui_reactions }}
+REACTIONS = {{ gitea_ui_reactions|join(',') }}
 {% endif %}
 {% if gitea_ui_reaction_max_user_num is not none %}
 REACTION_MAX_USER_NUM = {{ gitea_ui_reaction_max_user_num }}
 {% endif %}
 {% if gitea_ui_custom_emojis is not none %}
-CUSTOM_EMOJIS = {{ gitea_ui_custom_emojis }}
+CUSTOM_EMOJIS = {{ gitea_ui_custom_emojis|join(',') }}
 {% endif %}
 {% if gitea_ui_enabled_emojis is not none %}
 ENABLED_EMOJIS = {{ gitea_ui_enabled_emojis }}
@@ -838,7 +839,6 @@ ENABLED_ISSUE_BY_REPOSITORY = {{ gitea_metrics_enabled_issue_by_repository|lower
 
 QUEUE_LENGTH: {{ gitea_webhook_queue_length }}
 DELIVER_TIMEOUT: {{ gitea_webhook_deliver_timeout }}
-ALLOWED_HOST_LIST: {{ gitea_webhook_allowed_host_list | join(',') }}
 SKIP_TLS_VERIFY: {{ gitea_webhook_skip_tls_verify }}
 PAGING_NUM: {{ gitea_webhook_paging_num }}
 PROXY_URL: {{ gitea_webhook_proxy_url }}
@@ -1024,7 +1024,7 @@ DISABLE_CODE_PAGE = {{ gitea_service_explore_disable_code_page|lower }}
 
 [repository.editor]
 {% if gitea_repository_editor_line_wrap_extensions is not none %}
-LINE_WRAP_EXTENSIONS = {{ gitea_repository_editor_line_wrap_extensions }}
+LINE_WRAP_EXTENSIONS = {{ gitea_repository_editor_line_wrap_extensions|join(',') }}
 {% endif %}
 {% endif %}
 {% if gitea_repository_upload_enabled is not none or gitea_repository_upload_allowed_types is not none or gitea_repository_upload_file_max_size is not none or gitea_repository_upload_max_files is not none %}
@@ -1047,13 +1047,13 @@ MAX_FILES = {{ gitea_repository_upload_max_files }}
 
 [repository.pull-request]
 {% if gitea_repository_pull_request_work_in_progress_prefixes is not none %}
-WORK_IN_PROGRESS_PREFIXES = {{ gitea_repository_pull_request_work_in_progress_prefixes }}
+WORK_IN_PROGRESS_PREFIXES = {{ gitea_repository_pull_request_work_in_progress_prefixes|join(',') }}
 {% endif %}
 {% if gitea_repository_pull_request_close_keywords is not none %}
-CLOSE_KEYWORDS = {{ gitea_repository_pull_request_close_keywords }}
+CLOSE_KEYWORDS = {{ gitea_repository_pull_request_close_keywords|join(',') }}
 {% endif %}
 {% if gitea_repository_pull_request_reopen_keywords is not none %}
-REOPEN_KEYWORDS = {{ gitea_repository_pull_request_reopen_keywords }}
+REOPEN_KEYWORDS = {{ gitea_repository_pull_request_reopen_keywords|join(',') }}
 {% endif %}
 {% if gitea_repository_pull_request_default_merge_style is not none %}
 DEFAULT_MERGE_STYLE = {{ gitea_repository_pull_request_default_merge_style }}
@@ -1096,7 +1096,7 @@ DEFAULT_DELETE_BRANCH_AFTER_MERGE = {{ gitea_repository_pull_request_default_del
 
 [repository.issue]
 {% if gitea_repository_issue_lock_reasons is not none %}
-LOCK_REASONS = {{ gitea_repository_issue_lock_reasons }}
+LOCK_REASONS = {{ gitea_repository_issue_lock_reasons|join(',') }}
 {% endif %}
 {% if gitea_repository_issue_max_pinned is not none %}
 MAX_PINNED = {{ gitea_repository_issue_max_pinned }}
@@ -1140,13 +1140,13 @@ DEFAULT_TRUST_MODEL = {{ gitea_repository_signing_default_trust_model }}
 INITIAL_COMMIT = {{ gitea_repository_signing_initial_commit }}
 {% endif %}
 {% if gitea_repository_signing_crud_actions is not none %}
-CRUD_ACTIONS = {{ gitea_repository_signing_crud_actions }}
+CRUD_ACTIONS = {{ gitea_repository_signing_crud_actions|join(',') }}
 {% endif %}
 {% if gitea_repository_signing_wiki is not none %}
 WIKI = {{ gitea_repository_signing_wiki }}
 {% endif %}
 {% if gitea_repository_signing_merges is not none %}
-MERGES = {{ gitea_repository_signing_merges }}
+MERGES = {{ gitea_repository_signing_merges|join(',') }}
 {% endif %}
 {% if gitea_repository_signing_trusted_ssh_keys is not none %}
 TRUSTED_SSH_KEYS = {{ gitea_repository_signing_trusted_ssh_keys }}
@@ -1163,10 +1163,10 @@ TRUSTED_SSH_KEYS = {{ gitea_repository_signing_trusted_ssh_keys }}
 
 [project]
 {% if gitea_project_project_board_basic_kanban_type is not none %}
-PROJECT_BOARD_BASIC_KANBAN_TYPE = {{ gitea_project_project_board_basic_kanban_type }}
+PROJECT_BOARD_BASIC_KANBAN_TYPE = {{ gitea_project_project_board_basic_kanban_type|join(',') }}
 {% endif %}
 {% if gitea_project_project_board_bug_triage_type is not none %}
-PROJECT_BOARD_BUG_TRIAGE_TYPE = {{ gitea_project_project_board_bug_triage_type }}
+PROJECT_BOARD_BUG_TRIAGE_TYPE = {{ gitea_project_project_board_bug_triage_type|join(',') }}
 {% endif %}
 {% endif %}
 {% if gitea_cors_enabled is not none or gitea_cors_allow_domain is not none or gitea_cors_methods is not none or gitea_cors_max_age is not none or gitea_cors_allow_credentials is not none or gitea_cors_headers is not none %}
@@ -1179,7 +1179,7 @@ ENABLED = {{ gitea_cors_enabled|lower }}
 ALLOW_DOMAIN = {{ gitea_cors_allow_domain }}
 {% endif %}
 {% if gitea_cors_methods is not none %}
-METHODS = {{ gitea_cors_methods }}
+METHODS = {{ gitea_cors_methods|join(',') }}
 {% endif %}
 {% if gitea_cors_max_age is not none %}
 MAX_AGE = {{ gitea_cors_max_age }}
@@ -1188,7 +1188,7 @@ MAX_AGE = {{ gitea_cors_max_age }}
 ALLOW_CREDENTIALS = {{ gitea_cors_allow_credentials|lower }}
 {% endif %}
 {% if gitea_cors_headers is not none %}
-HEADERS = {{ gitea_cors_headers }}
+HEADERS = {{ gitea_cors_headers|join(',') }}
 {% endif %}
 {% endif %}
 {% if gitea_ui_admin_user_paging_num is not none or gitea_ui_admin_repo_paging_num is not none or gitea_ui_admin_notice_paging_num is not none or gitea_ui_admin_org_paging_num is not none %}
@@ -1227,7 +1227,7 @@ AUTHOR = {{ gitea_ui_meta_author }}
 DESCRIPTION = {{ gitea_ui_meta_description }}
 {% endif %}
 {% if gitea_ui_meta_keywords is not none %}
-KEYWORDS = {{ gitea_ui_meta_keywords }}
+KEYWORDS = {{ gitea_ui_meta_keywords|join(',') }}
 {% endif %}
 {% endif %}
 {% if gitea_ui_notification_min_timeout is not none or gitea_ui_notification_max_timeout is not none or gitea_ui_notification_timeout_step is not none or gitea_ui_notification_event_source_update_time is not none %}
@@ -1267,7 +1267,7 @@ MAX_ROWS = {{ gitea_ui_csv_max_rows }}
 
 [markdown]
 {% if gitea_markdown_render_options_comment is not none %}
-RENDER_OPTIONS_COMMENT = {{ gitea_markdown_render_options_comment }}
+RENDER_OPTIONS_COMMENT = {{ gitea_markdown_render_options_comment|join(',') }}
 {% endif %}
 {% if gitea_markdown_render_options_wiki is not none %}
 RENDER_OPTIONS_WIKI = {{ gitea_markdown_render_options_wiki }}
@@ -1279,7 +1279,7 @@ RENDER_OPTIONS_REPO_FILE = {{ gitea_markdown_render_options_repo_file }}
 CUSTOM_URL_SCHEMES = {{ gitea_markdown_custom_url_schemes }}
 {% endif %}
 {% if gitea_markdown_file_extensions is not none %}
-FILE_EXTENSIONS = {{ gitea_markdown_file_extensions }}
+FILE_EXTENSIONS = {{ gitea_markdown_file_extensions|join(',') }}
 {% endif %}
 {% if gitea_markdown_enable_math is not none %}
 ENABLE_MATH = {{ gitea_markdown_enable_math|lower }}
@@ -1326,7 +1326,7 @@ STARTUP_TIMEOUT = {{ gitea_indexer_startup_timeout }}
 REPO_INDEXER_ENABLED = {{ gitea_indexer_repo_indexer_enabled|lower }}
 {% endif %}
 {% if gitea_indexer_repo_indexer_repo_types is not none %}
-REPO_INDEXER_REPO_TYPES = {{ gitea_indexer_repo_indexer_repo_types }}
+REPO_INDEXER_REPO_TYPES = {{ gitea_indexer_repo_indexer_repo_types|join(',') }}
 {% endif %}
 {% if gitea_indexer_repo_indexer_type is not none %}
 REPO_INDEXER_TYPE = {{ gitea_indexer_repo_indexer_type }}
@@ -1420,7 +1420,7 @@ ACCOUNT_LINKING = {{ gitea_oauth2_client_account_linking }}
 
 [mailer.override_header]
 {% if gitea_mailer_override_header_reply_to is not none %}
-Reply-To = {{ gitea_mailer_override_header_reply_to }}
+Reply-To = {{ gitea_mailer_override_header_reply_to|join(',') }}
 {% endif %}
 {% if gitea_mailer_override_header_content_type is not none %}
 Content-Type = {{ gitea_mailer_override_header_content_type }}
@@ -1539,7 +1539,7 @@ ENABLE_FEDERATED_AVATAR = {{ gitea_picture_enable_federated_avatar_2|lower }}
 ENABLED = {{ gitea_attachment_enabled|lower }}
 {% endif %}
 {% if gitea_attachment_allowed_types is not none %}
-ALLOWED_TYPES = {{ gitea_attachment_allowed_types }}
+ALLOWED_TYPES = {{ gitea_attachment_allowed_types|join(',') }}
 {% endif %}
 {% if gitea_attachment_max_size is not none %}
 MAX_SIZE = {{ gitea_attachment_max_size }}
@@ -2185,10 +2185,10 @@ DEFAULT_MAX_RESPONSE_SIZE = {{ gitea_api_default_max_response_size }}
 
 [i18n]
 {% if gitea_i18n_langs is not none %}
-LANGS = {{ gitea_i18n_langs }}
+LANGS = {{ gitea_i18n_langs|join(',') }}
 {% endif %}
 {% if gitea_i18n_names is not none %}
-NAMES = {{ gitea_i18n_names }}
+NAMES = {{ gitea_i18n_names|join(',') }}
 {% endif %}
 {% endif %}
 {% if gitea_other_show_footer_version is not none or gitea_other_show_footer_template_load_time is not none or gitea_other_show_footer_powered_by is not none or gitea_other_enable_sitemap is not none or gitea_other_enable_feed is not none %}
@@ -2237,7 +2237,7 @@ REGEXP = {{ gitea_markup_sanitizer_1_regexp }}
 ENABLED = {{ gitea_markup_asciidoc_enabled|lower }}
 {% endif %}
 {% if gitea_markup_asciidoc_file_extensions is not none %}
-FILE_EXTENSIONS = {{ gitea_markup_asciidoc_file_extensions }}
+FILE_EXTENSIONS = {{ gitea_markup_asciidoc_file_extensions|join(',') }}
 {% endif %}
 {% if gitea_markup_asciidoc_render_command is not none %}
 RENDER_COMMAND = {{ gitea_markup_asciidoc_render_command }}
@@ -2287,16 +2287,16 @@ SHARE_USER_STATISTICS = {{ gitea_federation_share_user_statistics|lower }}
 MAX_SIZE = {{ gitea_federation_max_size }}
 {% endif %}
 {% if gitea_federation_algorithms is not none %}
-ALGORITHMS = {{ gitea_federation_algorithms }}
+ALGORITHMS = {{ gitea_federation_algorithms|join(',') }}
 {% endif %}
 {% if gitea_federation_digest_algorithm is not none %}
 DIGEST_ALGORITHM = {{ gitea_federation_digest_algorithm }}
 {% endif %}
 {% if gitea_federation_get_headers is not none %}
-GET_HEADERS = {{ gitea_federation_get_headers }}
+GET_HEADERS = {{ gitea_federation_get_headers|join(',') }}
 {% endif %}
 {% if gitea_federation_post_headers is not none %}
-POST_HEADERS = {{ gitea_federation_post_headers }}
+POST_HEADERS = {{ gitea_federation_post_headers|join(',') }}
 {% endif %}
 {% endif %}
 {% if gitea_packages_enabled is not none or gitea_packages_storage_type is not none or gitea_packages_minio_base_path is not none or gitea_packages_azure_blob_base_path is not none or gitea_packages_serve_direct is not none or gitea_packages_limit_total_owner_count is not none or gitea_packages_limit_total_owner_size is not none or gitea_packages_limit_size_alpine is not none or gitea_packages_limit_size_cargo is not none or gitea_packages_limit_size_chef is not none or gitea_packages_limit_size_composer is not none or gitea_packages_limit_size_conan is not none or gitea_packages_limit_size_conda is not none or gitea_packages_limit_size_container is not none or gitea_packages_limit_size_cran is not none or gitea_packages_limit_size_debian is not none or gitea_packages_limit_size_generic is not none or gitea_packages_limit_size_go is not none or gitea_packages_limit_size_helm is not none or gitea_packages_limit_size_maven is not none or gitea_packages_limit_size_npm is not none or gitea_packages_limit_size_nuget is not none or gitea_packages_limit_size_pub is not none or gitea_packages_limit_size_pypi is not none or gitea_packages_limit_size_rpm is not none or gitea_packages_limit_size_rubygems is not none or gitea_packages_limit_size_swift is not none or gitea_packages_limit_size_vagrant is not none or gitea_packages_limit_size_terraform_state is not none or gitea_packages_default_rpm_sign_enabled is not none %}
@@ -2530,10 +2530,10 @@ ENDLESS_TASK_TIMEOUT = {{ gitea_proxy_endless_task_timeout }}
 ABANDONED_JOB_TIMEOUT = {{ gitea_proxy_abandoned_job_timeout }}
 {% endif %}
 {% if gitea_proxy_skip_workflow_strings is not none %}
-SKIP_WORKFLOW_STRINGS = {{ gitea_proxy_skip_workflow_strings }}
+SKIP_WORKFLOW_STRINGS = {{ gitea_proxy_skip_workflow_strings|join(',') }}
 {% endif %}
 {% if gitea_proxy_workflow_dirs is not none %}
-WORKFLOW_DIRS = {{ gitea_proxy_workflow_dirs }}
+WORKFLOW_DIRS = {{ gitea_proxy_workflow_dirs|join(',') }}
 {% endif %}
 {% endif %}
 {% if gitea_storage_actions_log_storage_type is not none %}
