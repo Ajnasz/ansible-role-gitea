@@ -320,6 +320,18 @@ X_FRAME_OPTIONS = {{ gitea_security_x_frame_options }}
 {% if gitea_security_secret_key_uri is not none or gitea_security_internal_token_uri is not none or gitea_security_login_remember_days is not none or gitea_security_cookie_username is not none or gitea_security_cookie_remember_name is not none or gitea_security_reverse_proxy_logout_redirect is not none or gitea_security_reverse_proxy_authentication_user is not none or gitea_security_reverse_proxy_authentication_email is not none or gitea_security_reverse_proxy_authentication_full_name is not none or gitea_security_reverse_proxy_limit is not none or gitea_security_reverse_proxy_trusted_proxies is not none or gitea_security_min_password_length is not none or gitea_security_import_local_paths is not none or gitea_security_disable_git_hooks is not none or gitea_security_disable_webhooks is not none or gitea_security_only_allow_push_if_gitea_environment_set is not none or gitea_security_password_complexity is not none or gitea_security_password_hash_algo is not none or gitea_security_password_check_pwn is not none or gitea_security_successful_tokens_cache_size is not none or gitea_security_disable_query_auth_token is not none or gitea_security_two_factor_auth is not none or gitea_security_x_frame_options is not none %}
 
 {% endif %}
+{% if gitea_security_x_content_type_options is not none %}
+X_CONTENT_TYPE_OPTIONS = {{ gitea_security_x_content_type_options }}
+{% endif %}
+{% if gitea_security_content_security_policy_general is not none %}
+CONTENT_SECURITY_POLICY_GENERAL = {{ gitea_security_content_security_policy_general }}
+{% endif %}
+{% if gitea_security_allowed_host_list is not none %}
+ALLOWED_HOST_LIST = {{ gitea_security_allowed_host_list }}
+{% endif %}
+{% if gitea_security_x_content_type_options is not none or gitea_security_content_security_policy_general is not none or gitea_security_allowed_host_list is not none %}
+
+{% endif %}
 [database]
 DB_TYPE  = {{ gitea_database_db_type }}
 HOST     = {{ gitea_database_host }}
@@ -462,6 +474,15 @@ ALLOW_FORK_WITHOUT_MAXIMUM_LIMIT = {{ gitea_repository_allow_fork_without_maximu
 ALLOW_FORK_INTO_SAME_OWNER = {{ gitea_repository_allow_fork_into_same_owner|lower }}
 {% endif %}
 {% if gitea_repository_script_type is not none or gitea_repository_detected_charsets_order is not none or gitea_repository_ansi_charset is not none or gitea_repository_force_private is not none or gitea_repository_default_private is not none or gitea_repository_default_push_create_private is not none or gitea_repository_max_creation_limit is not none or gitea_repository_preferred_licenses is not none or gitea_repository_disable_http_git is not none or gitea_repository_access_control_allow_origin is not none or gitea_repository_use_compat_ssh_uri is not none or gitea_repository_go_get_clone_url_protocol is not none or gitea_repository_default_close_issues_via_commits_in_any_branch is not none or gitea_repository_enable_push_create_user is not none or gitea_repository_enable_push_create_org is not none or gitea_repository_disabled_repo_units is not none or gitea_repository_default_repo_units is not none or gitea_repository_default_fork_repo_units is not none or gitea_repository_default_mirror_repo_units is not none or gitea_repository_default_template_repo_units is not none or gitea_repository_prefix_archive_files is not none or gitea_repository_disable_migrations is not none or gitea_repository_disable_stars is not none or gitea_repository_default_branch is not none or gitea_repository_allow_adoption_of_unadopted_repositories is not none or gitea_repository_allow_deletion_of_unadopted_repositories is not none or gitea_repository_disable_download_source_archives is not none or gitea_repository_allow_fork_without_maximum_limit is not none or gitea_repository_allow_fork_into_same_owner is not none %}
+
+{% endif %}
+{% if gitea_repository_user_max_creation_limit is not none %}
+USER_MAX_CREATION_LIMIT = {{ gitea_repository_user_max_creation_limit }}
+{% endif %}
+{% if gitea_repository_org_max_creation_limit is not none %}
+ORG_MAX_CREATION_LIMIT = {{ gitea_repository_org_max_creation_limit }}
+{% endif %}
+{% if gitea_repository_user_max_creation_limit is not none or gitea_repository_org_max_creation_limit is not none %}
 
 {% endif %}
 [mailer]
@@ -2517,6 +2538,18 @@ WORKFLOW_DIRS = {{ gitea_proxy_workflow_dirs }}
 {% endif %}
 {% if gitea_storage_actions_log_storage_type is not none %}
 
+{% if gitea_proxy_scoped_workflow_dirs is not none %}
+SCOPED_WORKFLOW_DIRS = {{ gitea_proxy_scoped_workflow_dirs }}
+{% endif %}
+{% if gitea_proxy_max_rerun_attempts is not none %}
+MAX_RERUN_ATTEMPTS = {{ gitea_proxy_max_rerun_attempts }}
+{% endif %}
+{% if gitea_proxy_max_concurrent_task_picks is not none %}
+MAX_CONCURRENT_TASK_PICKS = {{ gitea_proxy_max_concurrent_task_picks }}
+{% endif %}
+{% if gitea_proxy_scoped_workflow_dirs is not none or gitea_proxy_max_rerun_attempts is not none or gitea_proxy_max_concurrent_task_picks is not none %}
+
+{% endif %}
 [storage.actions_log]
 {% if gitea_storage_actions_log_storage_type is not none %}
 STORAGE_TYPE = {{ gitea_storage_actions_log_storage_type }}

@@ -2,7 +2,7 @@
 gitea_user: "git"
 gitea_group: "git"
 
-gitea_version: "1.26.4"
+gitea_version: "1.27.2"
 
 gitea_app_name: "Gitea: Git with a cup of tea"
 gitea_run_user: "{{ gitea_user }}"
@@ -979,3 +979,18 @@ gitea_storage_actions_log_storage_type: ~  # gitea default: local
 # --- [global_lock] ---
 gitea_global_lock_service_type: ~  # gitea default: memory
 gitea_global_lock_service_conn_str: ~
+
+# --- auto-synced from app.example.ini (gitea 1.27.2) ---
+# --- [security] ---
+gitea_security_x_content_type_options: ~  # gitea default: nosniff
+gitea_security_content_security_policy_general: ~
+gitea_security_allowed_host_list: ~  # gitea default: external
+
+# --- [repository] ---
+gitea_repository_user_max_creation_limit: ~  # gitea default: -1
+gitea_repository_org_max_creation_limit: ~  # gitea default: -1
+
+# --- [proxy] ---
+gitea_proxy_scoped_workflow_dirs: ~  # gitea default: .gitea/scoped_workflows
+gitea_proxy_max_rerun_attempts: ~  # gitea default: 50
+gitea_proxy_max_concurrent_task_picks: ~  # gitea default: 16
