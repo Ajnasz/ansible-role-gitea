@@ -6,7 +6,7 @@ Type=oneshot
 User={{ gitea_user }}
 Group={{ gitea_group }}
 WorkingDirectory={{ gitea_home }}
-CPUQuota={{ 25 * ansible_processor_vcpus }}%
+CPUQuota={{ 25 * ansible_facts['processor_vcpus'] }}%
 ExecStart=rm -f {{ gitea_home }}/gitea.dump.tgz
 ExecStart={{ gitea_home }}/gitea dump -f {{ gitea_home }}/gitea.dump.tgz --type tar.gz
 
