@@ -97,3 +97,885 @@ gitea_oauth2_jwt_signing_private_key_file: jwt/private.pem
 gitea_oauth2_max_token_length: 32767
 gitea_oauth2_default_applications: git-credential-oauth,git-credential-manager,tea
 gitea_oauth2_custom_schemes: ""
+
+# --- auto-synced from app.example.ini (gitea 1.26.4) ---
+# --- (root) ---
+gitea_work_path: ~
+
+# --- [server] ---
+gitea_server_public_url_detection: ~  # gitea default: auto
+gitea_server_use_sub_url_path: ~  # gitea default: false
+gitea_server_static_url_prefix: ~
+gitea_server_use_proxy_protocol: ~  # gitea default: false
+gitea_server_proxy_protocol_tls_bridging: ~  # gitea default: false
+gitea_server_proxy_protocol_header_timeout: ~  # gitea default: 5s
+gitea_server_proxy_protocol_accept_unknown: ~  # gitea default: false
+gitea_server_redirect_other_port: ~  # gitea default: false
+gitea_server_port_to_redirect: ~  # gitea default: 80
+gitea_server_redirector_use_proxy_protocol: ~
+gitea_server_ssl_min_version: ~  # gitea default: TLSv1.2
+gitea_server_ssl_max_version: ~
+gitea_server_ssl_curve_preferences: ~  # gitea default: X25519,P256
+gitea_server_ssl_cipher_suites: ~
+gitea_server_per_write_timeout: ~  # gitea default: 30s
+gitea_server_per_write_per_kb_timeout: ~  # gitea default: 30s
+gitea_server_unix_socket_permission: ~  # gitea default: 666
+gitea_server_local_root_url: ~
+gitea_server_local_use_proxy_protocol: ~
+gitea_server_start_ssh_server: ~  # gitea default: false
+gitea_server_ssh_server_use_proxy_protocol: ~  # gitea default: false
+gitea_server_builtin_ssh_server_user: ~
+gitea_server_ssh_user: ~
+gitea_server_ssh_listen_host: ~
+gitea_server_ssh_port: ~  # gitea default: 22
+gitea_server_ssh_listen_port: ~
+gitea_server_ssh_root_path: ~
+gitea_server_ssh_create_authorized_keys_file: ~  # gitea default: true
+gitea_server_ssh_create_authorized_principals_file: ~  # gitea default: true
+gitea_server_ssh_server_ciphers: ~
+gitea_server_ssh_server_key_exchanges: ~
+gitea_server_ssh_server_macs: ~
+gitea_server_ssh_server_host_keys: ~  # gitea default: ssh/gitea.rsa, ssh/gogs.rsa
+gitea_server_ssh_authorized_keys_backup: ~  # gitea default: false
+gitea_server_ssh_authorized_principals_allow: ~  # gitea default: email, username
+gitea_server_ssh_authorized_principals_backup: ~  # gitea default: true
+gitea_server_ssh_trusted_user_ca_keys: ~
+gitea_server_ssh_trusted_user_ca_keys_filename: ~
+gitea_server_ssh_expose_anonymous: ~  # gitea default: false
+gitea_server_ssh_per_write_timeout: ~  # gitea default: 30s
+gitea_server_ssh_per_write_per_kb_timeout: ~  # gitea default: 30s
+gitea_server_minimum_key_size_check: ~  # gitea default: false
+gitea_server_enable_acme: ~  # gitea default: false
+gitea_server_acme_url: ~
+gitea_server_acme_accepttos: ~  # gitea default: false
+gitea_server_acme_ca_root: ~
+gitea_server_acme_email: ~
+gitea_server_acme_directory: ~  # gitea default: https
+gitea_server_cert_file: ~  # gitea default: https/cert.pem
+gitea_server_key_file: ~  # gitea default: https/key.pem
+gitea_server_static_root_path: ~
+gitea_server_app_data_path: ~  # gitea default: data
+gitea_server_app_temp_path: ~
+gitea_server_enable_gzip: ~  # gitea default: false
+gitea_server_enable_pprof: ~  # gitea default: false
+gitea_server_pprof_data_path: ~  # gitea default: data/tmp/pprof
+gitea_server_landing_page: ~  # gitea default: home
+gitea_server_lfs_allow_pure_ssh: ~  # gitea default: false
+gitea_server_lfs_jwt_secret_uri: ~  # gitea default: file:/etc/gitea/lfs_jwt_secret
+gitea_server_lfs_http_auth_expiry: ~  # gitea default: 24h
+gitea_server_lfs_max_file_size: ~  # gitea default: 0
+gitea_server_lfs_locks_paging_num: ~  # gitea default: 50
+gitea_server_lfs_max_batch_size: ~  # gitea default: 0
+gitea_server_allow_graceful_restarts: ~  # gitea default: true
+gitea_server_graceful_hammer_time: ~  # gitea default: 60s
+gitea_server_startup_timeout: ~  # gitea default: 0
+gitea_server_static_cache_time: ~  # gitea default: 6h
+
+# --- [database] ---
+gitea_database_charset_collation: ~
+gitea_database_schema: ~
+gitea_database_sqlite_timeout: ~
+gitea_database_sqlite_journal_mode: ~
+gitea_database_iterate_buffer_size: ~  # gitea default: 50
+gitea_database_log_sql: ~  # gitea default: false
+gitea_database_db_retries: ~  # gitea default: 10
+gitea_database_db_retry_backoff: ~  # gitea default: 3s
+gitea_database_max_idle_conns: ~  # gitea default: 2
+gitea_database_conn_max_lifetime: ~  # gitea default: 3s
+gitea_database_max_open_conns: ~  # gitea default: 0
+gitea_database_auto_migration: ~  # gitea default: true
+gitea_database_slow_query_threshold: ~  # gitea default: 5s
+
+# --- [security] ---
+gitea_security_secret_key_uri: ~  # gitea default: file:/etc/gitea/secret_key
+gitea_security_internal_token_uri: ~  # gitea default: file:/etc/gitea/internal_token
+gitea_security_login_remember_days: ~  # gitea default: 31
+gitea_security_cookie_username: ~  # gitea default: gitea_awesome
+gitea_security_cookie_remember_name: ~  # gitea default: gitea_incredible
+gitea_security_reverse_proxy_logout_redirect: ~
+gitea_security_reverse_proxy_authentication_user: ~  # gitea default: X-WEBAUTH-USER
+gitea_security_reverse_proxy_authentication_email: ~  # gitea default: X-WEBAUTH-EMAIL
+gitea_security_reverse_proxy_authentication_full_name: ~  # gitea default: X-WEBAUTH-FULLNAME
+gitea_security_reverse_proxy_limit: ~  # gitea default: 1
+gitea_security_reverse_proxy_trusted_proxies: ~  # gitea default: 127.0.0.0/8,::1/128
+gitea_security_min_password_length: ~  # gitea default: 8
+gitea_security_import_local_paths: ~  # gitea default: false
+gitea_security_disable_git_hooks: ~  # gitea default: true
+gitea_security_disable_webhooks: ~  # gitea default: false
+gitea_security_only_allow_push_if_gitea_environment_set: ~  # gitea default: true
+gitea_security_password_complexity: ~  # gitea default: off
+gitea_security_password_hash_algo: ~  # gitea default: pbkdf2
+gitea_security_password_check_pwn: ~  # gitea default: false
+gitea_security_successful_tokens_cache_size: ~  # gitea default: 20
+gitea_security_disable_query_auth_token: ~  # gitea default: false
+gitea_security_two_factor_auth: ~
+gitea_security_x_frame_options: ~  # gitea default: SAMEORIGIN
+
+# --- [camo] ---
+gitea_camo_enabled: ~  # gitea default: false
+gitea_camo_server_url: ~
+gitea_camo_hmac_key: ~
+gitea_camo_always: ~  # gitea default: false
+
+# --- [oauth2] ---
+gitea_oauth2_jwt_claim_issuer: ~
+
+# --- [log] ---
+gitea_log_stacktrace_level: ~  # gitea default: None
+gitea_log_buffer_len: ~  # gitea default: 10000
+gitea_log_logger_access_mode: ~
+gitea_log_logger_router_mode: ~  # gitea default: ,
+gitea_log_logger_xorm_mode: ~  # gitea default: ,
+gitea_log_enable_ssh_log: ~  # gitea default: false
+gitea_log_request_id_headers: ~
+gitea_log_access_log_template: ~  # gitea default: {{.Ctx.RemoteHost}} - {{.Identity}} {{.Start.Format "[02/Jan/2006:15:04:05 -0700]" }} "{{.Ctx.Req.Method}} {{.Ctx.Req.URL.RequestURI}} {{.Ctx.Req.Proto}}" {{.ResponseWriter.Status}} {{.ResponseWriter.Size}} "{{.Ctx.Req.Referer}}" "{{.Ctx.Req.UserAgent}}"
+
+# --- [log.console] ---
+gitea_log_console_stderr: ~  # gitea default: false
+
+# --- [log.file] ---
+gitea_log_file_file_name: ~
+gitea_log_file_log_rotate: ~  # gitea default: true
+gitea_log_file_max_size_shift: ~  # gitea default: 28
+gitea_log_file_daily_rotate: ~  # gitea default: true
+gitea_log_file_max_days: ~  # gitea default: 7
+gitea_log_file_compress: ~  # gitea default: true
+gitea_log_file_compression_level: ~  # gitea default: -1
+
+# --- [log.conn] ---
+gitea_log_conn_reconnect_on_msg: ~  # gitea default: false
+gitea_log_conn_reconnect: ~  # gitea default: false
+gitea_log_conn_protocol: ~  # gitea default: tcp
+gitea_log_conn_addr: ~
+
+# --- [git] ---
+gitea_git_path: ~
+gitea_git_home_path: ~
+gitea_git_disable_diff_highlight: ~  # gitea default: false
+gitea_git_max_git_diff_lines: ~  # gitea default: 1000
+gitea_git_max_git_diff_line_characters: ~  # gitea default: 5000
+gitea_git_max_git_diff_files: ~  # gitea default: 100
+gitea_git_commits_range_size: ~  # gitea default: 50
+gitea_git_branches_range_size: ~  # gitea default: 20
+gitea_git_gc_args: ~
+gitea_git_enable_auto_git_wire_protocol: ~  # gitea default: true
+gitea_git_pull_request_push_message: ~  # gitea default: true
+gitea_git_large_object_threshold: ~  # gitea default: 1048576
+gitea_git_disable_core_protect_ntfs: ~  # gitea default: false
+gitea_git_disable_partial_clone: ~  # gitea default: false
+gitea_git_diff_rename_similarity_threshold: ~  # gitea default: 50%
+
+# --- [git.timeout] ---
+gitea_git_timeout_migrate: ~  # gitea default: 600
+gitea_git_timeout_mirror: ~  # gitea default: 300
+gitea_git_timeout_gc: ~  # gitea default: 60
+
+# --- [git.config] ---
+gitea_git_config_diff_algorithm: ~  # gitea default: histogram
+gitea_git_config_core_logallrefupdates: ~  # gitea default: true
+gitea_git_config_gc_reflogexpire: ~  # gitea default: 90
+
+# --- [service] ---
+gitea_service_active_code_live_minutes: ~  # gitea default: 180
+gitea_service_reset_passwd_code_live_minutes: ~  # gitea default: 180
+gitea_service_register_manual_confirm: ~  # gitea default: false
+gitea_service_email_domain_allowlist: ~
+gitea_service_email_domain_blocklist: ~
+gitea_service_allow_only_internal_registration: ~  # gitea default: false
+gitea_service_enable_basic_authentication: ~  # gitea default: true
+gitea_service_enable_password_signin_form: ~  # gitea default: true
+gitea_service_enable_passkey_authentication: ~  # gitea default: true
+gitea_service_enable_reverse_proxy_authentication: ~  # gitea default: false
+gitea_service_enable_reverse_proxy_authentication_api: ~  # gitea default: false
+gitea_service_enable_reverse_proxy_auto_registration: ~  # gitea default: false
+gitea_service_enable_reverse_proxy_email: ~  # gitea default: false
+gitea_service_enable_reverse_proxy_full_name: ~  # gitea default: false
+gitea_service_require_captcha_for_login: ~  # gitea default: false
+gitea_service_captcha_type: ~  # gitea default: image
+gitea_service_recaptcha_url: ~  # gitea default: https://www.google.com/recaptcha/
+gitea_service_recaptcha_secret: ~
+gitea_service_recaptcha_sitekey: ~
+gitea_service_hcaptcha_secret: ~
+gitea_service_hcaptcha_sitekey: ~
+gitea_service_mcaptcha_url: ~  # gitea default: https://demo.mcaptcha.org
+gitea_service_mcaptcha_secret: ~
+gitea_service_mcaptcha_sitekey: ~
+gitea_service_cf_turnstile_sitekey: ~
+gitea_service_cf_turnstile_secret: ~
+gitea_service_default_user_is_restricted: ~  # gitea default: false
+gitea_service_default_user_visibility: ~  # gitea default: public
+gitea_service_allowed_user_visibility_modes: ~  # gitea default: public,limited,private
+gitea_service_default_org_visibility: ~  # gitea default: public
+gitea_service_default_org_member_visible: ~  # gitea default: false
+gitea_service_default_enable_dependencies: ~  # gitea default: true
+gitea_service_allow_cross_repository_dependencies: ~  # gitea default: true
+gitea_service_enable_user_heatmap: ~  # gitea default: true
+gitea_service_enable_timetracking: ~  # gitea default: true
+gitea_service_default_allow_only_contributors_to_track_time: ~  # gitea default: true
+gitea_service_show_registration_button: ~  # gitea default: true
+gitea_service_show_milestones_dashboard_page: ~  # gitea default: true
+gitea_service_auto_watch_new_repos: ~  # gitea default: true
+gitea_service_auto_watch_on_changes: ~  # gitea default: false
+gitea_service_user_delete_with_comments_max_time: ~  # gitea default: 0
+gitea_service_valid_site_url_schemes: ~  # gitea default: http,https
+
+# --- [service.explore] ---
+gitea_service_explore_require_signin_view: ~  # gitea default: false
+gitea_service_explore_disable_users_page: ~  # gitea default: false
+gitea_service_explore_disable_organizations_page: ~  # gitea default: false
+gitea_service_explore_disable_code_page: ~  # gitea default: false
+
+# --- [repository] ---
+gitea_repository_script_type: ~  # gitea default: bash
+gitea_repository_detected_charsets_order: ~  # gitea default: UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, UTF-32LE, ISO-8859, windows-1252, ISO-8859, windows-1250, ISO-8859, ISO-8859, ISO-8859, windows-1253, ISO-8859, windows-1255, ISO-8859, windows-1251, windows-1256, KOI8-R, ISO-8859, windows-1254, Shift_JIS, GB18030, EUC-JP, EUC-KR, Big5, ISO-2022, ISO-2022, ISO-2022, IBM424_rtl, IBM424_ltr, IBM420_rtl, IBM420_ltr
+gitea_repository_ansi_charset: ~
+gitea_repository_force_private: ~  # gitea default: false
+gitea_repository_default_private: ~  # gitea default: last
+gitea_repository_default_push_create_private: ~  # gitea default: true
+gitea_repository_max_creation_limit: ~  # gitea default: -1
+gitea_repository_preferred_licenses: ~  # gitea default: Apache License 2.0,MIT License
+gitea_repository_disable_http_git: ~  # gitea default: false
+gitea_repository_access_control_allow_origin: ~
+gitea_repository_use_compat_ssh_uri: ~  # gitea default: false
+gitea_repository_go_get_clone_url_protocol: ~  # gitea default: https
+gitea_repository_default_close_issues_via_commits_in_any_branch: ~  # gitea default: false
+gitea_repository_enable_push_create_user: ~  # gitea default: false
+gitea_repository_enable_push_create_org: ~  # gitea default: false
+gitea_repository_disabled_repo_units: ~
+gitea_repository_default_repo_units: ~  # gitea default: repo.code,repo.releases,repo.issues,repo.pulls,repo.wiki,repo.projects,repo.packages,repo.actions
+gitea_repository_default_fork_repo_units: ~  # gitea default: repo.code,repo.pulls
+gitea_repository_default_mirror_repo_units: ~  # gitea default: repo.code,repo.releases,repo.issues,repo.wiki,repo.projects,repo.packages
+gitea_repository_default_template_repo_units: ~  # gitea default: repo.code,repo.releases,repo.issues,repo.pulls,repo.wiki,repo.projects,repo.packages
+gitea_repository_prefix_archive_files: ~  # gitea default: true
+gitea_repository_disable_migrations: ~  # gitea default: false
+gitea_repository_disable_stars: ~  # gitea default: false
+gitea_repository_default_branch: ~  # gitea default: main
+gitea_repository_allow_adoption_of_unadopted_repositories: ~  # gitea default: false
+gitea_repository_allow_deletion_of_unadopted_repositories: ~  # gitea default: false
+gitea_repository_disable_download_source_archives: ~  # gitea default: false
+gitea_repository_allow_fork_without_maximum_limit: ~  # gitea default: true
+gitea_repository_allow_fork_into_same_owner: ~  # gitea default: false
+
+# --- [repository.editor] ---
+gitea_repository_editor_line_wrap_extensions: ~  # gitea default: .txt,.md,.markdown,.mdown,.mkd,.livemd,
+
+# --- [repository.upload] ---
+gitea_repository_upload_enabled: ~  # gitea default: true
+gitea_repository_upload_allowed_types: ~
+gitea_repository_upload_file_max_size: ~  # gitea default: 50
+gitea_repository_upload_max_files: ~  # gitea default: 5
+
+# --- [repository.pull-request] ---
+gitea_repository_pull_request_work_in_progress_prefixes: ~  # gitea default: WIP:,[WIP]
+gitea_repository_pull_request_close_keywords: ~  # gitea default: close,closes,closed,fix,fixes,fixed,resolve,resolves,resolved
+gitea_repository_pull_request_reopen_keywords: ~  # gitea default: reopen,reopens,reopened
+gitea_repository_pull_request_default_merge_style: ~  # gitea default: merge
+gitea_repository_pull_request_default_merge_message_commits_limit: ~  # gitea default: 50
+gitea_repository_pull_request_default_merge_message_size: ~  # gitea default: 5120
+gitea_repository_pull_request_default_merge_message_all_authors: ~  # gitea default: false
+gitea_repository_pull_request_default_merge_message_max_approvers: ~  # gitea default: 10
+gitea_repository_pull_request_default_merge_message_official_approvers_only: ~  # gitea default: true
+gitea_repository_pull_request_populate_squash_comment_with_commit_messages: ~  # gitea default: false
+gitea_repository_pull_request_add_co_committer_trailers: ~  # gitea default: true
+gitea_repository_pull_request_retarget_children_on_merge: ~  # gitea default: true
+gitea_repository_pull_request_default_title_source: ~  # gitea default: auto
+gitea_repository_pull_request_delay_check_for_inactive_days: ~  # gitea default: 7
+gitea_repository_pull_request_default_delete_branch_after_merge: ~  # gitea default: false
+
+# --- [repository.issue] ---
+gitea_repository_issue_lock_reasons: ~  # gitea default: Too heated,Off-topic,Resolved,Spam
+gitea_repository_issue_max_pinned: ~  # gitea default: 3
+
+# --- [repository.release] ---
+gitea_repository_release_allowed_types: ~
+gitea_repository_release_default_paging_num: ~  # gitea default: 10
+gitea_repository_release_file_max_size: ~  # gitea default: 2048
+gitea_repository_release_max_files: ~  # gitea default: 5
+
+# --- [repository.signing] ---
+gitea_repository_signing_signing_key: ~  # gitea default: default
+gitea_repository_signing_signing_name: ~
+gitea_repository_signing_signing_email: ~
+gitea_repository_signing_signing_format: ~  # gitea default: openpgp
+gitea_repository_signing_default_trust_model: ~  # gitea default: collaborator
+gitea_repository_signing_initial_commit: ~  # gitea default: always
+gitea_repository_signing_crud_actions: ~  # gitea default: pubkey, twofa, parentsigned
+gitea_repository_signing_wiki: ~  # gitea default: never
+gitea_repository_signing_merges: ~  # gitea default: pubkey, twofa, basesigned, commitssigned
+gitea_repository_signing_trusted_ssh_keys: ~
+
+# --- [repository.mimetype_mapping] ---
+gitea_repository_mimetype_mapping__apk: ~  # gitea default: application/vnd.android.package-archive
+
+# --- [project] ---
+gitea_project_project_board_basic_kanban_type: ~  # gitea default: To Do, In Progress, Done
+gitea_project_project_board_bug_triage_type: ~  # gitea default: Needs Triage, High Priority, Low Priority, Closed
+
+# --- [cors] ---
+gitea_cors_enabled: ~  # gitea default: false
+gitea_cors_allow_domain: ~  # gitea default: *
+gitea_cors_methods: ~  # gitea default: GET,HEAD,POST,PUT,PATCH,DELETE,OPTIONS
+gitea_cors_max_age: ~  # gitea default: 10m
+gitea_cors_allow_credentials: ~  # gitea default: false
+gitea_cors_headers: ~  # gitea default: Content-Type,User-Agent
+
+# --- [ui] ---
+gitea_ui_feed_paging_num: ~  # gitea default: 20
+gitea_ui_sitemap_paging_num: ~  # gitea default: 20
+gitea_ui_code_comment_lines: ~  # gitea default: 4
+gitea_ui_max_display_file_size: ~  # gitea default: 8388608
+gitea_ui_ambiguous_unicode_detection: ~  # gitea default: true
+gitea_ui_show_user_email: ~  # gitea default: true
+gitea_ui_themes: ~
+gitea_ui_file_icon_theme: ~  # gitea default: material
+gitea_ui_folder_icon_theme: ~  # gitea default: basic
+gitea_ui_reactions: ~  # gitea default: +1, -1, laugh, hooray, confused, heart, rocket, eyes
+gitea_ui_reaction_max_user_num: ~  # gitea default: 10
+gitea_ui_custom_emojis: ~  # gitea default: gitea, codeberg, gitlab, git, github, gogs
+gitea_ui_enabled_emojis: ~
+gitea_ui_default_show_full_name: ~  # gitea default: false
+gitea_ui_search_repo_description: ~  # gitea default: true
+gitea_ui_only_show_relevant_repos: ~  # gitea default: false
+gitea_ui_explore_paging_default_sort: ~  # gitea default: recentupdate
+gitea_ui_preferred_timestamp_tense: ~  # gitea default: mixed
+
+# --- [ui.admin] ---
+gitea_ui_admin_user_paging_num: ~  # gitea default: 50
+gitea_ui_admin_repo_paging_num: ~  # gitea default: 50
+gitea_ui_admin_notice_paging_num: ~  # gitea default: 25
+gitea_ui_admin_org_paging_num: ~  # gitea default: 50
+
+# --- [ui.user] ---
+gitea_ui_user_repo_paging_num: ~  # gitea default: 15
+gitea_ui_user_org_paging_num: ~  # gitea default: 15
+
+# --- [ui.meta] ---
+gitea_ui_meta_author: ~  # gitea default: Gitea - Git with a cup of tea
+gitea_ui_meta_description: ~  # gitea default: Gitea (Git with a cup of tea) is a painless self-hosted Git service written in Go
+gitea_ui_meta_keywords: ~  # gitea default: go,git,self-hosted,gitea
+
+# --- [ui.notification] ---
+gitea_ui_notification_min_timeout: ~  # gitea default: 10s
+gitea_ui_notification_max_timeout: ~  # gitea default: 60s
+gitea_ui_notification_timeout_step: ~  # gitea default: 10s
+gitea_ui_notification_event_source_update_time: ~  # gitea default: 10s
+
+# --- [ui.svg] ---
+gitea_ui_svg_enable_render: ~  # gitea default: true
+
+# --- [ui.csv] ---
+gitea_ui_csv_max_file_size: ~  # gitea default: 524288
+gitea_ui_csv_max_rows: ~  # gitea default: 2500
+
+# --- [markdown] ---
+gitea_markdown_render_options_comment: ~  # gitea default: short-issue-pattern, new-line-hard-break
+gitea_markdown_render_options_wiki: ~  # gitea default: short-issue-pattern
+gitea_markdown_render_options_repo_file: ~
+gitea_markdown_custom_url_schemes: ~
+gitea_markdown_file_extensions: ~  # gitea default: .md,.markdown,.mdown,.mkd,.livemd
+gitea_markdown_enable_math: ~  # gitea default: true
+gitea_markdown_math_code_block_detection: ~
+
+# --- [ssh.minimum_key_sizes] ---
+gitea_ssh_minimum_key_sizes_ed25519: ~  # gitea default: 256
+gitea_ssh_minimum_key_sizes_ecdsa: ~  # gitea default: 256
+gitea_ssh_minimum_key_sizes_rsa: ~  # gitea default: 3071
+gitea_ssh_minimum_key_sizes_dsa: ~  # gitea default: -1
+
+# --- [indexer] ---
+gitea_indexer_issue_indexer_type: ~  # gitea default: bleve
+gitea_indexer_issue_indexer_path: ~  # gitea default: indexers/issues.bleve
+gitea_indexer_issue_indexer_conn_str: ~
+gitea_indexer_issue_indexer_name: ~  # gitea default: gitea_issues
+gitea_indexer_startup_timeout: ~  # gitea default: 30s
+gitea_indexer_repo_indexer_enabled: ~  # gitea default: false
+gitea_indexer_repo_indexer_repo_types: ~  # gitea default: sources,forks,mirrors,templates
+gitea_indexer_repo_indexer_type: ~  # gitea default: bleve
+gitea_indexer_repo_indexer_path: ~  # gitea default: indexers/repos.bleve
+gitea_indexer_repo_indexer_conn_str: ~
+gitea_indexer_repo_indexer_name: ~  # gitea default: gitea_codes
+gitea_indexer_repo_indexer_include: ~
+gitea_indexer_repo_indexer_exclude: ~
+gitea_indexer_max_file_size: ~  # gitea default: 1048576
+gitea_indexer_type_bleve_max_fuzziness: ~  # gitea default: 0
+
+# --- [queue] ---
+gitea_queue_type: ~  # gitea default: persistable-channel
+gitea_queue_datadir: ~  # gitea default: queues/
+gitea_queue_length: ~  # gitea default: 100000
+gitea_queue_batch_length: ~  # gitea default: 20
+gitea_queue_conn_str: ~  # gitea default: "redis://127.0.0.1:6379/0"
+gitea_queue_queue_name: ~  # gitea default: "_queue"
+gitea_queue_set_name: ~  # gitea default: "_unique"
+gitea_queue_max_workers: ~
+
+# --- [admin] ---
+gitea_admin_disable_regular_org_creation: ~  # gitea default: false
+gitea_admin_default_email_notifications: ~  # gitea default: enabled
+gitea_admin_user_disabled_features: ~
+
+# --- [openid] ---
+gitea_openid_whitelisted_uris: ~
+gitea_openid_blacklisted_uris: ~
+
+# --- [oauth2_client] ---
+gitea_oauth2_client_register_email_confirm: ~
+gitea_oauth2_client_openid_connect_scopes: ~
+gitea_oauth2_client_enable_auto_registration: ~  # gitea default: false
+gitea_oauth2_client_username: ~  # gitea default: nickname
+gitea_oauth2_client_update_avatar: ~  # gitea default: false
+gitea_oauth2_client_account_linking: ~  # gitea default: login
+
+# --- [mailer] ---
+gitea_mailer_send_buffer_len: ~  # gitea default: 100
+gitea_mailer_subject_prefix: ~
+gitea_mailer_protocol: ~
+gitea_mailer_enable_helo: ~  # gitea default: true
+gitea_mailer_helo_hostname: ~
+gitea_mailer_force_trust_server_cert: ~  # gitea default: false
+gitea_mailer_use_client_cert: ~  # gitea default: false
+gitea_mailer_client_cert_file: ~  # gitea default: custom/mailer/cert.pem
+gitea_mailer_client_key_file: ~  # gitea default: custom/mailer/key.pem
+gitea_mailer_envelope_from: ~
+gitea_mailer_from_display_name_format: ~  # gitea default: {{ .DisplayName }}
+gitea_mailer_send_as_plain_text: ~  # gitea default: false
+gitea_mailer_sendmail_path: ~  # gitea default: sendmail
+gitea_mailer_sendmail_args: ~
+gitea_mailer_sendmail_timeout: ~  # gitea default: 5m
+gitea_mailer_sendmail_convert_crlf: ~  # gitea default: true
+gitea_mailer_embed_attachment_images: ~  # gitea default: false
+
+# --- [mailer.override_header] ---
+gitea_mailer_override_header_reply_to: ~  # gitea default: test@example.com, test2@example.com
+gitea_mailer_override_header_content_type: ~  # gitea default: text/html
+gitea_mailer_override_header_in_reply_to: ~
+
+# --- [email.incoming] ---
+gitea_email_incoming_enabled: ~  # gitea default: false
+gitea_email_incoming_reply_to_address: ~
+gitea_email_incoming_host: ~
+gitea_email_incoming_port: ~
+gitea_email_incoming_username: ~
+gitea_email_incoming_password: ~
+gitea_email_incoming_use_tls: ~  # gitea default: false
+gitea_email_incoming_skip_tls_verify: ~  # gitea default: true
+gitea_email_incoming_mailbox: ~  # gitea default: INBOX
+gitea_email_incoming_delete_handled_message: ~  # gitea default: true
+gitea_email_incoming_maximum_message_size: ~  # gitea default: 10485760
+
+# --- [cache] ---
+gitea_cache_adapter: ~  # gitea default: memory
+gitea_cache_interval: ~  # gitea default: 60
+gitea_cache_host: ~
+gitea_cache_item_ttl: ~  # gitea default: 16h
+
+# --- [cache.last_commit] ---
+gitea_cache_last_commit_item_ttl: ~  # gitea default: 8760h
+gitea_cache_last_commit_commits_count: ~  # gitea default: 1000
+
+# --- [session] ---
+gitea_session_provider_config: ~  # gitea default: data/sessions
+gitea_session_cookie_name: ~  # gitea default: i_like_gitea
+gitea_session_cookie_secure: ~
+gitea_session_gc_interval_time: ~  # gitea default: 86400
+gitea_session_session_life_time: ~  # gitea default: 86400
+gitea_session_same_site: ~  # gitea default: lax
+
+# --- [picture] ---
+gitea_picture_avatar_upload_path: ~  # gitea default: data/avatars
+gitea_picture_repository_avatar_upload_path: ~  # gitea default: data/repo-avatars
+gitea_picture_repository_avatar_fallback: ~  # gitea default: none
+gitea_picture_repository_avatar_fallback_image: ~  # gitea default: /img/repo_default.png
+gitea_picture_avatar_max_width: ~  # gitea default: 4096
+gitea_picture_avatar_max_height: ~  # gitea default: 4096
+gitea_picture_avatar_rendered_size_factor: ~  # gitea default: 2
+gitea_picture_avatar_max_file_size: ~  # gitea default: 1048576
+gitea_picture_avatar_max_origin_size: ~  # gitea default: 262144
+gitea_picture_gravatar_source: ~  # gitea default: gravatar
+gitea_picture_disable_gravatar_2: ~  # gitea default: false
+gitea_picture_enable_federated_avatar_2: ~  # gitea default: false
+
+# --- [attachment] ---
+gitea_attachment_enabled: ~  # gitea default: true
+gitea_attachment_allowed_types: ~  # gitea default: .avif,.cpuprofile,.csv,.dmp,.docx,.fodg,.fodp,.fods,.fodt,.gif,.gz,.jpeg,.jpg,.json,.jsonc,.log,.md,.mov,.mp4,.odf,.odg,.odp,.ods,.odt,.patch,.pdf,.png,.pptx,.svg,.tgz,.txt,.webm,.webp,.xls,.xlsx,.zip
+gitea_attachment_max_size: ~  # gitea default: 100
+gitea_attachment_max_files: ~  # gitea default: 5
+gitea_attachment_storage_type: ~  # gitea default: local
+gitea_attachment_serve_direct: ~  # gitea default: false
+gitea_attachment_path: ~  # gitea default: attachments
+gitea_attachment_minio_endpoint: ~  # gitea default: localhost:9000
+gitea_attachment_minio_access_key_id: ~
+gitea_attachment_minio_secret_access_key: ~
+gitea_attachment_minio_iam_endpoint: ~
+gitea_attachment_minio_bucket: ~  # gitea default: gitea
+gitea_attachment_minio_location: ~  # gitea default: us-east-1
+gitea_attachment_minio_base_path: ~  # gitea default: attachments/
+gitea_attachment_minio_use_ssl: ~  # gitea default: false
+gitea_attachment_minio_insecure_skip_verify: ~  # gitea default: false
+gitea_attachment_minio_checksum_algorithm: ~  # gitea default: default
+gitea_attachment_minio_bucket_lookup_type: ~  # gitea default: auto
+gitea_attachment_azure_blob_endpoint: ~
+gitea_attachment_azure_blob_account_name: ~
+gitea_attachment_azure_blob_account_key: ~
+gitea_attachment_azure_blob_container: ~  # gitea default: gitea
+gitea_attachment_azure_blob_base_path: ~  # gitea default: attachments/
+
+# --- [time] ---
+gitea_time_default_ui_location: ~
+
+# --- [cron] ---
+gitea_cron_enabled: ~  # gitea default: false
+gitea_cron_run_at_start: ~  # gitea default: false
+
+# --- [cron.archive_cleanup] ---
+gitea_cron_archive_cleanup_enabled: ~  # gitea default: true
+gitea_cron_archive_cleanup_run_at_start: ~  # gitea default: true
+gitea_cron_archive_cleanup_notice_on_success: ~  # gitea default: false
+gitea_cron_archive_cleanup_schedule: ~  # gitea default: @midnight
+gitea_cron_archive_cleanup_older_than: ~  # gitea default: 24h
+
+# --- [cron.update_mirrors] ---
+gitea_cron_update_mirrors_schedule: ~  # gitea default: @every 10m
+gitea_cron_update_mirrors_enabled: ~  # gitea default: true
+gitea_cron_update_mirrors_run_at_start: ~  # gitea default: false
+gitea_cron_update_mirrors_notice_on_success: ~  # gitea default: false
+gitea_cron_update_mirrors_pull_limit: ~  # gitea default: 50
+gitea_cron_update_mirrors_push_limit: ~  # gitea default: 50
+
+# --- [cron.repo_health_check] ---
+gitea_cron_repo_health_check_schedule: ~  # gitea default: @midnight
+gitea_cron_repo_health_check_enabled: ~  # gitea default: true
+gitea_cron_repo_health_check_run_at_start: ~  # gitea default: false
+gitea_cron_repo_health_check_notice_on_success: ~  # gitea default: false
+gitea_cron_repo_health_check_timeout: ~  # gitea default: 60s
+gitea_cron_repo_health_check_args: ~
+
+# --- [cron.check_repo_stats] ---
+gitea_cron_check_repo_stats_enabled: ~  # gitea default: true
+gitea_cron_check_repo_stats_run_at_start: ~  # gitea default: true
+gitea_cron_check_repo_stats_notice_on_success: ~  # gitea default: false
+gitea_cron_check_repo_stats_schedule: ~  # gitea default: @midnight
+
+# --- [cron.update_migration_poster_id] ---
+gitea_cron_update_migration_poster_id_enabled: ~  # gitea default: true
+gitea_cron_update_migration_poster_id_run_at_start: ~  # gitea default: true
+gitea_cron_update_migration_poster_id_notice_on_success: ~  # gitea default: false
+gitea_cron_update_migration_poster_id_schedule: ~  # gitea default: @midnight
+
+# --- [cron.sync_external_users] ---
+gitea_cron_sync_external_users_enabled: ~  # gitea default: true
+gitea_cron_sync_external_users_run_at_start: ~  # gitea default: false
+gitea_cron_sync_external_users_notice_on_success: ~  # gitea default: false
+gitea_cron_sync_external_users_schedule: ~  # gitea default: @midnight
+gitea_cron_sync_external_users_update_existing: ~  # gitea default: true
+
+# --- [cron.cleanup_actions] ---
+gitea_cron_cleanup_actions_enabled: ~  # gitea default: true
+gitea_cron_cleanup_actions_run_at_start: ~  # gitea default: true
+gitea_cron_cleanup_actions_schedule: ~  # gitea default: @midnight
+
+# --- [cron.deleted_branches_cleanup] ---
+gitea_cron_deleted_branches_cleanup_enabled: ~  # gitea default: true
+gitea_cron_deleted_branches_cleanup_run_at_start: ~  # gitea default: true
+gitea_cron_deleted_branches_cleanup_notice_on_success: ~  # gitea default: false
+gitea_cron_deleted_branches_cleanup_schedule: ~  # gitea default: @midnight
+gitea_cron_deleted_branches_cleanup_older_than: ~  # gitea default: 24h
+
+# --- [cron.cleanup_hook_task_table] ---
+gitea_cron_cleanup_hook_task_table_enabled: ~  # gitea default: true
+gitea_cron_cleanup_hook_task_table_run_at_start: ~  # gitea default: false
+gitea_cron_cleanup_hook_task_table_schedule: ~  # gitea default: @midnight
+gitea_cron_cleanup_hook_task_table_cleanup_type: ~  # gitea default: OlderThan
+gitea_cron_cleanup_hook_task_table_older_than: ~  # gitea default: 168h
+gitea_cron_cleanup_hook_task_table_number_to_keep: ~  # gitea default: 10
+
+# --- [cron.cleanup_packages] ---
+gitea_cron_cleanup_packages_enabled: ~  # gitea default: true
+gitea_cron_cleanup_packages_run_at_start: ~  # gitea default: true
+gitea_cron_cleanup_packages_notice_on_success: ~  # gitea default: false
+gitea_cron_cleanup_packages_schedule: ~  # gitea default: @midnight
+gitea_cron_cleanup_packages_older_than: ~  # gitea default: 24h
+
+# --- [cron.sync_repo_licenses] ---
+gitea_cron_sync_repo_licenses_enabled: ~  # gitea default: false
+gitea_cron_sync_repo_licenses_run_at_start: ~  # gitea default: false
+gitea_cron_sync_repo_licenses_notice_on_success: ~  # gitea default: false
+gitea_cron_sync_repo_licenses_schedule: ~  # gitea default: @annually
+
+# --- [cron.delete_inactive_accounts] ---
+gitea_cron_delete_inactive_accounts_enabled: ~  # gitea default: false
+gitea_cron_delete_inactive_accounts_run_at_start: ~  # gitea default: false
+gitea_cron_delete_inactive_accounts_notice_on_success: ~  # gitea default: false
+gitea_cron_delete_inactive_accounts_schedule: ~  # gitea default: @annually
+gitea_cron_delete_inactive_accounts_older_than: ~  # gitea default: 168h
+
+# --- [cron.delete_repo_archives] ---
+gitea_cron_delete_repo_archives_enabled: ~  # gitea default: false
+gitea_cron_delete_repo_archives_run_at_start: ~  # gitea default: false
+gitea_cron_delete_repo_archives_notice_on_success: ~  # gitea default: false
+gitea_cron_delete_repo_archives_schedule: ~  # gitea default: @annually
+
+# --- [cron.git_gc_repos] ---
+gitea_cron_git_gc_repos_enabled: ~  # gitea default: false
+gitea_cron_git_gc_repos_run_at_start: ~  # gitea default: false
+gitea_cron_git_gc_repos_notice_on_success: ~  # gitea default: false
+gitea_cron_git_gc_repos_schedule: ~  # gitea default: @every 72h
+gitea_cron_git_gc_repos_timeout: ~  # gitea default: 60s
+gitea_cron_git_gc_repos_args: ~
+
+# --- [cron.resync_all_sshkeys] ---
+gitea_cron_resync_all_sshkeys_enabled: ~  # gitea default: false
+gitea_cron_resync_all_sshkeys_run_at_start: ~  # gitea default: false
+gitea_cron_resync_all_sshkeys_notice_on_success: ~  # gitea default: false
+gitea_cron_resync_all_sshkeys_schedule: ~  # gitea default: @every 72h
+
+# --- [cron.resync_all_sshprincipals] ---
+gitea_cron_resync_all_sshprincipals_enabled: ~  # gitea default: false
+gitea_cron_resync_all_sshprincipals_run_at_start: ~  # gitea default: false
+gitea_cron_resync_all_sshprincipals_notice_on_success: ~  # gitea default: false
+gitea_cron_resync_all_sshprincipals_schedule: ~  # gitea default: @every 72h
+
+# --- [cron.resync_all_hooks] ---
+gitea_cron_resync_all_hooks_enabled: ~  # gitea default: false
+gitea_cron_resync_all_hooks_run_at_start: ~  # gitea default: false
+gitea_cron_resync_all_hooks_notice_on_success: ~  # gitea default: false
+gitea_cron_resync_all_hooks_schedule: ~  # gitea default: @every 72h
+
+# --- [cron.reinit_missing_repos] ---
+gitea_cron_reinit_missing_repos_enabled: ~  # gitea default: false
+gitea_cron_reinit_missing_repos_run_at_start: ~  # gitea default: false
+gitea_cron_reinit_missing_repos_notice_on_success: ~  # gitea default: false
+gitea_cron_reinit_missing_repos_schedule: ~  # gitea default: @every 72h
+
+# --- [cron.delete_missing_repos] ---
+gitea_cron_delete_missing_repos_enabled: ~  # gitea default: false
+gitea_cron_delete_missing_repos_run_at_start: ~  # gitea default: false
+gitea_cron_delete_missing_repos_notice_on_success: ~  # gitea default: false
+gitea_cron_delete_missing_repos_schedule: ~  # gitea default: @every 72h
+
+# --- [cron.delete_generated_repository_avatars] ---
+gitea_cron_delete_generated_repository_avatars_enabled: ~  # gitea default: false
+gitea_cron_delete_generated_repository_avatars_run_at_start: ~  # gitea default: false
+gitea_cron_delete_generated_repository_avatars_notice_on_success: ~  # gitea default: false
+gitea_cron_delete_generated_repository_avatars_schedule: ~  # gitea default: @every 72h
+
+# --- [cron.delete_old_actions] ---
+gitea_cron_delete_old_actions_enabled: ~  # gitea default: false
+gitea_cron_delete_old_actions_run_at_start: ~  # gitea default: false
+gitea_cron_delete_old_actions_notice_on_success: ~  # gitea default: false
+gitea_cron_delete_old_actions_schedule: ~  # gitea default: @every 168h
+gitea_cron_delete_old_actions_older_than: ~  # gitea default: 8760h
+
+# --- [cron.update_checker] ---
+gitea_cron_update_checker_enabled: ~  # gitea default: true
+gitea_cron_update_checker_run_at_start: ~  # gitea default: false
+gitea_cron_update_checker_enable_success_notice: ~  # gitea default: false
+gitea_cron_update_checker_schedule: ~  # gitea default: @every 168h
+gitea_cron_update_checker_http_endpoint: ~  # gitea default: https://dl.gitea.com/gitea/version.json
+
+# --- [cron.delete_old_system_notices] ---
+gitea_cron_delete_old_system_notices_enabled: ~  # gitea default: false
+gitea_cron_delete_old_system_notices_run_at_start: ~  # gitea default: false
+gitea_cron_delete_old_system_notices_no_success_notice: ~  # gitea default: false
+gitea_cron_delete_old_system_notices_schedule: ~  # gitea default: @every 168h
+gitea_cron_delete_old_system_notices_older_than: ~  # gitea default: 8760h
+
+# --- [cron.gc_lfs] ---
+gitea_cron_gc_lfs_enabled: ~  # gitea default: false
+gitea_cron_gc_lfs_run_at_start: ~  # gitea default: false
+gitea_cron_gc_lfs_schedule: ~  # gitea default: @every 24h
+gitea_cron_gc_lfs_older_than: ~  # gitea default: 168h
+gitea_cron_gc_lfs_last_updated_more_than_ago: ~  # gitea default: 72h
+gitea_cron_gc_lfs_number_to_check_per_repo: ~  # gitea default: 100
+gitea_cron_gc_lfs_proportion_to_check_per_repo: ~  # gitea default: 0.6
+
+# --- [cron.rebuild_issue_indexer] ---
+gitea_cron_rebuild_issue_indexer_enabled: ~  # gitea default: false
+gitea_cron_rebuild_issue_indexer_run_at_start: ~  # gitea default: false
+gitea_cron_rebuild_issue_indexer_no_success_notice: ~  # gitea default: false
+gitea_cron_rebuild_issue_indexer_schedule: ~  # gitea default: @annually
+
+# --- [cron.stop_zombie_tasks] ---
+gitea_cron_stop_zombie_tasks_enabled: ~  # gitea default: true
+gitea_cron_stop_zombie_tasks_run_at_start: ~  # gitea default: true
+gitea_cron_stop_zombie_tasks_no_success_notice: ~  # gitea default: false
+gitea_cron_stop_zombie_tasks_schedule: ~  # gitea default: @every 5m
+
+# --- [cron.stop_endless_tasks] ---
+gitea_cron_stop_endless_tasks_enabled: ~  # gitea default: true
+gitea_cron_stop_endless_tasks_run_at_start: ~  # gitea default: true
+gitea_cron_stop_endless_tasks_no_success_notice: ~  # gitea default: false
+gitea_cron_stop_endless_tasks_schedule: ~  # gitea default: @every 30m
+
+# --- [cron.cancel_abandoned_jobs] ---
+gitea_cron_cancel_abandoned_jobs_enabled: ~  # gitea default: true
+gitea_cron_cancel_abandoned_jobs_run_at_start: ~  # gitea default: false
+gitea_cron_cancel_abandoned_jobs_no_success_notice: ~  # gitea default: false
+gitea_cron_cancel_abandoned_jobs_schedule: ~  # gitea default: @every 6h
+
+# --- [cron.start_schedule_tasks] ---
+gitea_cron_start_schedule_tasks_enabled: ~  # gitea default: true
+gitea_cron_start_schedule_tasks_run_at_start: ~  # gitea default: false
+gitea_cron_start_schedule_tasks_no_success_notice: ~  # gitea default: false
+gitea_cron_start_schedule_tasks_schedule: ~  # gitea default: @every 1m
+
+# --- [mirror] ---
+gitea_mirror_enabled: ~  # gitea default: true
+gitea_mirror_disable_new_pull: ~  # gitea default: false
+gitea_mirror_disable_new_push: ~  # gitea default: false
+gitea_mirror_default_interval: ~  # gitea default: 8h
+gitea_mirror_min_interval: ~  # gitea default: 10m
+
+# --- [api] ---
+gitea_api_enable_swagger: ~  # gitea default: true
+gitea_api_max_response_items: ~  # gitea default: 50
+gitea_api_default_paging_num: ~  # gitea default: 30
+gitea_api_default_git_trees_per_page: ~  # gitea default: 1000
+gitea_api_default_max_blob_size: ~  # gitea default: 10485760
+gitea_api_default_max_response_size: ~  # gitea default: 104857600
+
+# --- [i18n] ---
+gitea_i18n_langs: ~  # gitea default: en-US,zh-CN,zh-HK,zh-TW,de-DE,fr-FR,nl-NL,lv-LV,ru-RU,uk-UA,ja-JP,es-ES,pt-BR,pt-PT,pl-PL,bg-BG,it-IT,fi-FI,tr-TR,cs-CZ,sv-SE,ko-KR,el-GR,fa-IR,hu-HU,id-ID,ml-IN
+gitea_i18n_names: ~  # gitea default: English,简体中文,繁體中文（香港）,繁體中文（台灣）,Deutsch,Français,Nederlands,Latviešu,Русский,Українська,日本語,Español,Português do Brasil,Português de Portugal,Polski,Български,Italiano,Suomi,Türkçe,Čeština,Српски,Svenska,한국어,Ελληνικά,فارسی,Magyar nyelv,Bahasa Indonesia,മലയാളം
+
+# --- [other] ---
+gitea_other_show_footer_version: ~  # gitea default: true
+gitea_other_show_footer_template_load_time: ~  # gitea default: true
+gitea_other_show_footer_powered_by: ~  # gitea default: true
+gitea_other_enable_sitemap: ~  # gitea default: true
+gitea_other_enable_feed: ~  # gitea default: true
+
+# --- [markup] ---
+gitea_markup_mermaid_max_source_characters: ~  # gitea default: 50000
+
+# --- [markup.sanitizer.1] ---
+gitea_markup_sanitizer_1_element: ~  # gitea default: span
+gitea_markup_sanitizer_1_allow_attr: ~  # gitea default: class
+gitea_markup_sanitizer_1_regexp: ~  # gitea default: ^(info|warning|error)$
+
+# --- [markup.asciidoc] ---
+gitea_markup_asciidoc_enabled: ~  # gitea default: false
+gitea_markup_asciidoc_file_extensions: ~  # gitea default: .adoc,.asciidoc
+gitea_markup_asciidoc_render_command: ~  # gitea default: "asciidoc --out-file=- -"
+gitea_markup_asciidoc_is_input_file: ~  # gitea default: false
+gitea_markup_asciidoc_render_content_mode: ~  # gitea default: sanitized
+gitea_markup_asciidoc_render_content_sandbox: ~
+gitea_markup_asciidoc_need_post_process: ~  # gitea default: false
+
+# --- [metrics] ---
+gitea_metrics_enabled_issue_by_label: ~  # gitea default: false
+gitea_metrics_enabled_issue_by_repository: ~  # gitea default: false
+
+# --- [migrations] ---
+gitea_migrations_max_attempts: ~  # gitea default: 3
+gitea_migrations_retry_backoff: ~  # gitea default: 3
+gitea_migrations_allowed_domains: ~
+gitea_migrations_blocked_domains: ~
+gitea_migrations_allow_localnetworks: ~  # gitea default: false
+
+# --- [federation] ---
+gitea_federation_enabled: ~  # gitea default: false
+gitea_federation_share_user_statistics: ~  # gitea default: true
+gitea_federation_max_size: ~  # gitea default: 4
+gitea_federation_algorithms: ~  # gitea default: rsa-sha256, rsa-sha512, ed25519
+gitea_federation_digest_algorithm: ~  # gitea default: SHA-256
+gitea_federation_get_headers: ~  # gitea default: (request-target), Date
+gitea_federation_post_headers: ~  # gitea default: (request-target), Date, Digest
+
+# --- [packages] ---
+gitea_packages_enabled: ~  # gitea default: true
+gitea_packages_storage_type: ~  # gitea default: local
+gitea_packages_minio_base_path: ~  # gitea default: packages/
+gitea_packages_azure_blob_base_path: ~  # gitea default: packages/
+gitea_packages_serve_direct: ~  # gitea default: false
+gitea_packages_limit_total_owner_count: ~  # gitea default: -1
+gitea_packages_limit_total_owner_size: ~  # gitea default: -1
+gitea_packages_limit_size_alpine: ~  # gitea default: -1
+gitea_packages_limit_size_cargo: ~  # gitea default: -1
+gitea_packages_limit_size_chef: ~  # gitea default: -1
+gitea_packages_limit_size_composer: ~  # gitea default: -1
+gitea_packages_limit_size_conan: ~  # gitea default: -1
+gitea_packages_limit_size_conda: ~  # gitea default: -1
+gitea_packages_limit_size_container: ~  # gitea default: -1
+gitea_packages_limit_size_cran: ~  # gitea default: -1
+gitea_packages_limit_size_debian: ~  # gitea default: -1
+gitea_packages_limit_size_generic: ~  # gitea default: -1
+gitea_packages_limit_size_go: ~  # gitea default: -1
+gitea_packages_limit_size_helm: ~  # gitea default: -1
+gitea_packages_limit_size_maven: ~  # gitea default: -1
+gitea_packages_limit_size_npm: ~  # gitea default: -1
+gitea_packages_limit_size_nuget: ~  # gitea default: -1
+gitea_packages_limit_size_pub: ~  # gitea default: -1
+gitea_packages_limit_size_pypi: ~  # gitea default: -1
+gitea_packages_limit_size_rpm: ~  # gitea default: -1
+gitea_packages_limit_size_rubygems: ~  # gitea default: -1
+gitea_packages_limit_size_swift: ~  # gitea default: -1
+gitea_packages_limit_size_vagrant: ~  # gitea default: -1
+gitea_packages_limit_size_terraform_state: ~  # gitea default: -1
+gitea_packages_default_rpm_sign_enabled: ~  # gitea default: false
+
+# --- [storage] ---
+gitea_storage_storage_type: ~  # gitea default: local
+
+# --- [repo-archive] ---
+gitea_repo_archive_storage_type: ~  # gitea default: local
+gitea_repo_archive_path: ~  # gitea default: data/repo-archive
+gitea_repo_archive_minio_base_path: ~  # gitea default: repo-archive/
+gitea_repo_archive_azure_blob_base_path: ~  # gitea default: repo-archive/
+
+# --- [storage.repo-archive] ---
+gitea_storage_repo_archive_storage_type: ~  # gitea default: local
+
+# --- [lfs] ---
+gitea_lfs_storage_type: ~  # gitea default: local
+gitea_lfs_serve_direct: ~  # gitea default: false
+gitea_lfs_minio_base_path: ~  # gitea default: lfs/
+gitea_lfs_azure_blob_base_path: ~  # gitea default: lfs/
+
+# --- [lfs_client] ---
+gitea_lfs_client_batch_size: ~  # gitea default: 20
+gitea_lfs_client_batch_operation_concurrency: ~  # gitea default: 8
+
+# --- [storage.packages] ---
+gitea_storage_packages_storage_type: ~  # gitea default: local
+
+# --- [storage.minio] ---
+gitea_storage_minio_storage_type: ~  # gitea default: minio
+gitea_storage_minio_minio_endpoint: ~  # gitea default: localhost:9000
+gitea_storage_minio_minio_access_key_id: ~
+gitea_storage_minio_minio_secret_access_key: ~
+gitea_storage_minio_minio_iam_endpoint: ~
+gitea_storage_minio_minio_bucket: ~  # gitea default: gitea
+gitea_storage_minio_minio_location: ~  # gitea default: us-east-1
+gitea_storage_minio_minio_use_ssl: ~  # gitea default: false
+gitea_storage_minio_minio_insecure_skip_verify: ~  # gitea default: false
+gitea_storage_minio_minio_bucket_lookup_type: ~  # gitea default: auto
+
+# --- [storage.azureblob] ---
+gitea_storage_azureblob_storage_type: ~  # gitea default: azureblob
+gitea_storage_azureblob_azure_blob_endpoint: ~
+gitea_storage_azureblob_azure_blob_account_name: ~
+gitea_storage_azureblob_azure_blob_account_key: ~
+gitea_storage_azureblob_azure_blob_container: ~  # gitea default: gitea
+
+# --- [proxy] ---
+gitea_proxy_proxy_enabled: ~  # gitea default: false
+gitea_proxy_proxy_url: ~
+gitea_proxy_proxy_hosts: ~
+gitea_proxy_enabled: ~  # gitea default: true
+gitea_proxy_default_actions_url: ~  # gitea default: github
+gitea_proxy_log_retention_days: ~  # gitea default: 365
+gitea_proxy_log_compression: ~  # gitea default: zstd
+gitea_proxy_artifact_retention_days: ~  # gitea default: 90
+gitea_proxy_zombie_task_timeout: ~  # gitea default: 10m
+gitea_proxy_endless_task_timeout: ~  # gitea default: 3h
+gitea_proxy_abandoned_job_timeout: ~  # gitea default: 24h
+gitea_proxy_skip_workflow_strings: ~  # gitea default: [skip ci],[ci skip],[no ci],[skip actions],[actions skip]
+gitea_proxy_workflow_dirs: ~  # gitea default: .gitea/workflows,.github/workflows
+
+# --- [storage.actions_log] ---
+gitea_storage_actions_log_storage_type: ~  # gitea default: local
+
+# --- [global_lock] ---
+gitea_global_lock_service_type: ~  # gitea default: memory
+gitea_global_lock_service_conn_str: ~

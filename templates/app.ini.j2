@@ -2,6 +2,12 @@ APP_NAME = {{ gitea_app_name }}
 RUN_USER = {{ gitea_run_user }}
 RUN_MODE = {{ gitea_run_mode }}
 
+{% if gitea_work_path is not none %}
+WORK_PATH = {{ gitea_work_path }}
+{% endif %}
+{% if gitea_work_path is not none %}
+
+{% endif %}
 [server]
 HTTP_ADDR        = {{ gitea_http_addr }}
 HTTP_PORT        = {{ gitea_http_port }}
@@ -15,14 +21,305 @@ LFS_START_SERVER = {{ gitea_server_lfs_start_server|lower }}
 LFS_JWT_SECRET   = {{ gitea_lfs_jwt_secret }}
 OFFLINE_MODE     = {{ gitea_server_offline_mode|lower }}
 
+{% if gitea_server_public_url_detection is not none %}
+PUBLIC_URL_DETECTION = {{ gitea_server_public_url_detection }}
+{% endif %}
+{% if gitea_server_use_sub_url_path is not none %}
+USE_SUB_URL_PATH = {{ gitea_server_use_sub_url_path|lower }}
+{% endif %}
+{% if gitea_server_static_url_prefix is not none %}
+STATIC_URL_PREFIX = {{ gitea_server_static_url_prefix }}
+{% endif %}
+{% if gitea_server_use_proxy_protocol is not none %}
+USE_PROXY_PROTOCOL = {{ gitea_server_use_proxy_protocol|lower }}
+{% endif %}
+{% if gitea_server_proxy_protocol_tls_bridging is not none %}
+PROXY_PROTOCOL_TLS_BRIDGING = {{ gitea_server_proxy_protocol_tls_bridging|lower }}
+{% endif %}
+{% if gitea_server_proxy_protocol_header_timeout is not none %}
+PROXY_PROTOCOL_HEADER_TIMEOUT = {{ gitea_server_proxy_protocol_header_timeout }}
+{% endif %}
+{% if gitea_server_proxy_protocol_accept_unknown is not none %}
+PROXY_PROTOCOL_ACCEPT_UNKNOWN = {{ gitea_server_proxy_protocol_accept_unknown|lower }}
+{% endif %}
+{% if gitea_server_redirect_other_port is not none %}
+REDIRECT_OTHER_PORT = {{ gitea_server_redirect_other_port|lower }}
+{% endif %}
+{% if gitea_server_port_to_redirect is not none %}
+PORT_TO_REDIRECT = {{ gitea_server_port_to_redirect }}
+{% endif %}
+{% if gitea_server_redirector_use_proxy_protocol is not none %}
+REDIRECTOR_USE_PROXY_PROTOCOL = {{ gitea_server_redirector_use_proxy_protocol }}
+{% endif %}
+{% if gitea_server_ssl_min_version is not none %}
+SSL_MIN_VERSION = {{ gitea_server_ssl_min_version }}
+{% endif %}
+{% if gitea_server_ssl_max_version is not none %}
+SSL_MAX_VERSION = {{ gitea_server_ssl_max_version }}
+{% endif %}
+{% if gitea_server_ssl_curve_preferences is not none %}
+SSL_CURVE_PREFERENCES = {{ gitea_server_ssl_curve_preferences }}
+{% endif %}
+{% if gitea_server_ssl_cipher_suites is not none %}
+SSL_CIPHER_SUITES = {{ gitea_server_ssl_cipher_suites }}
+{% endif %}
+{% if gitea_server_per_write_timeout is not none %}
+PER_WRITE_TIMEOUT = {{ gitea_server_per_write_timeout }}
+{% endif %}
+{% if gitea_server_per_write_per_kb_timeout is not none %}
+PER_WRITE_PER_KB_TIMEOUT = {{ gitea_server_per_write_per_kb_timeout }}
+{% endif %}
+{% if gitea_server_unix_socket_permission is not none %}
+UNIX_SOCKET_PERMISSION = {{ gitea_server_unix_socket_permission }}
+{% endif %}
+{% if gitea_server_local_root_url is not none %}
+LOCAL_ROOT_URL = {{ gitea_server_local_root_url }}
+{% endif %}
+{% if gitea_server_local_use_proxy_protocol is not none %}
+LOCAL_USE_PROXY_PROTOCOL = {{ gitea_server_local_use_proxy_protocol }}
+{% endif %}
+{% if gitea_server_start_ssh_server is not none %}
+START_SSH_SERVER = {{ gitea_server_start_ssh_server|lower }}
+{% endif %}
+{% if gitea_server_ssh_server_use_proxy_protocol is not none %}
+SSH_SERVER_USE_PROXY_PROTOCOL = {{ gitea_server_ssh_server_use_proxy_protocol|lower }}
+{% endif %}
+{% if gitea_server_builtin_ssh_server_user is not none %}
+BUILTIN_SSH_SERVER_USER = {{ gitea_server_builtin_ssh_server_user }}
+{% endif %}
+{% if gitea_server_ssh_user is not none %}
+SSH_USER = {{ gitea_server_ssh_user }}
+{% endif %}
+{% if gitea_server_ssh_listen_host is not none %}
+SSH_LISTEN_HOST = {{ gitea_server_ssh_listen_host }}
+{% endif %}
+{% if gitea_server_ssh_port is not none %}
+SSH_PORT = {{ gitea_server_ssh_port }}
+{% endif %}
+{% if gitea_server_ssh_listen_port is not none %}
+SSH_LISTEN_PORT = {{ gitea_server_ssh_listen_port }}
+{% endif %}
+{% if gitea_server_ssh_root_path is not none %}
+SSH_ROOT_PATH = {{ gitea_server_ssh_root_path }}
+{% endif %}
+{% if gitea_server_ssh_create_authorized_keys_file is not none %}
+SSH_CREATE_AUTHORIZED_KEYS_FILE = {{ gitea_server_ssh_create_authorized_keys_file|lower }}
+{% endif %}
+{% if gitea_server_ssh_create_authorized_principals_file is not none %}
+SSH_CREATE_AUTHORIZED_PRINCIPALS_FILE = {{ gitea_server_ssh_create_authorized_principals_file|lower }}
+{% endif %}
+{% if gitea_server_ssh_server_ciphers is not none %}
+SSH_SERVER_CIPHERS = {{ gitea_server_ssh_server_ciphers }}
+{% endif %}
+{% if gitea_server_ssh_server_key_exchanges is not none %}
+SSH_SERVER_KEY_EXCHANGES = {{ gitea_server_ssh_server_key_exchanges }}
+{% endif %}
+{% if gitea_server_ssh_server_macs is not none %}
+SSH_SERVER_MACS = {{ gitea_server_ssh_server_macs }}
+{% endif %}
+{% if gitea_server_ssh_server_host_keys is not none %}
+SSH_SERVER_HOST_KEYS = {{ gitea_server_ssh_server_host_keys }}
+{% endif %}
+{% if gitea_server_ssh_authorized_keys_backup is not none %}
+SSH_AUTHORIZED_KEYS_BACKUP = {{ gitea_server_ssh_authorized_keys_backup|lower }}
+{% endif %}
+{% if gitea_server_ssh_authorized_principals_allow is not none %}
+SSH_AUTHORIZED_PRINCIPALS_ALLOW = {{ gitea_server_ssh_authorized_principals_allow }}
+{% endif %}
+{% if gitea_server_ssh_authorized_principals_backup is not none %}
+SSH_AUTHORIZED_PRINCIPALS_BACKUP = {{ gitea_server_ssh_authorized_principals_backup|lower }}
+{% endif %}
+{% if gitea_server_ssh_trusted_user_ca_keys is not none %}
+SSH_TRUSTED_USER_CA_KEYS = {{ gitea_server_ssh_trusted_user_ca_keys }}
+{% endif %}
+{% if gitea_server_ssh_trusted_user_ca_keys_filename is not none %}
+SSH_TRUSTED_USER_CA_KEYS_FILENAME = {{ gitea_server_ssh_trusted_user_ca_keys_filename }}
+{% endif %}
+{% if gitea_server_ssh_expose_anonymous is not none %}
+SSH_EXPOSE_ANONYMOUS = {{ gitea_server_ssh_expose_anonymous|lower }}
+{% endif %}
+{% if gitea_server_ssh_per_write_timeout is not none %}
+SSH_PER_WRITE_TIMEOUT = {{ gitea_server_ssh_per_write_timeout }}
+{% endif %}
+{% if gitea_server_ssh_per_write_per_kb_timeout is not none %}
+SSH_PER_WRITE_PER_KB_TIMEOUT = {{ gitea_server_ssh_per_write_per_kb_timeout }}
+{% endif %}
+{% if gitea_server_minimum_key_size_check is not none %}
+MINIMUM_KEY_SIZE_CHECK = {{ gitea_server_minimum_key_size_check|lower }}
+{% endif %}
+{% if gitea_server_enable_acme is not none %}
+ENABLE_ACME = {{ gitea_server_enable_acme|lower }}
+{% endif %}
+{% if gitea_server_acme_url is not none %}
+ACME_URL = {{ gitea_server_acme_url }}
+{% endif %}
+{% if gitea_server_acme_accepttos is not none %}
+ACME_ACCEPTTOS = {{ gitea_server_acme_accepttos|lower }}
+{% endif %}
+{% if gitea_server_acme_ca_root is not none %}
+ACME_CA_ROOT = {{ gitea_server_acme_ca_root }}
+{% endif %}
+{% if gitea_server_acme_email is not none %}
+ACME_EMAIL = {{ gitea_server_acme_email }}
+{% endif %}
+{% if gitea_server_acme_directory is not none %}
+ACME_DIRECTORY = {{ gitea_server_acme_directory }}
+{% endif %}
+{% if gitea_server_cert_file is not none %}
+CERT_FILE = {{ gitea_server_cert_file }}
+{% endif %}
+{% if gitea_server_key_file is not none %}
+KEY_FILE = {{ gitea_server_key_file }}
+{% endif %}
+{% if gitea_server_static_root_path is not none %}
+STATIC_ROOT_PATH = {{ gitea_server_static_root_path }}
+{% endif %}
+{% if gitea_server_app_data_path is not none %}
+APP_DATA_PATH = {{ gitea_server_app_data_path }}
+{% endif %}
+{% if gitea_server_app_temp_path is not none %}
+APP_TEMP_PATH = {{ gitea_server_app_temp_path }}
+{% endif %}
+{% if gitea_server_enable_gzip is not none %}
+ENABLE_GZIP = {{ gitea_server_enable_gzip|lower }}
+{% endif %}
+{% if gitea_server_enable_pprof is not none %}
+ENABLE_PPROF = {{ gitea_server_enable_pprof|lower }}
+{% endif %}
+{% if gitea_server_pprof_data_path is not none %}
+PPROF_DATA_PATH = {{ gitea_server_pprof_data_path }}
+{% endif %}
+{% if gitea_server_landing_page is not none %}
+LANDING_PAGE = {{ gitea_server_landing_page }}
+{% endif %}
+{% if gitea_server_lfs_allow_pure_ssh is not none %}
+LFS_ALLOW_PURE_SSH = {{ gitea_server_lfs_allow_pure_ssh|lower }}
+{% endif %}
+{% if gitea_server_lfs_jwt_secret_uri is not none %}
+LFS_JWT_SECRET_URI = {{ gitea_server_lfs_jwt_secret_uri }}
+{% endif %}
+{% if gitea_server_lfs_http_auth_expiry is not none %}
+LFS_HTTP_AUTH_EXPIRY = {{ gitea_server_lfs_http_auth_expiry }}
+{% endif %}
+{% if gitea_server_lfs_max_file_size is not none %}
+LFS_MAX_FILE_SIZE = {{ gitea_server_lfs_max_file_size }}
+{% endif %}
+{% if gitea_server_lfs_locks_paging_num is not none %}
+LFS_LOCKS_PAGING_NUM = {{ gitea_server_lfs_locks_paging_num }}
+{% endif %}
+{% if gitea_server_lfs_max_batch_size is not none %}
+LFS_MAX_BATCH_SIZE = {{ gitea_server_lfs_max_batch_size }}
+{% endif %}
+{% if gitea_server_allow_graceful_restarts is not none %}
+ALLOW_GRACEFUL_RESTARTS = {{ gitea_server_allow_graceful_restarts|lower }}
+{% endif %}
+{% if gitea_server_graceful_hammer_time is not none %}
+GRACEFUL_HAMMER_TIME = {{ gitea_server_graceful_hammer_time }}
+{% endif %}
+{% if gitea_server_startup_timeout is not none %}
+STARTUP_TIMEOUT = {{ gitea_server_startup_timeout }}
+{% endif %}
+{% if gitea_server_static_cache_time is not none %}
+STATIC_CACHE_TIME = {{ gitea_server_static_cache_time }}
+{% endif %}
+{% if gitea_server_public_url_detection is not none or gitea_server_use_sub_url_path is not none or gitea_server_static_url_prefix is not none or gitea_server_use_proxy_protocol is not none or gitea_server_proxy_protocol_tls_bridging is not none or gitea_server_proxy_protocol_header_timeout is not none or gitea_server_proxy_protocol_accept_unknown is not none or gitea_server_redirect_other_port is not none or gitea_server_port_to_redirect is not none or gitea_server_redirector_use_proxy_protocol is not none or gitea_server_ssl_min_version is not none or gitea_server_ssl_max_version is not none or gitea_server_ssl_curve_preferences is not none or gitea_server_ssl_cipher_suites is not none or gitea_server_per_write_timeout is not none or gitea_server_per_write_per_kb_timeout is not none or gitea_server_unix_socket_permission is not none or gitea_server_local_root_url is not none or gitea_server_local_use_proxy_protocol is not none or gitea_server_start_ssh_server is not none or gitea_server_ssh_server_use_proxy_protocol is not none or gitea_server_builtin_ssh_server_user is not none or gitea_server_ssh_user is not none or gitea_server_ssh_listen_host is not none or gitea_server_ssh_port is not none or gitea_server_ssh_listen_port is not none or gitea_server_ssh_root_path is not none or gitea_server_ssh_create_authorized_keys_file is not none or gitea_server_ssh_create_authorized_principals_file is not none or gitea_server_ssh_server_ciphers is not none or gitea_server_ssh_server_key_exchanges is not none or gitea_server_ssh_server_macs is not none or gitea_server_ssh_server_host_keys is not none or gitea_server_ssh_authorized_keys_backup is not none or gitea_server_ssh_authorized_principals_allow is not none or gitea_server_ssh_authorized_principals_backup is not none or gitea_server_ssh_trusted_user_ca_keys is not none or gitea_server_ssh_trusted_user_ca_keys_filename is not none or gitea_server_ssh_expose_anonymous is not none or gitea_server_ssh_per_write_timeout is not none or gitea_server_ssh_per_write_per_kb_timeout is not none or gitea_server_minimum_key_size_check is not none or gitea_server_enable_acme is not none or gitea_server_acme_url is not none or gitea_server_acme_accepttos is not none or gitea_server_acme_ca_root is not none or gitea_server_acme_email is not none or gitea_server_acme_directory is not none or gitea_server_cert_file is not none or gitea_server_key_file is not none or gitea_server_static_root_path is not none or gitea_server_app_data_path is not none or gitea_server_app_temp_path is not none or gitea_server_enable_gzip is not none or gitea_server_enable_pprof is not none or gitea_server_pprof_data_path is not none or gitea_server_landing_page is not none or gitea_server_lfs_allow_pure_ssh is not none or gitea_server_lfs_jwt_secret_uri is not none or gitea_server_lfs_http_auth_expiry is not none or gitea_server_lfs_max_file_size is not none or gitea_server_lfs_locks_paging_num is not none or gitea_server_lfs_max_batch_size is not none or gitea_server_allow_graceful_restarts is not none or gitea_server_graceful_hammer_time is not none or gitea_server_startup_timeout is not none or gitea_server_static_cache_time is not none %}
+
+{% endif %}
 [lfs]
 PATH = {{ gitea_server_lfs_content_path }}
 
+{% if gitea_lfs_storage_type is not none %}
+STORAGE_TYPE = {{ gitea_lfs_storage_type }}
+{% endif %}
+{% if gitea_lfs_serve_direct is not none %}
+SERVE_DIRECT = {{ gitea_lfs_serve_direct|lower }}
+{% endif %}
+{% if gitea_lfs_minio_base_path is not none %}
+MINIO_BASE_PATH = {{ gitea_lfs_minio_base_path }}
+{% endif %}
+{% if gitea_lfs_azure_blob_base_path is not none %}
+AZURE_BLOB_BASE_PATH = {{ gitea_lfs_azure_blob_base_path }}
+{% endif %}
+{% if gitea_lfs_storage_type is not none or gitea_lfs_serve_direct is not none or gitea_lfs_minio_base_path is not none or gitea_lfs_azure_blob_base_path is not none %}
+
+{% endif %}
 [security]
 SECRET_KEY     = {{ gitea_secret_key }}
 INTERNAL_TOKEN = {{ gitea_internal_token }}
 INSTALL_LOCK   = {{ gitea_security_install_lock|lower }}
 
+{% if gitea_security_secret_key_uri is not none %}
+SECRET_KEY_URI = {{ gitea_security_secret_key_uri }}
+{% endif %}
+{% if gitea_security_internal_token_uri is not none %}
+INTERNAL_TOKEN_URI = {{ gitea_security_internal_token_uri }}
+{% endif %}
+{% if gitea_security_login_remember_days is not none %}
+LOGIN_REMEMBER_DAYS = {{ gitea_security_login_remember_days }}
+{% endif %}
+{% if gitea_security_cookie_username is not none %}
+COOKIE_USERNAME = {{ gitea_security_cookie_username }}
+{% endif %}
+{% if gitea_security_cookie_remember_name is not none %}
+COOKIE_REMEMBER_NAME = {{ gitea_security_cookie_remember_name }}
+{% endif %}
+{% if gitea_security_reverse_proxy_logout_redirect is not none %}
+REVERSE_PROXY_LOGOUT_REDIRECT = {{ gitea_security_reverse_proxy_logout_redirect }}
+{% endif %}
+{% if gitea_security_reverse_proxy_authentication_user is not none %}
+REVERSE_PROXY_AUTHENTICATION_USER = {{ gitea_security_reverse_proxy_authentication_user }}
+{% endif %}
+{% if gitea_security_reverse_proxy_authentication_email is not none %}
+REVERSE_PROXY_AUTHENTICATION_EMAIL = {{ gitea_security_reverse_proxy_authentication_email }}
+{% endif %}
+{% if gitea_security_reverse_proxy_authentication_full_name is not none %}
+REVERSE_PROXY_AUTHENTICATION_FULL_NAME = {{ gitea_security_reverse_proxy_authentication_full_name }}
+{% endif %}
+{% if gitea_security_reverse_proxy_limit is not none %}
+REVERSE_PROXY_LIMIT = {{ gitea_security_reverse_proxy_limit }}
+{% endif %}
+{% if gitea_security_reverse_proxy_trusted_proxies is not none %}
+REVERSE_PROXY_TRUSTED_PROXIES = {{ gitea_security_reverse_proxy_trusted_proxies }}
+{% endif %}
+{% if gitea_security_min_password_length is not none %}
+MIN_PASSWORD_LENGTH = {{ gitea_security_min_password_length }}
+{% endif %}
+{% if gitea_security_import_local_paths is not none %}
+IMPORT_LOCAL_PATHS = {{ gitea_security_import_local_paths|lower }}
+{% endif %}
+{% if gitea_security_disable_git_hooks is not none %}
+DISABLE_GIT_HOOKS = {{ gitea_security_disable_git_hooks|lower }}
+{% endif %}
+{% if gitea_security_disable_webhooks is not none %}
+DISABLE_WEBHOOKS = {{ gitea_security_disable_webhooks|lower }}
+{% endif %}
+{% if gitea_security_only_allow_push_if_gitea_environment_set is not none %}
+ONLY_ALLOW_PUSH_IF_GITEA_ENVIRONMENT_SET = {{ gitea_security_only_allow_push_if_gitea_environment_set|lower }}
+{% endif %}
+{% if gitea_security_password_complexity is not none %}
+PASSWORD_COMPLEXITY = {{ gitea_security_password_complexity }}
+{% endif %}
+{% if gitea_security_password_hash_algo is not none %}
+PASSWORD_HASH_ALGO = {{ gitea_security_password_hash_algo }}
+{% endif %}
+{% if gitea_security_password_check_pwn is not none %}
+PASSWORD_CHECK_PWN = {{ gitea_security_password_check_pwn|lower }}
+{% endif %}
+{% if gitea_security_successful_tokens_cache_size is not none %}
+SUCCESSFUL_TOKENS_CACHE_SIZE = {{ gitea_security_successful_tokens_cache_size }}
+{% endif %}
+{% if gitea_security_disable_query_auth_token is not none %}
+DISABLE_QUERY_AUTH_TOKEN = {{ gitea_security_disable_query_auth_token|lower }}
+{% endif %}
+{% if gitea_security_two_factor_auth is not none %}
+TWO_FACTOR_AUTH = {{ gitea_security_two_factor_auth }}
+{% endif %}
+{% if gitea_security_x_frame_options is not none %}
+X_FRAME_OPTIONS = {{ gitea_security_x_frame_options }}
+{% endif %}
+{% if gitea_security_secret_key_uri is not none or gitea_security_internal_token_uri is not none or gitea_security_login_remember_days is not none or gitea_security_cookie_username is not none or gitea_security_cookie_remember_name is not none or gitea_security_reverse_proxy_logout_redirect is not none or gitea_security_reverse_proxy_authentication_user is not none or gitea_security_reverse_proxy_authentication_email is not none or gitea_security_reverse_proxy_authentication_full_name is not none or gitea_security_reverse_proxy_limit is not none or gitea_security_reverse_proxy_trusted_proxies is not none or gitea_security_min_password_length is not none or gitea_security_import_local_paths is not none or gitea_security_disable_git_hooks is not none or gitea_security_disable_webhooks is not none or gitea_security_only_allow_push_if_gitea_environment_set is not none or gitea_security_password_complexity is not none or gitea_security_password_hash_algo is not none or gitea_security_password_check_pwn is not none or gitea_security_successful_tokens_cache_size is not none or gitea_security_disable_query_auth_token is not none or gitea_security_two_factor_auth is not none or gitea_security_x_frame_options is not none %}
+
+{% endif %}
 [database]
 DB_TYPE  = {{ gitea_database_db_type }}
 HOST     = {{ gitea_database_host }}
@@ -32,9 +329,141 @@ PASSWD   = {{ gitea_database_passwd}}
 SSL_MODE = {{ gitea_database_ssl_mode }}
 PATH     = {{ gitea_database_path }}
 
+{% if gitea_database_charset_collation is not none %}
+CHARSET_COLLATION = {{ gitea_database_charset_collation }}
+{% endif %}
+{% if gitea_database_schema is not none %}
+SCHEMA = {{ gitea_database_schema }}
+{% endif %}
+{% if gitea_database_sqlite_timeout is not none %}
+SQLITE_TIMEOUT = {{ gitea_database_sqlite_timeout }}
+{% endif %}
+{% if gitea_database_sqlite_journal_mode is not none %}
+SQLITE_JOURNAL_MODE = {{ gitea_database_sqlite_journal_mode }}
+{% endif %}
+{% if gitea_database_iterate_buffer_size is not none %}
+ITERATE_BUFFER_SIZE = {{ gitea_database_iterate_buffer_size }}
+{% endif %}
+{% if gitea_database_log_sql is not none %}
+LOG_SQL = {{ gitea_database_log_sql|lower }}
+{% endif %}
+{% if gitea_database_db_retries is not none %}
+DB_RETRIES = {{ gitea_database_db_retries }}
+{% endif %}
+{% if gitea_database_db_retry_backoff is not none %}
+DB_RETRY_BACKOFF = {{ gitea_database_db_retry_backoff }}
+{% endif %}
+{% if gitea_database_max_idle_conns is not none %}
+MAX_IDLE_CONNS = {{ gitea_database_max_idle_conns }}
+{% endif %}
+{% if gitea_database_conn_max_lifetime is not none %}
+CONN_MAX_LIFETIME = {{ gitea_database_conn_max_lifetime }}
+{% endif %}
+{% if gitea_database_max_open_conns is not none %}
+MAX_OPEN_CONNS = {{ gitea_database_max_open_conns }}
+{% endif %}
+{% if gitea_database_auto_migration is not none %}
+AUTO_MIGRATION = {{ gitea_database_auto_migration|lower }}
+{% endif %}
+{% if gitea_database_slow_query_threshold is not none %}
+SLOW_QUERY_THRESHOLD = {{ gitea_database_slow_query_threshold }}
+{% endif %}
+{% if gitea_database_charset_collation is not none or gitea_database_schema is not none or gitea_database_sqlite_timeout is not none or gitea_database_sqlite_journal_mode is not none or gitea_database_iterate_buffer_size is not none or gitea_database_log_sql is not none or gitea_database_db_retries is not none or gitea_database_db_retry_backoff is not none or gitea_database_max_idle_conns is not none or gitea_database_conn_max_lifetime is not none or gitea_database_max_open_conns is not none or gitea_database_auto_migration is not none or gitea_database_slow_query_threshold is not none %}
+
+{% endif %}
 [repository]
 ROOT = {{ gitea_repository_root }}
 
+{% if gitea_repository_script_type is not none %}
+SCRIPT_TYPE = {{ gitea_repository_script_type }}
+{% endif %}
+{% if gitea_repository_detected_charsets_order is not none %}
+DETECTED_CHARSETS_ORDER = {{ gitea_repository_detected_charsets_order }}
+{% endif %}
+{% if gitea_repository_ansi_charset is not none %}
+ANSI_CHARSET = {{ gitea_repository_ansi_charset }}
+{% endif %}
+{% if gitea_repository_force_private is not none %}
+FORCE_PRIVATE = {{ gitea_repository_force_private|lower }}
+{% endif %}
+{% if gitea_repository_default_private is not none %}
+DEFAULT_PRIVATE = {{ gitea_repository_default_private }}
+{% endif %}
+{% if gitea_repository_default_push_create_private is not none %}
+DEFAULT_PUSH_CREATE_PRIVATE = {{ gitea_repository_default_push_create_private|lower }}
+{% endif %}
+{% if gitea_repository_max_creation_limit is not none %}
+MAX_CREATION_LIMIT = {{ gitea_repository_max_creation_limit }}
+{% endif %}
+{% if gitea_repository_preferred_licenses is not none %}
+PREFERRED_LICENSES = {{ gitea_repository_preferred_licenses }}
+{% endif %}
+{% if gitea_repository_disable_http_git is not none %}
+DISABLE_HTTP_GIT = {{ gitea_repository_disable_http_git|lower }}
+{% endif %}
+{% if gitea_repository_access_control_allow_origin is not none %}
+ACCESS_CONTROL_ALLOW_ORIGIN = {{ gitea_repository_access_control_allow_origin }}
+{% endif %}
+{% if gitea_repository_use_compat_ssh_uri is not none %}
+USE_COMPAT_SSH_URI = {{ gitea_repository_use_compat_ssh_uri|lower }}
+{% endif %}
+{% if gitea_repository_go_get_clone_url_protocol is not none %}
+GO_GET_CLONE_URL_PROTOCOL = {{ gitea_repository_go_get_clone_url_protocol }}
+{% endif %}
+{% if gitea_repository_default_close_issues_via_commits_in_any_branch is not none %}
+DEFAULT_CLOSE_ISSUES_VIA_COMMITS_IN_ANY_BRANCH = {{ gitea_repository_default_close_issues_via_commits_in_any_branch|lower }}
+{% endif %}
+{% if gitea_repository_enable_push_create_user is not none %}
+ENABLE_PUSH_CREATE_USER = {{ gitea_repository_enable_push_create_user|lower }}
+{% endif %}
+{% if gitea_repository_enable_push_create_org is not none %}
+ENABLE_PUSH_CREATE_ORG = {{ gitea_repository_enable_push_create_org|lower }}
+{% endif %}
+{% if gitea_repository_disabled_repo_units is not none %}
+DISABLED_REPO_UNITS = {{ gitea_repository_disabled_repo_units }}
+{% endif %}
+{% if gitea_repository_default_repo_units is not none %}
+DEFAULT_REPO_UNITS = {{ gitea_repository_default_repo_units }}
+{% endif %}
+{% if gitea_repository_default_fork_repo_units is not none %}
+DEFAULT_FORK_REPO_UNITS = {{ gitea_repository_default_fork_repo_units }}
+{% endif %}
+{% if gitea_repository_default_mirror_repo_units is not none %}
+DEFAULT_MIRROR_REPO_UNITS = {{ gitea_repository_default_mirror_repo_units }}
+{% endif %}
+{% if gitea_repository_default_template_repo_units is not none %}
+DEFAULT_TEMPLATE_REPO_UNITS = {{ gitea_repository_default_template_repo_units }}
+{% endif %}
+{% if gitea_repository_prefix_archive_files is not none %}
+PREFIX_ARCHIVE_FILES = {{ gitea_repository_prefix_archive_files|lower }}
+{% endif %}
+{% if gitea_repository_disable_migrations is not none %}
+DISABLE_MIGRATIONS = {{ gitea_repository_disable_migrations|lower }}
+{% endif %}
+{% if gitea_repository_disable_stars is not none %}
+DISABLE_STARS = {{ gitea_repository_disable_stars|lower }}
+{% endif %}
+{% if gitea_repository_default_branch is not none %}
+DEFAULT_BRANCH = {{ gitea_repository_default_branch }}
+{% endif %}
+{% if gitea_repository_allow_adoption_of_unadopted_repositories is not none %}
+ALLOW_ADOPTION_OF_UNADOPTED_REPOSITORIES = {{ gitea_repository_allow_adoption_of_unadopted_repositories|lower }}
+{% endif %}
+{% if gitea_repository_allow_deletion_of_unadopted_repositories is not none %}
+ALLOW_DELETION_OF_UNADOPTED_REPOSITORIES = {{ gitea_repository_allow_deletion_of_unadopted_repositories|lower }}
+{% endif %}
+{% if gitea_repository_disable_download_source_archives is not none %}
+DISABLE_DOWNLOAD_SOURCE_ARCHIVES = {{ gitea_repository_disable_download_source_archives|lower }}
+{% endif %}
+{% if gitea_repository_allow_fork_without_maximum_limit is not none %}
+ALLOW_FORK_WITHOUT_MAXIMUM_LIMIT = {{ gitea_repository_allow_fork_without_maximum_limit|lower }}
+{% endif %}
+{% if gitea_repository_allow_fork_into_same_owner is not none %}
+ALLOW_FORK_INTO_SAME_OWNER = {{ gitea_repository_allow_fork_into_same_owner|lower }}
+{% endif %}
+{% if gitea_repository_script_type is not none or gitea_repository_detected_charsets_order is not none or gitea_repository_ansi_charset is not none or gitea_repository_force_private is not none or gitea_repository_default_private is not none or gitea_repository_default_push_create_private is not none or gitea_repository_max_creation_limit is not none or gitea_repository_preferred_licenses is not none or gitea_repository_disable_http_git is not none or gitea_repository_access_control_allow_origin is not none or gitea_repository_use_compat_ssh_uri is not none or gitea_repository_go_get_clone_url_protocol is not none or gitea_repository_default_close_issues_via_commits_in_any_branch is not none or gitea_repository_enable_push_create_user is not none or gitea_repository_enable_push_create_org is not none or gitea_repository_disabled_repo_units is not none or gitea_repository_default_repo_units is not none or gitea_repository_default_fork_repo_units is not none or gitea_repository_default_mirror_repo_units is not none or gitea_repository_default_template_repo_units is not none or gitea_repository_prefix_archive_files is not none or gitea_repository_disable_migrations is not none or gitea_repository_disable_stars is not none or gitea_repository_default_branch is not none or gitea_repository_allow_adoption_of_unadopted_repositories is not none or gitea_repository_allow_deletion_of_unadopted_repositories is not none or gitea_repository_disable_download_source_archives is not none or gitea_repository_allow_fork_without_maximum_limit is not none or gitea_repository_allow_fork_into_same_owner is not none %}
+
+{% endif %}
 [mailer]
 ENABLED = {{ gitea_mailer_enabled|lower }}
 SMTP_ADDR    = {{ gitea_mailer_smtp_addr }}
@@ -43,6 +472,60 @@ FROM    = {{ gitea_mailer_from }}
 USER    = {{ gitea_mailer_user }}
 PASSWD  = {{ gitea_mailer_passwd }}
 
+{% if gitea_mailer_send_buffer_len is not none %}
+SEND_BUFFER_LEN = {{ gitea_mailer_send_buffer_len }}
+{% endif %}
+{% if gitea_mailer_subject_prefix is not none %}
+SUBJECT_PREFIX = {{ gitea_mailer_subject_prefix }}
+{% endif %}
+{% if gitea_mailer_protocol is not none %}
+PROTOCOL = {{ gitea_mailer_protocol }}
+{% endif %}
+{% if gitea_mailer_enable_helo is not none %}
+ENABLE_HELO = {{ gitea_mailer_enable_helo|lower }}
+{% endif %}
+{% if gitea_mailer_helo_hostname is not none %}
+HELO_HOSTNAME = {{ gitea_mailer_helo_hostname }}
+{% endif %}
+{% if gitea_mailer_force_trust_server_cert is not none %}
+FORCE_TRUST_SERVER_CERT = {{ gitea_mailer_force_trust_server_cert|lower }}
+{% endif %}
+{% if gitea_mailer_use_client_cert is not none %}
+USE_CLIENT_CERT = {{ gitea_mailer_use_client_cert|lower }}
+{% endif %}
+{% if gitea_mailer_client_cert_file is not none %}
+CLIENT_CERT_FILE = {{ gitea_mailer_client_cert_file }}
+{% endif %}
+{% if gitea_mailer_client_key_file is not none %}
+CLIENT_KEY_FILE = {{ gitea_mailer_client_key_file }}
+{% endif %}
+{% if gitea_mailer_envelope_from is not none %}
+ENVELOPE_FROM = {{ gitea_mailer_envelope_from }}
+{% endif %}
+{% if gitea_mailer_from_display_name_format is not none %}
+FROM_DISPLAY_NAME_FORMAT = {{ gitea_mailer_from_display_name_format }}
+{% endif %}
+{% if gitea_mailer_send_as_plain_text is not none %}
+SEND_AS_PLAIN_TEXT = {{ gitea_mailer_send_as_plain_text|lower }}
+{% endif %}
+{% if gitea_mailer_sendmail_path is not none %}
+SENDMAIL_PATH = {{ gitea_mailer_sendmail_path }}
+{% endif %}
+{% if gitea_mailer_sendmail_args is not none %}
+SENDMAIL_ARGS = {{ gitea_mailer_sendmail_args }}
+{% endif %}
+{% if gitea_mailer_sendmail_timeout is not none %}
+SENDMAIL_TIMEOUT = {{ gitea_mailer_sendmail_timeout }}
+{% endif %}
+{% if gitea_mailer_sendmail_convert_crlf is not none %}
+SENDMAIL_CONVERT_CRLF = {{ gitea_mailer_sendmail_convert_crlf|lower }}
+{% endif %}
+{% if gitea_mailer_embed_attachment_images is not none %}
+EMBED_ATTACHMENT_IMAGES = {{ gitea_mailer_embed_attachment_images|lower }}
+{% endif %}
+{% if gitea_mailer_send_buffer_len is not none or gitea_mailer_subject_prefix is not none or gitea_mailer_protocol is not none or gitea_mailer_enable_helo is not none or gitea_mailer_helo_hostname is not none or gitea_mailer_force_trust_server_cert is not none or gitea_mailer_use_client_cert is not none or gitea_mailer_client_cert_file is not none or gitea_mailer_client_key_file is not none or gitea_mailer_envelope_from is not none or gitea_mailer_from_display_name_format is not none or gitea_mailer_send_as_plain_text is not none or gitea_mailer_sendmail_path is not none or gitea_mailer_sendmail_args is not none or gitea_mailer_sendmail_timeout is not none or gitea_mailer_sendmail_convert_crlf is not none or gitea_mailer_embed_attachment_images is not none %}
+
+{% endif %}
 [service]
 REGISTER_EMAIL_CONFIRM            = {{ gitea_service_register_email_confirm|lower }}
 ENABLE_NOTIFY_MAIL                = {{ gitea_service_enable_notify_mail|lower }}
@@ -55,18 +538,204 @@ DEFAULT_ALLOW_CREATE_ORGANIZATION = {{ gitea_service_default_allow_create_organi
 DEFAULT_ENABLE_TIMETRACKING       = {{ gitea_service_default_enable_timetracking|lower }}
 NO_REPLY_ADDRESS                  = {{ gitea_service_no_reply_address }}
 
+{% if gitea_service_active_code_live_minutes is not none %}
+ACTIVE_CODE_LIVE_MINUTES = {{ gitea_service_active_code_live_minutes }}
+{% endif %}
+{% if gitea_service_reset_passwd_code_live_minutes is not none %}
+RESET_PASSWD_CODE_LIVE_MINUTES = {{ gitea_service_reset_passwd_code_live_minutes }}
+{% endif %}
+{% if gitea_service_register_manual_confirm is not none %}
+REGISTER_MANUAL_CONFIRM = {{ gitea_service_register_manual_confirm|lower }}
+{% endif %}
+{% if gitea_service_email_domain_allowlist is not none %}
+EMAIL_DOMAIN_ALLOWLIST = {{ gitea_service_email_domain_allowlist }}
+{% endif %}
+{% if gitea_service_email_domain_blocklist is not none %}
+EMAIL_DOMAIN_BLOCKLIST = {{ gitea_service_email_domain_blocklist }}
+{% endif %}
+{% if gitea_service_allow_only_internal_registration is not none %}
+ALLOW_ONLY_INTERNAL_REGISTRATION = {{ gitea_service_allow_only_internal_registration|lower }}
+{% endif %}
+{% if gitea_service_enable_basic_authentication is not none %}
+ENABLE_BASIC_AUTHENTICATION = {{ gitea_service_enable_basic_authentication|lower }}
+{% endif %}
+{% if gitea_service_enable_password_signin_form is not none %}
+ENABLE_PASSWORD_SIGNIN_FORM = {{ gitea_service_enable_password_signin_form|lower }}
+{% endif %}
+{% if gitea_service_enable_passkey_authentication is not none %}
+ENABLE_PASSKEY_AUTHENTICATION = {{ gitea_service_enable_passkey_authentication|lower }}
+{% endif %}
+{% if gitea_service_enable_reverse_proxy_authentication is not none %}
+ENABLE_REVERSE_PROXY_AUTHENTICATION = {{ gitea_service_enable_reverse_proxy_authentication|lower }}
+{% endif %}
+{% if gitea_service_enable_reverse_proxy_authentication_api is not none %}
+ENABLE_REVERSE_PROXY_AUTHENTICATION_API = {{ gitea_service_enable_reverse_proxy_authentication_api|lower }}
+{% endif %}
+{% if gitea_service_enable_reverse_proxy_auto_registration is not none %}
+ENABLE_REVERSE_PROXY_AUTO_REGISTRATION = {{ gitea_service_enable_reverse_proxy_auto_registration|lower }}
+{% endif %}
+{% if gitea_service_enable_reverse_proxy_email is not none %}
+ENABLE_REVERSE_PROXY_EMAIL = {{ gitea_service_enable_reverse_proxy_email|lower }}
+{% endif %}
+{% if gitea_service_enable_reverse_proxy_full_name is not none %}
+ENABLE_REVERSE_PROXY_FULL_NAME = {{ gitea_service_enable_reverse_proxy_full_name|lower }}
+{% endif %}
+{% if gitea_service_require_captcha_for_login is not none %}
+REQUIRE_CAPTCHA_FOR_LOGIN = {{ gitea_service_require_captcha_for_login|lower }}
+{% endif %}
+{% if gitea_service_captcha_type is not none %}
+CAPTCHA_TYPE = {{ gitea_service_captcha_type }}
+{% endif %}
+{% if gitea_service_recaptcha_url is not none %}
+RECAPTCHA_URL = {{ gitea_service_recaptcha_url }}
+{% endif %}
+{% if gitea_service_recaptcha_secret is not none %}
+RECAPTCHA_SECRET = {{ gitea_service_recaptcha_secret }}
+{% endif %}
+{% if gitea_service_recaptcha_sitekey is not none %}
+RECAPTCHA_SITEKEY = {{ gitea_service_recaptcha_sitekey }}
+{% endif %}
+{% if gitea_service_hcaptcha_secret is not none %}
+HCAPTCHA_SECRET = {{ gitea_service_hcaptcha_secret }}
+{% endif %}
+{% if gitea_service_hcaptcha_sitekey is not none %}
+HCAPTCHA_SITEKEY = {{ gitea_service_hcaptcha_sitekey }}
+{% endif %}
+{% if gitea_service_mcaptcha_url is not none %}
+MCAPTCHA_URL = {{ gitea_service_mcaptcha_url }}
+{% endif %}
+{% if gitea_service_mcaptcha_secret is not none %}
+MCAPTCHA_SECRET = {{ gitea_service_mcaptcha_secret }}
+{% endif %}
+{% if gitea_service_mcaptcha_sitekey is not none %}
+MCAPTCHA_SITEKEY = {{ gitea_service_mcaptcha_sitekey }}
+{% endif %}
+{% if gitea_service_cf_turnstile_sitekey is not none %}
+CF_TURNSTILE_SITEKEY = {{ gitea_service_cf_turnstile_sitekey }}
+{% endif %}
+{% if gitea_service_cf_turnstile_secret is not none %}
+CF_TURNSTILE_SECRET = {{ gitea_service_cf_turnstile_secret }}
+{% endif %}
+{% if gitea_service_default_user_is_restricted is not none %}
+DEFAULT_USER_IS_RESTRICTED = {{ gitea_service_default_user_is_restricted|lower }}
+{% endif %}
+{% if gitea_service_default_user_visibility is not none %}
+DEFAULT_USER_VISIBILITY = {{ gitea_service_default_user_visibility }}
+{% endif %}
+{% if gitea_service_allowed_user_visibility_modes is not none %}
+ALLOWED_USER_VISIBILITY_MODES = {{ gitea_service_allowed_user_visibility_modes }}
+{% endif %}
+{% if gitea_service_default_org_visibility is not none %}
+DEFAULT_ORG_VISIBILITY = {{ gitea_service_default_org_visibility }}
+{% endif %}
+{% if gitea_service_default_org_member_visible is not none %}
+DEFAULT_ORG_MEMBER_VISIBLE = {{ gitea_service_default_org_member_visible|lower }}
+{% endif %}
+{% if gitea_service_default_enable_dependencies is not none %}
+DEFAULT_ENABLE_DEPENDENCIES = {{ gitea_service_default_enable_dependencies|lower }}
+{% endif %}
+{% if gitea_service_allow_cross_repository_dependencies is not none %}
+ALLOW_CROSS_REPOSITORY_DEPENDENCIES = {{ gitea_service_allow_cross_repository_dependencies|lower }}
+{% endif %}
+{% if gitea_service_enable_user_heatmap is not none %}
+ENABLE_USER_HEATMAP = {{ gitea_service_enable_user_heatmap|lower }}
+{% endif %}
+{% if gitea_service_enable_timetracking is not none %}
+ENABLE_TIMETRACKING = {{ gitea_service_enable_timetracking|lower }}
+{% endif %}
+{% if gitea_service_default_allow_only_contributors_to_track_time is not none %}
+DEFAULT_ALLOW_ONLY_CONTRIBUTORS_TO_TRACK_TIME = {{ gitea_service_default_allow_only_contributors_to_track_time|lower }}
+{% endif %}
+{% if gitea_service_show_registration_button is not none %}
+SHOW_REGISTRATION_BUTTON = {{ gitea_service_show_registration_button|lower }}
+{% endif %}
+{% if gitea_service_show_milestones_dashboard_page is not none %}
+SHOW_MILESTONES_DASHBOARD_PAGE = {{ gitea_service_show_milestones_dashboard_page|lower }}
+{% endif %}
+{% if gitea_service_auto_watch_new_repos is not none %}
+AUTO_WATCH_NEW_REPOS = {{ gitea_service_auto_watch_new_repos|lower }}
+{% endif %}
+{% if gitea_service_auto_watch_on_changes is not none %}
+AUTO_WATCH_ON_CHANGES = {{ gitea_service_auto_watch_on_changes|lower }}
+{% endif %}
+{% if gitea_service_user_delete_with_comments_max_time is not none %}
+USER_DELETE_WITH_COMMENTS_MAX_TIME = {{ gitea_service_user_delete_with_comments_max_time }}
+{% endif %}
+{% if gitea_service_valid_site_url_schemes is not none %}
+VALID_SITE_URL_SCHEMES = {{ gitea_service_valid_site_url_schemes }}
+{% endif %}
+{% if gitea_service_active_code_live_minutes is not none or gitea_service_reset_passwd_code_live_minutes is not none or gitea_service_register_manual_confirm is not none or gitea_service_email_domain_allowlist is not none or gitea_service_email_domain_blocklist is not none or gitea_service_allow_only_internal_registration is not none or gitea_service_enable_basic_authentication is not none or gitea_service_enable_password_signin_form is not none or gitea_service_enable_passkey_authentication is not none or gitea_service_enable_reverse_proxy_authentication is not none or gitea_service_enable_reverse_proxy_authentication_api is not none or gitea_service_enable_reverse_proxy_auto_registration is not none or gitea_service_enable_reverse_proxy_email is not none or gitea_service_enable_reverse_proxy_full_name is not none or gitea_service_require_captcha_for_login is not none or gitea_service_captcha_type is not none or gitea_service_recaptcha_url is not none or gitea_service_recaptcha_secret is not none or gitea_service_recaptcha_sitekey is not none or gitea_service_hcaptcha_secret is not none or gitea_service_hcaptcha_sitekey is not none or gitea_service_mcaptcha_url is not none or gitea_service_mcaptcha_secret is not none or gitea_service_mcaptcha_sitekey is not none or gitea_service_cf_turnstile_sitekey is not none or gitea_service_cf_turnstile_secret is not none or gitea_service_default_user_is_restricted is not none or gitea_service_default_user_visibility is not none or gitea_service_allowed_user_visibility_modes is not none or gitea_service_default_org_visibility is not none or gitea_service_default_org_member_visible is not none or gitea_service_default_enable_dependencies is not none or gitea_service_allow_cross_repository_dependencies is not none or gitea_service_enable_user_heatmap is not none or gitea_service_enable_timetracking is not none or gitea_service_default_allow_only_contributors_to_track_time is not none or gitea_service_show_registration_button is not none or gitea_service_show_milestones_dashboard_page is not none or gitea_service_auto_watch_new_repos is not none or gitea_service_auto_watch_on_changes is not none or gitea_service_user_delete_with_comments_max_time is not none or gitea_service_valid_site_url_schemes is not none %}
+
+{% endif %}
 [openid]
 ENABLE_OPENID_SIGNIN = {{ gitea_openid_enable_openid_signin|lower }}
 ENABLE_OPENID_SIGNUP = {{ gitea_openid_enable_openid_signup|lower }}
 
+{% if gitea_openid_whitelisted_uris is not none %}
+WHITELISTED_URIS = {{ gitea_openid_whitelisted_uris }}
+{% endif %}
+{% if gitea_openid_blacklisted_uris is not none %}
+BLACKLISTED_URIS = {{ gitea_openid_blacklisted_uris }}
+{% endif %}
+{% if gitea_openid_whitelisted_uris is not none or gitea_openid_blacklisted_uris is not none %}
+
+{% endif %}
 [session]
 PROVIDER = {{ gitea_session_provider}}
 
+{% if gitea_session_provider_config is not none %}
+PROVIDER_CONFIG = {{ gitea_session_provider_config }}
+{% endif %}
+{% if gitea_session_cookie_name is not none %}
+COOKIE_NAME = {{ gitea_session_cookie_name }}
+{% endif %}
+{% if gitea_session_cookie_secure is not none %}
+COOKIE_SECURE = {{ gitea_session_cookie_secure }}
+{% endif %}
+{% if gitea_session_gc_interval_time is not none %}
+GC_INTERVAL_TIME = {{ gitea_session_gc_interval_time }}
+{% endif %}
+{% if gitea_session_session_life_time is not none %}
+SESSION_LIFE_TIME = {{ gitea_session_session_life_time }}
+{% endif %}
+{% if gitea_session_same_site is not none %}
+SAME_SITE = {{ gitea_session_same_site }}
+{% endif %}
+{% if gitea_session_provider_config is not none or gitea_session_cookie_name is not none or gitea_session_cookie_secure is not none or gitea_session_gc_interval_time is not none or gitea_session_session_life_time is not none or gitea_session_same_site is not none %}
+
+{% endif %}
 [log]
 MODE      = {{ gitea_log_mode }}
 LEVEL     = {{ gitea_log_level }}
 ROOT_PATH = {{ gitea_log_root_path }}
 
+{% if gitea_log_stacktrace_level is not none %}
+STACKTRACE_LEVEL = {{ gitea_log_stacktrace_level }}
+{% endif %}
+{% if gitea_log_buffer_len is not none %}
+BUFFER_LEN = {{ gitea_log_buffer_len }}
+{% endif %}
+{% if gitea_log_logger_access_mode is not none %}
+logger.access.MODE = {{ gitea_log_logger_access_mode }}
+{% endif %}
+{% if gitea_log_logger_router_mode is not none %}
+logger.router.MODE = {{ gitea_log_logger_router_mode }}
+{% endif %}
+{% if gitea_log_logger_xorm_mode is not none %}
+logger.xorm.MODE = {{ gitea_log_logger_xorm_mode }}
+{% endif %}
+{% if gitea_log_enable_ssh_log is not none %}
+ENABLE_SSH_LOG = {{ gitea_log_enable_ssh_log|lower }}
+{% endif %}
+{% if gitea_log_request_id_headers is not none %}
+REQUEST_ID_HEADERS = {{ gitea_log_request_id_headers }}
+{% endif %}
+{% if gitea_log_access_log_template is not none %}
+ACCESS_LOG_TEMPLATE = {{ gitea_log_access_log_template }}
+{% endif %}
+{% if gitea_log_stacktrace_level is not none or gitea_log_buffer_len is not none or gitea_log_logger_access_mode is not none or gitea_log_logger_router_mode is not none or gitea_log_logger_xorm_mode is not none or gitea_log_enable_ssh_log is not none or gitea_log_request_id_headers is not none or gitea_log_access_log_template is not none %}
+
+{% endif %}
 [ui]
 EXPLORE_PAGING_NUM   = {{ gitea_ui_explore_paging_num }}
 ISSUE_PAGING_NUM     = {{ gitea_ui_issue_paging_num }}
@@ -74,10 +743,76 @@ FEED_MAX_COMMIT_NUM  = {{ gitea_ui_feed_max_commit_num }}
 GRAPH_MAX_COMMIT_NUM = {{ gitea_ui_graph_max_commit_num }}
 DEFAULT_THEME        = {{ gitea_ui_default_theme }}
 
+{% if gitea_ui_feed_paging_num is not none %}
+FEED_PAGING_NUM = {{ gitea_ui_feed_paging_num }}
+{% endif %}
+{% if gitea_ui_sitemap_paging_num is not none %}
+SITEMAP_PAGING_NUM = {{ gitea_ui_sitemap_paging_num }}
+{% endif %}
+{% if gitea_ui_code_comment_lines is not none %}
+CODE_COMMENT_LINES = {{ gitea_ui_code_comment_lines }}
+{% endif %}
+{% if gitea_ui_max_display_file_size is not none %}
+MAX_DISPLAY_FILE_SIZE = {{ gitea_ui_max_display_file_size }}
+{% endif %}
+{% if gitea_ui_ambiguous_unicode_detection is not none %}
+AMBIGUOUS_UNICODE_DETECTION = {{ gitea_ui_ambiguous_unicode_detection|lower }}
+{% endif %}
+{% if gitea_ui_show_user_email is not none %}
+SHOW_USER_EMAIL = {{ gitea_ui_show_user_email|lower }}
+{% endif %}
+{% if gitea_ui_themes is not none %}
+THEMES = {{ gitea_ui_themes }}
+{% endif %}
+{% if gitea_ui_file_icon_theme is not none %}
+FILE_ICON_THEME = {{ gitea_ui_file_icon_theme }}
+{% endif %}
+{% if gitea_ui_folder_icon_theme is not none %}
+FOLDER_ICON_THEME = {{ gitea_ui_folder_icon_theme }}
+{% endif %}
+{% if gitea_ui_reactions is not none %}
+REACTIONS = {{ gitea_ui_reactions }}
+{% endif %}
+{% if gitea_ui_reaction_max_user_num is not none %}
+REACTION_MAX_USER_NUM = {{ gitea_ui_reaction_max_user_num }}
+{% endif %}
+{% if gitea_ui_custom_emojis is not none %}
+CUSTOM_EMOJIS = {{ gitea_ui_custom_emojis }}
+{% endif %}
+{% if gitea_ui_enabled_emojis is not none %}
+ENABLED_EMOJIS = {{ gitea_ui_enabled_emojis }}
+{% endif %}
+{% if gitea_ui_default_show_full_name is not none %}
+DEFAULT_SHOW_FULL_NAME = {{ gitea_ui_default_show_full_name|lower }}
+{% endif %}
+{% if gitea_ui_search_repo_description is not none %}
+SEARCH_REPO_DESCRIPTION = {{ gitea_ui_search_repo_description|lower }}
+{% endif %}
+{% if gitea_ui_only_show_relevant_repos is not none %}
+ONLY_SHOW_RELEVANT_REPOS = {{ gitea_ui_only_show_relevant_repos|lower }}
+{% endif %}
+{% if gitea_ui_explore_paging_default_sort is not none %}
+EXPLORE_PAGING_DEFAULT_SORT = {{ gitea_ui_explore_paging_default_sort }}
+{% endif %}
+{% if gitea_ui_preferred_timestamp_tense is not none %}
+PREFERRED_TIMESTAMP_TENSE = {{ gitea_ui_preferred_timestamp_tense }}
+{% endif %}
+{% if gitea_ui_feed_paging_num is not none or gitea_ui_sitemap_paging_num is not none or gitea_ui_code_comment_lines is not none or gitea_ui_max_display_file_size is not none or gitea_ui_ambiguous_unicode_detection is not none or gitea_ui_show_user_email is not none or gitea_ui_themes is not none or gitea_ui_file_icon_theme is not none or gitea_ui_folder_icon_theme is not none or gitea_ui_reactions is not none or gitea_ui_reaction_max_user_num is not none or gitea_ui_custom_emojis is not none or gitea_ui_enabled_emojis is not none or gitea_ui_default_show_full_name is not none or gitea_ui_search_repo_description is not none or gitea_ui_only_show_relevant_repos is not none or gitea_ui_explore_paging_default_sort is not none or gitea_ui_preferred_timestamp_tense is not none %}
+
+{% endif %}
 [metrics]
 ENABLED = {{gitea_metrics_enabled|lower}}
 TOKEN   = {{gitea_metrics_token}}
 
+{% if gitea_metrics_enabled_issue_by_label is not none %}
+ENABLED_ISSUE_BY_LABEL = {{ gitea_metrics_enabled_issue_by_label|lower }}
+{% endif %}
+{% if gitea_metrics_enabled_issue_by_repository is not none %}
+ENABLED_ISSUE_BY_REPOSITORY = {{ gitea_metrics_enabled_issue_by_repository|lower }}
+{% endif %}
+{% if gitea_metrics_enabled_issue_by_label is not none or gitea_metrics_enabled_issue_by_repository is not none %}
+
+{% endif %}
 [webhook]
 
 QUEUE_LENGTH: {{ gitea_webhook_queue_length }}
@@ -103,3 +838,1697 @@ JWT_SIGNING_PRIVATE_KEY_FILE = {{ gitea_oauth2_jwt_signing_private_key_file }}
 MAX_TOKEN_LENGTH = {{ gitea_oauth2_max_token_length }}
 DEFAULT_APPLICATIONS = {{ gitea_oauth2_default_applications }}
 CUSTOM_SCHEMES = {{ gitea_oauth2_custom_schemes }}
+{% if gitea_oauth2_jwt_claim_issuer is not none %}
+JWT_CLAIM_ISSUER = {{ gitea_oauth2_jwt_claim_issuer }}
+{% endif %}
+{% if gitea_oauth2_jwt_claim_issuer is not none %}
+
+{% endif %}
+{% if gitea_camo_enabled is not none or gitea_camo_server_url is not none or gitea_camo_hmac_key is not none or gitea_camo_always is not none %}
+
+[camo]
+{% if gitea_camo_enabled is not none %}
+ENABLED = {{ gitea_camo_enabled|lower }}
+{% endif %}
+{% if gitea_camo_server_url is not none %}
+SERVER_URL = {{ gitea_camo_server_url }}
+{% endif %}
+{% if gitea_camo_hmac_key is not none %}
+HMAC_KEY = {{ gitea_camo_hmac_key }}
+{% endif %}
+{% if gitea_camo_always is not none %}
+ALWAYS = {{ gitea_camo_always|lower }}
+{% endif %}
+{% endif %}
+{% if gitea_log_console_stderr is not none %}
+
+[log.console]
+{% if gitea_log_console_stderr is not none %}
+STDERR = {{ gitea_log_console_stderr|lower }}
+{% endif %}
+{% endif %}
+{% if gitea_log_file_file_name is not none or gitea_log_file_log_rotate is not none or gitea_log_file_max_size_shift is not none or gitea_log_file_daily_rotate is not none or gitea_log_file_max_days is not none or gitea_log_file_compress is not none or gitea_log_file_compression_level is not none %}
+
+[log.file]
+{% if gitea_log_file_file_name is not none %}
+FILE_NAME = {{ gitea_log_file_file_name }}
+{% endif %}
+{% if gitea_log_file_log_rotate is not none %}
+LOG_ROTATE = {{ gitea_log_file_log_rotate|lower }}
+{% endif %}
+{% if gitea_log_file_max_size_shift is not none %}
+MAX_SIZE_SHIFT = {{ gitea_log_file_max_size_shift }}
+{% endif %}
+{% if gitea_log_file_daily_rotate is not none %}
+DAILY_ROTATE = {{ gitea_log_file_daily_rotate|lower }}
+{% endif %}
+{% if gitea_log_file_max_days is not none %}
+MAX_DAYS = {{ gitea_log_file_max_days }}
+{% endif %}
+{% if gitea_log_file_compress is not none %}
+COMPRESS = {{ gitea_log_file_compress|lower }}
+{% endif %}
+{% if gitea_log_file_compression_level is not none %}
+COMPRESSION_LEVEL = {{ gitea_log_file_compression_level }}
+{% endif %}
+{% endif %}
+{% if gitea_log_conn_reconnect_on_msg is not none or gitea_log_conn_reconnect is not none or gitea_log_conn_protocol is not none or gitea_log_conn_addr is not none %}
+
+[log.conn]
+{% if gitea_log_conn_reconnect_on_msg is not none %}
+RECONNECT_ON_MSG = {{ gitea_log_conn_reconnect_on_msg|lower }}
+{% endif %}
+{% if gitea_log_conn_reconnect is not none %}
+RECONNECT = {{ gitea_log_conn_reconnect|lower }}
+{% endif %}
+{% if gitea_log_conn_protocol is not none %}
+PROTOCOL = {{ gitea_log_conn_protocol }}
+{% endif %}
+{% if gitea_log_conn_addr is not none %}
+ADDR = {{ gitea_log_conn_addr }}
+{% endif %}
+{% endif %}
+{% if gitea_git_path is not none or gitea_git_home_path is not none or gitea_git_disable_diff_highlight is not none or gitea_git_max_git_diff_lines is not none or gitea_git_max_git_diff_line_characters is not none or gitea_git_max_git_diff_files is not none or gitea_git_commits_range_size is not none or gitea_git_branches_range_size is not none or gitea_git_gc_args is not none or gitea_git_enable_auto_git_wire_protocol is not none or gitea_git_pull_request_push_message is not none or gitea_git_large_object_threshold is not none or gitea_git_disable_core_protect_ntfs is not none or gitea_git_disable_partial_clone is not none or gitea_git_diff_rename_similarity_threshold is not none %}
+
+[git]
+{% if gitea_git_path is not none %}
+PATH = {{ gitea_git_path }}
+{% endif %}
+{% if gitea_git_home_path is not none %}
+HOME_PATH = {{ gitea_git_home_path }}
+{% endif %}
+{% if gitea_git_disable_diff_highlight is not none %}
+DISABLE_DIFF_HIGHLIGHT = {{ gitea_git_disable_diff_highlight|lower }}
+{% endif %}
+{% if gitea_git_max_git_diff_lines is not none %}
+MAX_GIT_DIFF_LINES = {{ gitea_git_max_git_diff_lines }}
+{% endif %}
+{% if gitea_git_max_git_diff_line_characters is not none %}
+MAX_GIT_DIFF_LINE_CHARACTERS = {{ gitea_git_max_git_diff_line_characters }}
+{% endif %}
+{% if gitea_git_max_git_diff_files is not none %}
+MAX_GIT_DIFF_FILES = {{ gitea_git_max_git_diff_files }}
+{% endif %}
+{% if gitea_git_commits_range_size is not none %}
+COMMITS_RANGE_SIZE = {{ gitea_git_commits_range_size }}
+{% endif %}
+{% if gitea_git_branches_range_size is not none %}
+BRANCHES_RANGE_SIZE = {{ gitea_git_branches_range_size }}
+{% endif %}
+{% if gitea_git_gc_args is not none %}
+GC_ARGS = {{ gitea_git_gc_args }}
+{% endif %}
+{% if gitea_git_enable_auto_git_wire_protocol is not none %}
+ENABLE_AUTO_GIT_WIRE_PROTOCOL = {{ gitea_git_enable_auto_git_wire_protocol|lower }}
+{% endif %}
+{% if gitea_git_pull_request_push_message is not none %}
+PULL_REQUEST_PUSH_MESSAGE = {{ gitea_git_pull_request_push_message|lower }}
+{% endif %}
+{% if gitea_git_large_object_threshold is not none %}
+LARGE_OBJECT_THRESHOLD = {{ gitea_git_large_object_threshold }}
+{% endif %}
+{% if gitea_git_disable_core_protect_ntfs is not none %}
+DISABLE_CORE_PROTECT_NTFS = {{ gitea_git_disable_core_protect_ntfs|lower }}
+{% endif %}
+{% if gitea_git_disable_partial_clone is not none %}
+DISABLE_PARTIAL_CLONE = {{ gitea_git_disable_partial_clone|lower }}
+{% endif %}
+{% if gitea_git_diff_rename_similarity_threshold is not none %}
+DIFF_RENAME_SIMILARITY_THRESHOLD = {{ gitea_git_diff_rename_similarity_threshold }}
+{% endif %}
+{% endif %}
+{% if gitea_git_timeout_migrate is not none or gitea_git_timeout_mirror is not none or gitea_git_timeout_gc is not none %}
+
+[git.timeout]
+{% if gitea_git_timeout_migrate is not none %}
+MIGRATE = {{ gitea_git_timeout_migrate }}
+{% endif %}
+{% if gitea_git_timeout_mirror is not none %}
+MIRROR = {{ gitea_git_timeout_mirror }}
+{% endif %}
+{% if gitea_git_timeout_gc is not none %}
+GC = {{ gitea_git_timeout_gc }}
+{% endif %}
+{% endif %}
+{% if gitea_git_config_diff_algorithm is not none or gitea_git_config_core_logallrefupdates is not none or gitea_git_config_gc_reflogexpire is not none %}
+
+[git.config]
+{% if gitea_git_config_diff_algorithm is not none %}
+diff.algorithm = {{ gitea_git_config_diff_algorithm }}
+{% endif %}
+{% if gitea_git_config_core_logallrefupdates is not none %}
+core.logAllRefUpdates = {{ gitea_git_config_core_logallrefupdates|lower }}
+{% endif %}
+{% if gitea_git_config_gc_reflogexpire is not none %}
+gc.reflogExpire = {{ gitea_git_config_gc_reflogexpire }}
+{% endif %}
+{% endif %}
+{% if gitea_service_explore_require_signin_view is not none or gitea_service_explore_disable_users_page is not none or gitea_service_explore_disable_organizations_page is not none or gitea_service_explore_disable_code_page is not none %}
+
+[service.explore]
+{% if gitea_service_explore_require_signin_view is not none %}
+REQUIRE_SIGNIN_VIEW = {{ gitea_service_explore_require_signin_view|lower }}
+{% endif %}
+{% if gitea_service_explore_disable_users_page is not none %}
+DISABLE_USERS_PAGE = {{ gitea_service_explore_disable_users_page|lower }}
+{% endif %}
+{% if gitea_service_explore_disable_organizations_page is not none %}
+DISABLE_ORGANIZATIONS_PAGE = {{ gitea_service_explore_disable_organizations_page|lower }}
+{% endif %}
+{% if gitea_service_explore_disable_code_page is not none %}
+DISABLE_CODE_PAGE = {{ gitea_service_explore_disable_code_page|lower }}
+{% endif %}
+{% endif %}
+{% if gitea_repository_editor_line_wrap_extensions is not none %}
+
+[repository.editor]
+{% if gitea_repository_editor_line_wrap_extensions is not none %}
+LINE_WRAP_EXTENSIONS = {{ gitea_repository_editor_line_wrap_extensions }}
+{% endif %}
+{% endif %}
+{% if gitea_repository_upload_enabled is not none or gitea_repository_upload_allowed_types is not none or gitea_repository_upload_file_max_size is not none or gitea_repository_upload_max_files is not none %}
+
+[repository.upload]
+{% if gitea_repository_upload_enabled is not none %}
+ENABLED = {{ gitea_repository_upload_enabled|lower }}
+{% endif %}
+{% if gitea_repository_upload_allowed_types is not none %}
+ALLOWED_TYPES = {{ gitea_repository_upload_allowed_types }}
+{% endif %}
+{% if gitea_repository_upload_file_max_size is not none %}
+FILE_MAX_SIZE = {{ gitea_repository_upload_file_max_size }}
+{% endif %}
+{% if gitea_repository_upload_max_files is not none %}
+MAX_FILES = {{ gitea_repository_upload_max_files }}
+{% endif %}
+{% endif %}
+{% if gitea_repository_pull_request_work_in_progress_prefixes is not none or gitea_repository_pull_request_close_keywords is not none or gitea_repository_pull_request_reopen_keywords is not none or gitea_repository_pull_request_default_merge_style is not none or gitea_repository_pull_request_default_merge_message_commits_limit is not none or gitea_repository_pull_request_default_merge_message_size is not none or gitea_repository_pull_request_default_merge_message_all_authors is not none or gitea_repository_pull_request_default_merge_message_max_approvers is not none or gitea_repository_pull_request_default_merge_message_official_approvers_only is not none or gitea_repository_pull_request_populate_squash_comment_with_commit_messages is not none or gitea_repository_pull_request_add_co_committer_trailers is not none or gitea_repository_pull_request_retarget_children_on_merge is not none or gitea_repository_pull_request_default_title_source is not none or gitea_repository_pull_request_delay_check_for_inactive_days is not none or gitea_repository_pull_request_default_delete_branch_after_merge is not none %}
+
+[repository.pull-request]
+{% if gitea_repository_pull_request_work_in_progress_prefixes is not none %}
+WORK_IN_PROGRESS_PREFIXES = {{ gitea_repository_pull_request_work_in_progress_prefixes }}
+{% endif %}
+{% if gitea_repository_pull_request_close_keywords is not none %}
+CLOSE_KEYWORDS = {{ gitea_repository_pull_request_close_keywords }}
+{% endif %}
+{% if gitea_repository_pull_request_reopen_keywords is not none %}
+REOPEN_KEYWORDS = {{ gitea_repository_pull_request_reopen_keywords }}
+{% endif %}
+{% if gitea_repository_pull_request_default_merge_style is not none %}
+DEFAULT_MERGE_STYLE = {{ gitea_repository_pull_request_default_merge_style }}
+{% endif %}
+{% if gitea_repository_pull_request_default_merge_message_commits_limit is not none %}
+DEFAULT_MERGE_MESSAGE_COMMITS_LIMIT = {{ gitea_repository_pull_request_default_merge_message_commits_limit }}
+{% endif %}
+{% if gitea_repository_pull_request_default_merge_message_size is not none %}
+DEFAULT_MERGE_MESSAGE_SIZE = {{ gitea_repository_pull_request_default_merge_message_size }}
+{% endif %}
+{% if gitea_repository_pull_request_default_merge_message_all_authors is not none %}
+DEFAULT_MERGE_MESSAGE_ALL_AUTHORS = {{ gitea_repository_pull_request_default_merge_message_all_authors|lower }}
+{% endif %}
+{% if gitea_repository_pull_request_default_merge_message_max_approvers is not none %}
+DEFAULT_MERGE_MESSAGE_MAX_APPROVERS = {{ gitea_repository_pull_request_default_merge_message_max_approvers }}
+{% endif %}
+{% if gitea_repository_pull_request_default_merge_message_official_approvers_only is not none %}
+DEFAULT_MERGE_MESSAGE_OFFICIAL_APPROVERS_ONLY = {{ gitea_repository_pull_request_default_merge_message_official_approvers_only|lower }}
+{% endif %}
+{% if gitea_repository_pull_request_populate_squash_comment_with_commit_messages is not none %}
+POPULATE_SQUASH_COMMENT_WITH_COMMIT_MESSAGES = {{ gitea_repository_pull_request_populate_squash_comment_with_commit_messages|lower }}
+{% endif %}
+{% if gitea_repository_pull_request_add_co_committer_trailers is not none %}
+ADD_CO_COMMITTER_TRAILERS = {{ gitea_repository_pull_request_add_co_committer_trailers|lower }}
+{% endif %}
+{% if gitea_repository_pull_request_retarget_children_on_merge is not none %}
+RETARGET_CHILDREN_ON_MERGE = {{ gitea_repository_pull_request_retarget_children_on_merge|lower }}
+{% endif %}
+{% if gitea_repository_pull_request_default_title_source is not none %}
+DEFAULT_TITLE_SOURCE = {{ gitea_repository_pull_request_default_title_source }}
+{% endif %}
+{% if gitea_repository_pull_request_delay_check_for_inactive_days is not none %}
+DELAY_CHECK_FOR_INACTIVE_DAYS = {{ gitea_repository_pull_request_delay_check_for_inactive_days }}
+{% endif %}
+{% if gitea_repository_pull_request_default_delete_branch_after_merge is not none %}
+DEFAULT_DELETE_BRANCH_AFTER_MERGE = {{ gitea_repository_pull_request_default_delete_branch_after_merge|lower }}
+{% endif %}
+{% endif %}
+{% if gitea_repository_issue_lock_reasons is not none or gitea_repository_issue_max_pinned is not none %}
+
+[repository.issue]
+{% if gitea_repository_issue_lock_reasons is not none %}
+LOCK_REASONS = {{ gitea_repository_issue_lock_reasons }}
+{% endif %}
+{% if gitea_repository_issue_max_pinned is not none %}
+MAX_PINNED = {{ gitea_repository_issue_max_pinned }}
+{% endif %}
+{% endif %}
+{% if gitea_repository_release_allowed_types is not none or gitea_repository_release_default_paging_num is not none or gitea_repository_release_file_max_size is not none or gitea_repository_release_max_files is not none %}
+
+[repository.release]
+{% if gitea_repository_release_allowed_types is not none %}
+ALLOWED_TYPES = {{ gitea_repository_release_allowed_types }}
+{% endif %}
+{% if gitea_repository_release_default_paging_num is not none %}
+DEFAULT_PAGING_NUM = {{ gitea_repository_release_default_paging_num }}
+{% endif %}
+{% if gitea_repository_release_file_max_size is not none %}
+FILE_MAX_SIZE = {{ gitea_repository_release_file_max_size }}
+{% endif %}
+{% if gitea_repository_release_max_files is not none %}
+MAX_FILES = {{ gitea_repository_release_max_files }}
+{% endif %}
+{% endif %}
+{% if gitea_repository_signing_signing_key is not none or gitea_repository_signing_signing_name is not none or gitea_repository_signing_signing_email is not none or gitea_repository_signing_signing_format is not none or gitea_repository_signing_default_trust_model is not none or gitea_repository_signing_initial_commit is not none or gitea_repository_signing_crud_actions is not none or gitea_repository_signing_wiki is not none or gitea_repository_signing_merges is not none or gitea_repository_signing_trusted_ssh_keys is not none %}
+
+[repository.signing]
+{% if gitea_repository_signing_signing_key is not none %}
+SIGNING_KEY = {{ gitea_repository_signing_signing_key }}
+{% endif %}
+{% if gitea_repository_signing_signing_name is not none %}
+SIGNING_NAME = {{ gitea_repository_signing_signing_name }}
+{% endif %}
+{% if gitea_repository_signing_signing_email is not none %}
+SIGNING_EMAIL = {{ gitea_repository_signing_signing_email }}
+{% endif %}
+{% if gitea_repository_signing_signing_format is not none %}
+SIGNING_FORMAT = {{ gitea_repository_signing_signing_format }}
+{% endif %}
+{% if gitea_repository_signing_default_trust_model is not none %}
+DEFAULT_TRUST_MODEL = {{ gitea_repository_signing_default_trust_model }}
+{% endif %}
+{% if gitea_repository_signing_initial_commit is not none %}
+INITIAL_COMMIT = {{ gitea_repository_signing_initial_commit }}
+{% endif %}
+{% if gitea_repository_signing_crud_actions is not none %}
+CRUD_ACTIONS = {{ gitea_repository_signing_crud_actions }}
+{% endif %}
+{% if gitea_repository_signing_wiki is not none %}
+WIKI = {{ gitea_repository_signing_wiki }}
+{% endif %}
+{% if gitea_repository_signing_merges is not none %}
+MERGES = {{ gitea_repository_signing_merges }}
+{% endif %}
+{% if gitea_repository_signing_trusted_ssh_keys is not none %}
+TRUSTED_SSH_KEYS = {{ gitea_repository_signing_trusted_ssh_keys }}
+{% endif %}
+{% endif %}
+{% if gitea_repository_mimetype_mapping__apk is not none %}
+
+[repository.mimetype_mapping]
+{% if gitea_repository_mimetype_mapping__apk is not none %}
+.apk = {{ gitea_repository_mimetype_mapping__apk }}
+{% endif %}
+{% endif %}
+{% if gitea_project_project_board_basic_kanban_type is not none or gitea_project_project_board_bug_triage_type is not none %}
+
+[project]
+{% if gitea_project_project_board_basic_kanban_type is not none %}
+PROJECT_BOARD_BASIC_KANBAN_TYPE = {{ gitea_project_project_board_basic_kanban_type }}
+{% endif %}
+{% if gitea_project_project_board_bug_triage_type is not none %}
+PROJECT_BOARD_BUG_TRIAGE_TYPE = {{ gitea_project_project_board_bug_triage_type }}
+{% endif %}
+{% endif %}
+{% if gitea_cors_enabled is not none or gitea_cors_allow_domain is not none or gitea_cors_methods is not none or gitea_cors_max_age is not none or gitea_cors_allow_credentials is not none or gitea_cors_headers is not none %}
+
+[cors]
+{% if gitea_cors_enabled is not none %}
+ENABLED = {{ gitea_cors_enabled|lower }}
+{% endif %}
+{% if gitea_cors_allow_domain is not none %}
+ALLOW_DOMAIN = {{ gitea_cors_allow_domain }}
+{% endif %}
+{% if gitea_cors_methods is not none %}
+METHODS = {{ gitea_cors_methods }}
+{% endif %}
+{% if gitea_cors_max_age is not none %}
+MAX_AGE = {{ gitea_cors_max_age }}
+{% endif %}
+{% if gitea_cors_allow_credentials is not none %}
+ALLOW_CREDENTIALS = {{ gitea_cors_allow_credentials|lower }}
+{% endif %}
+{% if gitea_cors_headers is not none %}
+HEADERS = {{ gitea_cors_headers }}
+{% endif %}
+{% endif %}
+{% if gitea_ui_admin_user_paging_num is not none or gitea_ui_admin_repo_paging_num is not none or gitea_ui_admin_notice_paging_num is not none or gitea_ui_admin_org_paging_num is not none %}
+
+[ui.admin]
+{% if gitea_ui_admin_user_paging_num is not none %}
+USER_PAGING_NUM = {{ gitea_ui_admin_user_paging_num }}
+{% endif %}
+{% if gitea_ui_admin_repo_paging_num is not none %}
+REPO_PAGING_NUM = {{ gitea_ui_admin_repo_paging_num }}
+{% endif %}
+{% if gitea_ui_admin_notice_paging_num is not none %}
+NOTICE_PAGING_NUM = {{ gitea_ui_admin_notice_paging_num }}
+{% endif %}
+{% if gitea_ui_admin_org_paging_num is not none %}
+ORG_PAGING_NUM = {{ gitea_ui_admin_org_paging_num }}
+{% endif %}
+{% endif %}
+{% if gitea_ui_user_repo_paging_num is not none or gitea_ui_user_org_paging_num is not none %}
+
+[ui.user]
+{% if gitea_ui_user_repo_paging_num is not none %}
+REPO_PAGING_NUM = {{ gitea_ui_user_repo_paging_num }}
+{% endif %}
+{% if gitea_ui_user_org_paging_num is not none %}
+ORG_PAGING_NUM = {{ gitea_ui_user_org_paging_num }}
+{% endif %}
+{% endif %}
+{% if gitea_ui_meta_author is not none or gitea_ui_meta_description is not none or gitea_ui_meta_keywords is not none %}
+
+[ui.meta]
+{% if gitea_ui_meta_author is not none %}
+AUTHOR = {{ gitea_ui_meta_author }}
+{% endif %}
+{% if gitea_ui_meta_description is not none %}
+DESCRIPTION = {{ gitea_ui_meta_description }}
+{% endif %}
+{% if gitea_ui_meta_keywords is not none %}
+KEYWORDS = {{ gitea_ui_meta_keywords }}
+{% endif %}
+{% endif %}
+{% if gitea_ui_notification_min_timeout is not none or gitea_ui_notification_max_timeout is not none or gitea_ui_notification_timeout_step is not none or gitea_ui_notification_event_source_update_time is not none %}
+
+[ui.notification]
+{% if gitea_ui_notification_min_timeout is not none %}
+MIN_TIMEOUT = {{ gitea_ui_notification_min_timeout }}
+{% endif %}
+{% if gitea_ui_notification_max_timeout is not none %}
+MAX_TIMEOUT = {{ gitea_ui_notification_max_timeout }}
+{% endif %}
+{% if gitea_ui_notification_timeout_step is not none %}
+TIMEOUT_STEP = {{ gitea_ui_notification_timeout_step }}
+{% endif %}
+{% if gitea_ui_notification_event_source_update_time is not none %}
+EVENT_SOURCE_UPDATE_TIME = {{ gitea_ui_notification_event_source_update_time }}
+{% endif %}
+{% endif %}
+{% if gitea_ui_svg_enable_render is not none %}
+
+[ui.svg]
+{% if gitea_ui_svg_enable_render is not none %}
+ENABLE_RENDER = {{ gitea_ui_svg_enable_render|lower }}
+{% endif %}
+{% endif %}
+{% if gitea_ui_csv_max_file_size is not none or gitea_ui_csv_max_rows is not none %}
+
+[ui.csv]
+{% if gitea_ui_csv_max_file_size is not none %}
+MAX_FILE_SIZE = {{ gitea_ui_csv_max_file_size }}
+{% endif %}
+{% if gitea_ui_csv_max_rows is not none %}
+MAX_ROWS = {{ gitea_ui_csv_max_rows }}
+{% endif %}
+{% endif %}
+{% if gitea_markdown_render_options_comment is not none or gitea_markdown_render_options_wiki is not none or gitea_markdown_render_options_repo_file is not none or gitea_markdown_custom_url_schemes is not none or gitea_markdown_file_extensions is not none or gitea_markdown_enable_math is not none or gitea_markdown_math_code_block_detection is not none %}
+
+[markdown]
+{% if gitea_markdown_render_options_comment is not none %}
+RENDER_OPTIONS_COMMENT = {{ gitea_markdown_render_options_comment }}
+{% endif %}
+{% if gitea_markdown_render_options_wiki is not none %}
+RENDER_OPTIONS_WIKI = {{ gitea_markdown_render_options_wiki }}
+{% endif %}
+{% if gitea_markdown_render_options_repo_file is not none %}
+RENDER_OPTIONS_REPO_FILE = {{ gitea_markdown_render_options_repo_file }}
+{% endif %}
+{% if gitea_markdown_custom_url_schemes is not none %}
+CUSTOM_URL_SCHEMES = {{ gitea_markdown_custom_url_schemes }}
+{% endif %}
+{% if gitea_markdown_file_extensions is not none %}
+FILE_EXTENSIONS = {{ gitea_markdown_file_extensions }}
+{% endif %}
+{% if gitea_markdown_enable_math is not none %}
+ENABLE_MATH = {{ gitea_markdown_enable_math|lower }}
+{% endif %}
+{% if gitea_markdown_math_code_block_detection is not none %}
+MATH_CODE_BLOCK_DETECTION = {{ gitea_markdown_math_code_block_detection }}
+{% endif %}
+{% endif %}
+{% if gitea_ssh_minimum_key_sizes_ed25519 is not none or gitea_ssh_minimum_key_sizes_ecdsa is not none or gitea_ssh_minimum_key_sizes_rsa is not none or gitea_ssh_minimum_key_sizes_dsa is not none %}
+
+[ssh.minimum_key_sizes]
+{% if gitea_ssh_minimum_key_sizes_ed25519 is not none %}
+ED25519 = {{ gitea_ssh_minimum_key_sizes_ed25519 }}
+{% endif %}
+{% if gitea_ssh_minimum_key_sizes_ecdsa is not none %}
+ECDSA = {{ gitea_ssh_minimum_key_sizes_ecdsa }}
+{% endif %}
+{% if gitea_ssh_minimum_key_sizes_rsa is not none %}
+RSA = {{ gitea_ssh_minimum_key_sizes_rsa }}
+{% endif %}
+{% if gitea_ssh_minimum_key_sizes_dsa is not none %}
+DSA = {{ gitea_ssh_minimum_key_sizes_dsa }}
+{% endif %}
+{% endif %}
+{% if gitea_indexer_issue_indexer_type is not none or gitea_indexer_issue_indexer_path is not none or gitea_indexer_issue_indexer_conn_str is not none or gitea_indexer_issue_indexer_name is not none or gitea_indexer_startup_timeout is not none or gitea_indexer_repo_indexer_enabled is not none or gitea_indexer_repo_indexer_repo_types is not none or gitea_indexer_repo_indexer_type is not none or gitea_indexer_repo_indexer_path is not none or gitea_indexer_repo_indexer_conn_str is not none or gitea_indexer_repo_indexer_name is not none or gitea_indexer_repo_indexer_include is not none or gitea_indexer_repo_indexer_exclude is not none or gitea_indexer_max_file_size is not none or gitea_indexer_type_bleve_max_fuzziness is not none %}
+
+[indexer]
+{% if gitea_indexer_issue_indexer_type is not none %}
+ISSUE_INDEXER_TYPE = {{ gitea_indexer_issue_indexer_type }}
+{% endif %}
+{% if gitea_indexer_issue_indexer_path is not none %}
+ISSUE_INDEXER_PATH = {{ gitea_indexer_issue_indexer_path }}
+{% endif %}
+{% if gitea_indexer_issue_indexer_conn_str is not none %}
+ISSUE_INDEXER_CONN_STR = {{ gitea_indexer_issue_indexer_conn_str }}
+{% endif %}
+{% if gitea_indexer_issue_indexer_name is not none %}
+ISSUE_INDEXER_NAME = {{ gitea_indexer_issue_indexer_name }}
+{% endif %}
+{% if gitea_indexer_startup_timeout is not none %}
+STARTUP_TIMEOUT = {{ gitea_indexer_startup_timeout }}
+{% endif %}
+{% if gitea_indexer_repo_indexer_enabled is not none %}
+REPO_INDEXER_ENABLED = {{ gitea_indexer_repo_indexer_enabled|lower }}
+{% endif %}
+{% if gitea_indexer_repo_indexer_repo_types is not none %}
+REPO_INDEXER_REPO_TYPES = {{ gitea_indexer_repo_indexer_repo_types }}
+{% endif %}
+{% if gitea_indexer_repo_indexer_type is not none %}
+REPO_INDEXER_TYPE = {{ gitea_indexer_repo_indexer_type }}
+{% endif %}
+{% if gitea_indexer_repo_indexer_path is not none %}
+REPO_INDEXER_PATH = {{ gitea_indexer_repo_indexer_path }}
+{% endif %}
+{% if gitea_indexer_repo_indexer_conn_str is not none %}
+REPO_INDEXER_CONN_STR = {{ gitea_indexer_repo_indexer_conn_str }}
+{% endif %}
+{% if gitea_indexer_repo_indexer_name is not none %}
+REPO_INDEXER_NAME = {{ gitea_indexer_repo_indexer_name }}
+{% endif %}
+{% if gitea_indexer_repo_indexer_include is not none %}
+REPO_INDEXER_INCLUDE = {{ gitea_indexer_repo_indexer_include }}
+{% endif %}
+{% if gitea_indexer_repo_indexer_exclude is not none %}
+REPO_INDEXER_EXCLUDE = {{ gitea_indexer_repo_indexer_exclude }}
+{% endif %}
+{% if gitea_indexer_max_file_size is not none %}
+MAX_FILE_SIZE = {{ gitea_indexer_max_file_size }}
+{% endif %}
+{% if gitea_indexer_type_bleve_max_fuzziness is not none %}
+TYPE_BLEVE_MAX_FUZZINESS = {{ gitea_indexer_type_bleve_max_fuzziness }}
+{% endif %}
+{% endif %}
+{% if gitea_queue_type is not none or gitea_queue_datadir is not none or gitea_queue_length is not none or gitea_queue_batch_length is not none or gitea_queue_conn_str is not none or gitea_queue_queue_name is not none or gitea_queue_set_name is not none or gitea_queue_max_workers is not none %}
+
+[queue]
+{% if gitea_queue_type is not none %}
+TYPE = {{ gitea_queue_type }}
+{% endif %}
+{% if gitea_queue_datadir is not none %}
+DATADIR = {{ gitea_queue_datadir }}
+{% endif %}
+{% if gitea_queue_length is not none %}
+LENGTH = {{ gitea_queue_length }}
+{% endif %}
+{% if gitea_queue_batch_length is not none %}
+BATCH_LENGTH = {{ gitea_queue_batch_length }}
+{% endif %}
+{% if gitea_queue_conn_str is not none %}
+CONN_STR = {{ gitea_queue_conn_str }}
+{% endif %}
+{% if gitea_queue_queue_name is not none %}
+QUEUE_NAME = {{ gitea_queue_queue_name }}
+{% endif %}
+{% if gitea_queue_set_name is not none %}
+SET_NAME = {{ gitea_queue_set_name }}
+{% endif %}
+{% if gitea_queue_max_workers is not none %}
+MAX_WORKERS = {{ gitea_queue_max_workers }}
+{% endif %}
+{% endif %}
+{% if gitea_admin_disable_regular_org_creation is not none or gitea_admin_default_email_notifications is not none or gitea_admin_user_disabled_features is not none %}
+
+[admin]
+{% if gitea_admin_disable_regular_org_creation is not none %}
+DISABLE_REGULAR_ORG_CREATION = {{ gitea_admin_disable_regular_org_creation|lower }}
+{% endif %}
+{% if gitea_admin_default_email_notifications is not none %}
+DEFAULT_EMAIL_NOTIFICATIONS = {{ gitea_admin_default_email_notifications }}
+{% endif %}
+{% if gitea_admin_user_disabled_features is not none %}
+USER_DISABLED_FEATURES = {{ gitea_admin_user_disabled_features }}
+{% endif %}
+{% endif %}
+{% if gitea_oauth2_client_register_email_confirm is not none or gitea_oauth2_client_openid_connect_scopes is not none or gitea_oauth2_client_enable_auto_registration is not none or gitea_oauth2_client_username is not none or gitea_oauth2_client_update_avatar is not none or gitea_oauth2_client_account_linking is not none %}
+
+[oauth2_client]
+{% if gitea_oauth2_client_register_email_confirm is not none %}
+REGISTER_EMAIL_CONFIRM = {{ gitea_oauth2_client_register_email_confirm }}
+{% endif %}
+{% if gitea_oauth2_client_openid_connect_scopes is not none %}
+OPENID_CONNECT_SCOPES = {{ gitea_oauth2_client_openid_connect_scopes }}
+{% endif %}
+{% if gitea_oauth2_client_enable_auto_registration is not none %}
+ENABLE_AUTO_REGISTRATION = {{ gitea_oauth2_client_enable_auto_registration|lower }}
+{% endif %}
+{% if gitea_oauth2_client_username is not none %}
+USERNAME = {{ gitea_oauth2_client_username }}
+{% endif %}
+{% if gitea_oauth2_client_update_avatar is not none %}
+UPDATE_AVATAR = {{ gitea_oauth2_client_update_avatar|lower }}
+{% endif %}
+{% if gitea_oauth2_client_account_linking is not none %}
+ACCOUNT_LINKING = {{ gitea_oauth2_client_account_linking }}
+{% endif %}
+{% endif %}
+{% if gitea_mailer_override_header_reply_to is not none or gitea_mailer_override_header_content_type is not none or gitea_mailer_override_header_in_reply_to is not none %}
+
+[mailer.override_header]
+{% if gitea_mailer_override_header_reply_to is not none %}
+Reply-To = {{ gitea_mailer_override_header_reply_to }}
+{% endif %}
+{% if gitea_mailer_override_header_content_type is not none %}
+Content-Type = {{ gitea_mailer_override_header_content_type }}
+{% endif %}
+{% if gitea_mailer_override_header_in_reply_to is not none %}
+In-Reply-To = {{ gitea_mailer_override_header_in_reply_to }}
+{% endif %}
+{% endif %}
+{% if gitea_email_incoming_enabled is not none or gitea_email_incoming_reply_to_address is not none or gitea_email_incoming_host is not none or gitea_email_incoming_port is not none or gitea_email_incoming_username is not none or gitea_email_incoming_password is not none or gitea_email_incoming_use_tls is not none or gitea_email_incoming_skip_tls_verify is not none or gitea_email_incoming_mailbox is not none or gitea_email_incoming_delete_handled_message is not none or gitea_email_incoming_maximum_message_size is not none %}
+
+[email.incoming]
+{% if gitea_email_incoming_enabled is not none %}
+ENABLED = {{ gitea_email_incoming_enabled|lower }}
+{% endif %}
+{% if gitea_email_incoming_reply_to_address is not none %}
+REPLY_TO_ADDRESS = {{ gitea_email_incoming_reply_to_address }}
+{% endif %}
+{% if gitea_email_incoming_host is not none %}
+HOST = {{ gitea_email_incoming_host }}
+{% endif %}
+{% if gitea_email_incoming_port is not none %}
+PORT = {{ gitea_email_incoming_port }}
+{% endif %}
+{% if gitea_email_incoming_username is not none %}
+USERNAME = {{ gitea_email_incoming_username }}
+{% endif %}
+{% if gitea_email_incoming_password is not none %}
+PASSWORD = {{ gitea_email_incoming_password }}
+{% endif %}
+{% if gitea_email_incoming_use_tls is not none %}
+USE_TLS = {{ gitea_email_incoming_use_tls|lower }}
+{% endif %}
+{% if gitea_email_incoming_skip_tls_verify is not none %}
+SKIP_TLS_VERIFY = {{ gitea_email_incoming_skip_tls_verify|lower }}
+{% endif %}
+{% if gitea_email_incoming_mailbox is not none %}
+MAILBOX = {{ gitea_email_incoming_mailbox }}
+{% endif %}
+{% if gitea_email_incoming_delete_handled_message is not none %}
+DELETE_HANDLED_MESSAGE = {{ gitea_email_incoming_delete_handled_message|lower }}
+{% endif %}
+{% if gitea_email_incoming_maximum_message_size is not none %}
+MAXIMUM_MESSAGE_SIZE = {{ gitea_email_incoming_maximum_message_size }}
+{% endif %}
+{% endif %}
+{% if gitea_cache_adapter is not none or gitea_cache_interval is not none or gitea_cache_host is not none or gitea_cache_item_ttl is not none %}
+
+[cache]
+{% if gitea_cache_adapter is not none %}
+ADAPTER = {{ gitea_cache_adapter }}
+{% endif %}
+{% if gitea_cache_interval is not none %}
+INTERVAL = {{ gitea_cache_interval }}
+{% endif %}
+{% if gitea_cache_host is not none %}
+HOST = {{ gitea_cache_host }}
+{% endif %}
+{% if gitea_cache_item_ttl is not none %}
+ITEM_TTL = {{ gitea_cache_item_ttl }}
+{% endif %}
+{% endif %}
+{% if gitea_cache_last_commit_item_ttl is not none or gitea_cache_last_commit_commits_count is not none %}
+
+[cache.last_commit]
+{% if gitea_cache_last_commit_item_ttl is not none %}
+ITEM_TTL = {{ gitea_cache_last_commit_item_ttl }}
+{% endif %}
+{% if gitea_cache_last_commit_commits_count is not none %}
+COMMITS_COUNT = {{ gitea_cache_last_commit_commits_count }}
+{% endif %}
+{% endif %}
+{% if gitea_picture_avatar_upload_path is not none or gitea_picture_repository_avatar_upload_path is not none or gitea_picture_repository_avatar_fallback is not none or gitea_picture_repository_avatar_fallback_image is not none or gitea_picture_avatar_max_width is not none or gitea_picture_avatar_max_height is not none or gitea_picture_avatar_rendered_size_factor is not none or gitea_picture_avatar_max_file_size is not none or gitea_picture_avatar_max_origin_size is not none or gitea_picture_gravatar_source is not none or gitea_picture_disable_gravatar_2 is not none or gitea_picture_enable_federated_avatar_2 is not none %}
+
+[picture]
+{% if gitea_picture_avatar_upload_path is not none %}
+AVATAR_UPLOAD_PATH = {{ gitea_picture_avatar_upload_path }}
+{% endif %}
+{% if gitea_picture_repository_avatar_upload_path is not none %}
+REPOSITORY_AVATAR_UPLOAD_PATH = {{ gitea_picture_repository_avatar_upload_path }}
+{% endif %}
+{% if gitea_picture_repository_avatar_fallback is not none %}
+REPOSITORY_AVATAR_FALLBACK = {{ gitea_picture_repository_avatar_fallback }}
+{% endif %}
+{% if gitea_picture_repository_avatar_fallback_image is not none %}
+REPOSITORY_AVATAR_FALLBACK_IMAGE = {{ gitea_picture_repository_avatar_fallback_image }}
+{% endif %}
+{% if gitea_picture_avatar_max_width is not none %}
+AVATAR_MAX_WIDTH = {{ gitea_picture_avatar_max_width }}
+{% endif %}
+{% if gitea_picture_avatar_max_height is not none %}
+AVATAR_MAX_HEIGHT = {{ gitea_picture_avatar_max_height }}
+{% endif %}
+{% if gitea_picture_avatar_rendered_size_factor is not none %}
+AVATAR_RENDERED_SIZE_FACTOR = {{ gitea_picture_avatar_rendered_size_factor }}
+{% endif %}
+{% if gitea_picture_avatar_max_file_size is not none %}
+AVATAR_MAX_FILE_SIZE = {{ gitea_picture_avatar_max_file_size }}
+{% endif %}
+{% if gitea_picture_avatar_max_origin_size is not none %}
+AVATAR_MAX_ORIGIN_SIZE = {{ gitea_picture_avatar_max_origin_size }}
+{% endif %}
+{% if gitea_picture_gravatar_source is not none %}
+GRAVATAR_SOURCE = {{ gitea_picture_gravatar_source }}
+{% endif %}
+{% if gitea_picture_disable_gravatar_2 is not none %}
+DISABLE_GRAVATAR = {{ gitea_picture_disable_gravatar_2|lower }}
+{% endif %}
+{% if gitea_picture_enable_federated_avatar_2 is not none %}
+ENABLE_FEDERATED_AVATAR = {{ gitea_picture_enable_federated_avatar_2|lower }}
+{% endif %}
+{% endif %}
+{% if gitea_attachment_enabled is not none or gitea_attachment_allowed_types is not none or gitea_attachment_max_size is not none or gitea_attachment_max_files is not none or gitea_attachment_storage_type is not none or gitea_attachment_serve_direct is not none or gitea_attachment_path is not none or gitea_attachment_minio_endpoint is not none or gitea_attachment_minio_access_key_id is not none or gitea_attachment_minio_secret_access_key is not none or gitea_attachment_minio_iam_endpoint is not none or gitea_attachment_minio_bucket is not none or gitea_attachment_minio_location is not none or gitea_attachment_minio_base_path is not none or gitea_attachment_minio_use_ssl is not none or gitea_attachment_minio_insecure_skip_verify is not none or gitea_attachment_minio_checksum_algorithm is not none or gitea_attachment_minio_bucket_lookup_type is not none or gitea_attachment_azure_blob_endpoint is not none or gitea_attachment_azure_blob_account_name is not none or gitea_attachment_azure_blob_account_key is not none or gitea_attachment_azure_blob_container is not none or gitea_attachment_azure_blob_base_path is not none %}
+
+[attachment]
+{% if gitea_attachment_enabled is not none %}
+ENABLED = {{ gitea_attachment_enabled|lower }}
+{% endif %}
+{% if gitea_attachment_allowed_types is not none %}
+ALLOWED_TYPES = {{ gitea_attachment_allowed_types }}
+{% endif %}
+{% if gitea_attachment_max_size is not none %}
+MAX_SIZE = {{ gitea_attachment_max_size }}
+{% endif %}
+{% if gitea_attachment_max_files is not none %}
+MAX_FILES = {{ gitea_attachment_max_files }}
+{% endif %}
+{% if gitea_attachment_storage_type is not none %}
+STORAGE_TYPE = {{ gitea_attachment_storage_type }}
+{% endif %}
+{% if gitea_attachment_serve_direct is not none %}
+SERVE_DIRECT = {{ gitea_attachment_serve_direct|lower }}
+{% endif %}
+{% if gitea_attachment_path is not none %}
+PATH = {{ gitea_attachment_path }}
+{% endif %}
+{% if gitea_attachment_minio_endpoint is not none %}
+MINIO_ENDPOINT = {{ gitea_attachment_minio_endpoint }}
+{% endif %}
+{% if gitea_attachment_minio_access_key_id is not none %}
+MINIO_ACCESS_KEY_ID = {{ gitea_attachment_minio_access_key_id }}
+{% endif %}
+{% if gitea_attachment_minio_secret_access_key is not none %}
+MINIO_SECRET_ACCESS_KEY = {{ gitea_attachment_minio_secret_access_key }}
+{% endif %}
+{% if gitea_attachment_minio_iam_endpoint is not none %}
+MINIO_IAM_ENDPOINT = {{ gitea_attachment_minio_iam_endpoint }}
+{% endif %}
+{% if gitea_attachment_minio_bucket is not none %}
+MINIO_BUCKET = {{ gitea_attachment_minio_bucket }}
+{% endif %}
+{% if gitea_attachment_minio_location is not none %}
+MINIO_LOCATION = {{ gitea_attachment_minio_location }}
+{% endif %}
+{% if gitea_attachment_minio_base_path is not none %}
+MINIO_BASE_PATH = {{ gitea_attachment_minio_base_path }}
+{% endif %}
+{% if gitea_attachment_minio_use_ssl is not none %}
+MINIO_USE_SSL = {{ gitea_attachment_minio_use_ssl|lower }}
+{% endif %}
+{% if gitea_attachment_minio_insecure_skip_verify is not none %}
+MINIO_INSECURE_SKIP_VERIFY = {{ gitea_attachment_minio_insecure_skip_verify|lower }}
+{% endif %}
+{% if gitea_attachment_minio_checksum_algorithm is not none %}
+MINIO_CHECKSUM_ALGORITHM = {{ gitea_attachment_minio_checksum_algorithm }}
+{% endif %}
+{% if gitea_attachment_minio_bucket_lookup_type is not none %}
+MINIO_BUCKET_LOOKUP_TYPE = {{ gitea_attachment_minio_bucket_lookup_type }}
+{% endif %}
+{% if gitea_attachment_azure_blob_endpoint is not none %}
+AZURE_BLOB_ENDPOINT = {{ gitea_attachment_azure_blob_endpoint }}
+{% endif %}
+{% if gitea_attachment_azure_blob_account_name is not none %}
+AZURE_BLOB_ACCOUNT_NAME = {{ gitea_attachment_azure_blob_account_name }}
+{% endif %}
+{% if gitea_attachment_azure_blob_account_key is not none %}
+AZURE_BLOB_ACCOUNT_KEY = {{ gitea_attachment_azure_blob_account_key }}
+{% endif %}
+{% if gitea_attachment_azure_blob_container is not none %}
+AZURE_BLOB_CONTAINER = {{ gitea_attachment_azure_blob_container }}
+{% endif %}
+{% if gitea_attachment_azure_blob_base_path is not none %}
+AZURE_BLOB_BASE_PATH = {{ gitea_attachment_azure_blob_base_path }}
+{% endif %}
+{% endif %}
+{% if gitea_time_default_ui_location is not none %}
+
+[time]
+{% if gitea_time_default_ui_location is not none %}
+DEFAULT_UI_LOCATION = {{ gitea_time_default_ui_location }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_enabled is not none or gitea_cron_run_at_start is not none %}
+
+[cron]
+{% if gitea_cron_enabled is not none %}
+ENABLED = {{ gitea_cron_enabled|lower }}
+{% endif %}
+{% if gitea_cron_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_run_at_start|lower }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_archive_cleanup_enabled is not none or gitea_cron_archive_cleanup_run_at_start is not none or gitea_cron_archive_cleanup_notice_on_success is not none or gitea_cron_archive_cleanup_schedule is not none or gitea_cron_archive_cleanup_older_than is not none %}
+
+[cron.archive_cleanup]
+{% if gitea_cron_archive_cleanup_enabled is not none %}
+ENABLED = {{ gitea_cron_archive_cleanup_enabled|lower }}
+{% endif %}
+{% if gitea_cron_archive_cleanup_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_archive_cleanup_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_archive_cleanup_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_archive_cleanup_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_archive_cleanup_schedule is not none %}
+SCHEDULE = {{ gitea_cron_archive_cleanup_schedule }}
+{% endif %}
+{% if gitea_cron_archive_cleanup_older_than is not none %}
+OLDER_THAN = {{ gitea_cron_archive_cleanup_older_than }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_update_mirrors_schedule is not none or gitea_cron_update_mirrors_enabled is not none or gitea_cron_update_mirrors_run_at_start is not none or gitea_cron_update_mirrors_notice_on_success is not none or gitea_cron_update_mirrors_pull_limit is not none or gitea_cron_update_mirrors_push_limit is not none %}
+
+[cron.update_mirrors]
+{% if gitea_cron_update_mirrors_schedule is not none %}
+SCHEDULE = {{ gitea_cron_update_mirrors_schedule }}
+{% endif %}
+{% if gitea_cron_update_mirrors_enabled is not none %}
+ENABLED = {{ gitea_cron_update_mirrors_enabled|lower }}
+{% endif %}
+{% if gitea_cron_update_mirrors_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_update_mirrors_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_update_mirrors_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_update_mirrors_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_update_mirrors_pull_limit is not none %}
+PULL_LIMIT = {{ gitea_cron_update_mirrors_pull_limit }}
+{% endif %}
+{% if gitea_cron_update_mirrors_push_limit is not none %}
+PUSH_LIMIT = {{ gitea_cron_update_mirrors_push_limit }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_repo_health_check_schedule is not none or gitea_cron_repo_health_check_enabled is not none or gitea_cron_repo_health_check_run_at_start is not none or gitea_cron_repo_health_check_notice_on_success is not none or gitea_cron_repo_health_check_timeout is not none or gitea_cron_repo_health_check_args is not none %}
+
+[cron.repo_health_check]
+{% if gitea_cron_repo_health_check_schedule is not none %}
+SCHEDULE = {{ gitea_cron_repo_health_check_schedule }}
+{% endif %}
+{% if gitea_cron_repo_health_check_enabled is not none %}
+ENABLED = {{ gitea_cron_repo_health_check_enabled|lower }}
+{% endif %}
+{% if gitea_cron_repo_health_check_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_repo_health_check_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_repo_health_check_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_repo_health_check_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_repo_health_check_timeout is not none %}
+TIMEOUT = {{ gitea_cron_repo_health_check_timeout }}
+{% endif %}
+{% if gitea_cron_repo_health_check_args is not none %}
+ARGS = {{ gitea_cron_repo_health_check_args }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_check_repo_stats_enabled is not none or gitea_cron_check_repo_stats_run_at_start is not none or gitea_cron_check_repo_stats_notice_on_success is not none or gitea_cron_check_repo_stats_schedule is not none %}
+
+[cron.check_repo_stats]
+{% if gitea_cron_check_repo_stats_enabled is not none %}
+ENABLED = {{ gitea_cron_check_repo_stats_enabled|lower }}
+{% endif %}
+{% if gitea_cron_check_repo_stats_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_check_repo_stats_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_check_repo_stats_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_check_repo_stats_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_check_repo_stats_schedule is not none %}
+SCHEDULE = {{ gitea_cron_check_repo_stats_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_update_migration_poster_id_enabled is not none or gitea_cron_update_migration_poster_id_run_at_start is not none or gitea_cron_update_migration_poster_id_notice_on_success is not none or gitea_cron_update_migration_poster_id_schedule is not none %}
+
+[cron.update_migration_poster_id]
+{% if gitea_cron_update_migration_poster_id_enabled is not none %}
+ENABLED = {{ gitea_cron_update_migration_poster_id_enabled|lower }}
+{% endif %}
+{% if gitea_cron_update_migration_poster_id_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_update_migration_poster_id_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_update_migration_poster_id_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_update_migration_poster_id_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_update_migration_poster_id_schedule is not none %}
+SCHEDULE = {{ gitea_cron_update_migration_poster_id_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_sync_external_users_enabled is not none or gitea_cron_sync_external_users_run_at_start is not none or gitea_cron_sync_external_users_notice_on_success is not none or gitea_cron_sync_external_users_schedule is not none or gitea_cron_sync_external_users_update_existing is not none %}
+
+[cron.sync_external_users]
+{% if gitea_cron_sync_external_users_enabled is not none %}
+ENABLED = {{ gitea_cron_sync_external_users_enabled|lower }}
+{% endif %}
+{% if gitea_cron_sync_external_users_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_sync_external_users_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_sync_external_users_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_sync_external_users_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_sync_external_users_schedule is not none %}
+SCHEDULE = {{ gitea_cron_sync_external_users_schedule }}
+{% endif %}
+{% if gitea_cron_sync_external_users_update_existing is not none %}
+UPDATE_EXISTING = {{ gitea_cron_sync_external_users_update_existing|lower }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_cleanup_actions_enabled is not none or gitea_cron_cleanup_actions_run_at_start is not none or gitea_cron_cleanup_actions_schedule is not none %}
+
+[cron.cleanup_actions]
+{% if gitea_cron_cleanup_actions_enabled is not none %}
+ENABLED = {{ gitea_cron_cleanup_actions_enabled|lower }}
+{% endif %}
+{% if gitea_cron_cleanup_actions_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_cleanup_actions_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_cleanup_actions_schedule is not none %}
+SCHEDULE = {{ gitea_cron_cleanup_actions_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_deleted_branches_cleanup_enabled is not none or gitea_cron_deleted_branches_cleanup_run_at_start is not none or gitea_cron_deleted_branches_cleanup_notice_on_success is not none or gitea_cron_deleted_branches_cleanup_schedule is not none or gitea_cron_deleted_branches_cleanup_older_than is not none %}
+
+[cron.deleted_branches_cleanup]
+{% if gitea_cron_deleted_branches_cleanup_enabled is not none %}
+ENABLED = {{ gitea_cron_deleted_branches_cleanup_enabled|lower }}
+{% endif %}
+{% if gitea_cron_deleted_branches_cleanup_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_deleted_branches_cleanup_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_deleted_branches_cleanup_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_deleted_branches_cleanup_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_deleted_branches_cleanup_schedule is not none %}
+SCHEDULE = {{ gitea_cron_deleted_branches_cleanup_schedule }}
+{% endif %}
+{% if gitea_cron_deleted_branches_cleanup_older_than is not none %}
+OLDER_THAN = {{ gitea_cron_deleted_branches_cleanup_older_than }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_cleanup_hook_task_table_enabled is not none or gitea_cron_cleanup_hook_task_table_run_at_start is not none or gitea_cron_cleanup_hook_task_table_schedule is not none or gitea_cron_cleanup_hook_task_table_cleanup_type is not none or gitea_cron_cleanup_hook_task_table_older_than is not none or gitea_cron_cleanup_hook_task_table_number_to_keep is not none %}
+
+[cron.cleanup_hook_task_table]
+{% if gitea_cron_cleanup_hook_task_table_enabled is not none %}
+ENABLED = {{ gitea_cron_cleanup_hook_task_table_enabled|lower }}
+{% endif %}
+{% if gitea_cron_cleanup_hook_task_table_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_cleanup_hook_task_table_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_cleanup_hook_task_table_schedule is not none %}
+SCHEDULE = {{ gitea_cron_cleanup_hook_task_table_schedule }}
+{% endif %}
+{% if gitea_cron_cleanup_hook_task_table_cleanup_type is not none %}
+CLEANUP_TYPE = {{ gitea_cron_cleanup_hook_task_table_cleanup_type }}
+{% endif %}
+{% if gitea_cron_cleanup_hook_task_table_older_than is not none %}
+OLDER_THAN = {{ gitea_cron_cleanup_hook_task_table_older_than }}
+{% endif %}
+{% if gitea_cron_cleanup_hook_task_table_number_to_keep is not none %}
+NUMBER_TO_KEEP = {{ gitea_cron_cleanup_hook_task_table_number_to_keep }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_cleanup_packages_enabled is not none or gitea_cron_cleanup_packages_run_at_start is not none or gitea_cron_cleanup_packages_notice_on_success is not none or gitea_cron_cleanup_packages_schedule is not none or gitea_cron_cleanup_packages_older_than is not none %}
+
+[cron.cleanup_packages]
+{% if gitea_cron_cleanup_packages_enabled is not none %}
+ENABLED = {{ gitea_cron_cleanup_packages_enabled|lower }}
+{% endif %}
+{% if gitea_cron_cleanup_packages_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_cleanup_packages_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_cleanup_packages_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_cleanup_packages_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_cleanup_packages_schedule is not none %}
+SCHEDULE = {{ gitea_cron_cleanup_packages_schedule }}
+{% endif %}
+{% if gitea_cron_cleanup_packages_older_than is not none %}
+OLDER_THAN = {{ gitea_cron_cleanup_packages_older_than }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_sync_repo_licenses_enabled is not none or gitea_cron_sync_repo_licenses_run_at_start is not none or gitea_cron_sync_repo_licenses_notice_on_success is not none or gitea_cron_sync_repo_licenses_schedule is not none %}
+
+[cron.sync_repo_licenses]
+{% if gitea_cron_sync_repo_licenses_enabled is not none %}
+ENABLED = {{ gitea_cron_sync_repo_licenses_enabled|lower }}
+{% endif %}
+{% if gitea_cron_sync_repo_licenses_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_sync_repo_licenses_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_sync_repo_licenses_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_sync_repo_licenses_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_sync_repo_licenses_schedule is not none %}
+SCHEDULE = {{ gitea_cron_sync_repo_licenses_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_delete_inactive_accounts_enabled is not none or gitea_cron_delete_inactive_accounts_run_at_start is not none or gitea_cron_delete_inactive_accounts_notice_on_success is not none or gitea_cron_delete_inactive_accounts_schedule is not none or gitea_cron_delete_inactive_accounts_older_than is not none %}
+
+[cron.delete_inactive_accounts]
+{% if gitea_cron_delete_inactive_accounts_enabled is not none %}
+ENABLED = {{ gitea_cron_delete_inactive_accounts_enabled|lower }}
+{% endif %}
+{% if gitea_cron_delete_inactive_accounts_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_delete_inactive_accounts_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_delete_inactive_accounts_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_delete_inactive_accounts_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_delete_inactive_accounts_schedule is not none %}
+SCHEDULE = {{ gitea_cron_delete_inactive_accounts_schedule }}
+{% endif %}
+{% if gitea_cron_delete_inactive_accounts_older_than is not none %}
+OLDER_THAN = {{ gitea_cron_delete_inactive_accounts_older_than }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_delete_repo_archives_enabled is not none or gitea_cron_delete_repo_archives_run_at_start is not none or gitea_cron_delete_repo_archives_notice_on_success is not none or gitea_cron_delete_repo_archives_schedule is not none %}
+
+[cron.delete_repo_archives]
+{% if gitea_cron_delete_repo_archives_enabled is not none %}
+ENABLED = {{ gitea_cron_delete_repo_archives_enabled|lower }}
+{% endif %}
+{% if gitea_cron_delete_repo_archives_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_delete_repo_archives_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_delete_repo_archives_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_delete_repo_archives_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_delete_repo_archives_schedule is not none %}
+SCHEDULE = {{ gitea_cron_delete_repo_archives_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_git_gc_repos_enabled is not none or gitea_cron_git_gc_repos_run_at_start is not none or gitea_cron_git_gc_repos_notice_on_success is not none or gitea_cron_git_gc_repos_schedule is not none or gitea_cron_git_gc_repos_timeout is not none or gitea_cron_git_gc_repos_args is not none %}
+
+[cron.git_gc_repos]
+{% if gitea_cron_git_gc_repos_enabled is not none %}
+ENABLED = {{ gitea_cron_git_gc_repos_enabled|lower }}
+{% endif %}
+{% if gitea_cron_git_gc_repos_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_git_gc_repos_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_git_gc_repos_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_git_gc_repos_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_git_gc_repos_schedule is not none %}
+SCHEDULE = {{ gitea_cron_git_gc_repos_schedule }}
+{% endif %}
+{% if gitea_cron_git_gc_repos_timeout is not none %}
+TIMEOUT = {{ gitea_cron_git_gc_repos_timeout }}
+{% endif %}
+{% if gitea_cron_git_gc_repos_args is not none %}
+ARGS = {{ gitea_cron_git_gc_repos_args }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_resync_all_sshkeys_enabled is not none or gitea_cron_resync_all_sshkeys_run_at_start is not none or gitea_cron_resync_all_sshkeys_notice_on_success is not none or gitea_cron_resync_all_sshkeys_schedule is not none %}
+
+[cron.resync_all_sshkeys]
+{% if gitea_cron_resync_all_sshkeys_enabled is not none %}
+ENABLED = {{ gitea_cron_resync_all_sshkeys_enabled|lower }}
+{% endif %}
+{% if gitea_cron_resync_all_sshkeys_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_resync_all_sshkeys_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_resync_all_sshkeys_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_resync_all_sshkeys_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_resync_all_sshkeys_schedule is not none %}
+SCHEDULE = {{ gitea_cron_resync_all_sshkeys_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_resync_all_sshprincipals_enabled is not none or gitea_cron_resync_all_sshprincipals_run_at_start is not none or gitea_cron_resync_all_sshprincipals_notice_on_success is not none or gitea_cron_resync_all_sshprincipals_schedule is not none %}
+
+[cron.resync_all_sshprincipals]
+{% if gitea_cron_resync_all_sshprincipals_enabled is not none %}
+ENABLED = {{ gitea_cron_resync_all_sshprincipals_enabled|lower }}
+{% endif %}
+{% if gitea_cron_resync_all_sshprincipals_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_resync_all_sshprincipals_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_resync_all_sshprincipals_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_resync_all_sshprincipals_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_resync_all_sshprincipals_schedule is not none %}
+SCHEDULE = {{ gitea_cron_resync_all_sshprincipals_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_resync_all_hooks_enabled is not none or gitea_cron_resync_all_hooks_run_at_start is not none or gitea_cron_resync_all_hooks_notice_on_success is not none or gitea_cron_resync_all_hooks_schedule is not none %}
+
+[cron.resync_all_hooks]
+{% if gitea_cron_resync_all_hooks_enabled is not none %}
+ENABLED = {{ gitea_cron_resync_all_hooks_enabled|lower }}
+{% endif %}
+{% if gitea_cron_resync_all_hooks_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_resync_all_hooks_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_resync_all_hooks_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_resync_all_hooks_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_resync_all_hooks_schedule is not none %}
+SCHEDULE = {{ gitea_cron_resync_all_hooks_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_reinit_missing_repos_enabled is not none or gitea_cron_reinit_missing_repos_run_at_start is not none or gitea_cron_reinit_missing_repos_notice_on_success is not none or gitea_cron_reinit_missing_repos_schedule is not none %}
+
+[cron.reinit_missing_repos]
+{% if gitea_cron_reinit_missing_repos_enabled is not none %}
+ENABLED = {{ gitea_cron_reinit_missing_repos_enabled|lower }}
+{% endif %}
+{% if gitea_cron_reinit_missing_repos_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_reinit_missing_repos_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_reinit_missing_repos_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_reinit_missing_repos_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_reinit_missing_repos_schedule is not none %}
+SCHEDULE = {{ gitea_cron_reinit_missing_repos_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_delete_missing_repos_enabled is not none or gitea_cron_delete_missing_repos_run_at_start is not none or gitea_cron_delete_missing_repos_notice_on_success is not none or gitea_cron_delete_missing_repos_schedule is not none %}
+
+[cron.delete_missing_repos]
+{% if gitea_cron_delete_missing_repos_enabled is not none %}
+ENABLED = {{ gitea_cron_delete_missing_repos_enabled|lower }}
+{% endif %}
+{% if gitea_cron_delete_missing_repos_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_delete_missing_repos_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_delete_missing_repos_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_delete_missing_repos_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_delete_missing_repos_schedule is not none %}
+SCHEDULE = {{ gitea_cron_delete_missing_repos_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_delete_generated_repository_avatars_enabled is not none or gitea_cron_delete_generated_repository_avatars_run_at_start is not none or gitea_cron_delete_generated_repository_avatars_notice_on_success is not none or gitea_cron_delete_generated_repository_avatars_schedule is not none %}
+
+[cron.delete_generated_repository_avatars]
+{% if gitea_cron_delete_generated_repository_avatars_enabled is not none %}
+ENABLED = {{ gitea_cron_delete_generated_repository_avatars_enabled|lower }}
+{% endif %}
+{% if gitea_cron_delete_generated_repository_avatars_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_delete_generated_repository_avatars_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_delete_generated_repository_avatars_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_delete_generated_repository_avatars_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_delete_generated_repository_avatars_schedule is not none %}
+SCHEDULE = {{ gitea_cron_delete_generated_repository_avatars_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_delete_old_actions_enabled is not none or gitea_cron_delete_old_actions_run_at_start is not none or gitea_cron_delete_old_actions_notice_on_success is not none or gitea_cron_delete_old_actions_schedule is not none or gitea_cron_delete_old_actions_older_than is not none %}
+
+[cron.delete_old_actions]
+{% if gitea_cron_delete_old_actions_enabled is not none %}
+ENABLED = {{ gitea_cron_delete_old_actions_enabled|lower }}
+{% endif %}
+{% if gitea_cron_delete_old_actions_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_delete_old_actions_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_delete_old_actions_notice_on_success is not none %}
+NOTICE_ON_SUCCESS = {{ gitea_cron_delete_old_actions_notice_on_success|lower }}
+{% endif %}
+{% if gitea_cron_delete_old_actions_schedule is not none %}
+SCHEDULE = {{ gitea_cron_delete_old_actions_schedule }}
+{% endif %}
+{% if gitea_cron_delete_old_actions_older_than is not none %}
+OLDER_THAN = {{ gitea_cron_delete_old_actions_older_than }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_update_checker_enabled is not none or gitea_cron_update_checker_run_at_start is not none or gitea_cron_update_checker_enable_success_notice is not none or gitea_cron_update_checker_schedule is not none or gitea_cron_update_checker_http_endpoint is not none %}
+
+[cron.update_checker]
+{% if gitea_cron_update_checker_enabled is not none %}
+ENABLED = {{ gitea_cron_update_checker_enabled|lower }}
+{% endif %}
+{% if gitea_cron_update_checker_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_update_checker_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_update_checker_enable_success_notice is not none %}
+ENABLE_SUCCESS_NOTICE = {{ gitea_cron_update_checker_enable_success_notice|lower }}
+{% endif %}
+{% if gitea_cron_update_checker_schedule is not none %}
+SCHEDULE = {{ gitea_cron_update_checker_schedule }}
+{% endif %}
+{% if gitea_cron_update_checker_http_endpoint is not none %}
+HTTP_ENDPOINT = {{ gitea_cron_update_checker_http_endpoint }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_delete_old_system_notices_enabled is not none or gitea_cron_delete_old_system_notices_run_at_start is not none or gitea_cron_delete_old_system_notices_no_success_notice is not none or gitea_cron_delete_old_system_notices_schedule is not none or gitea_cron_delete_old_system_notices_older_than is not none %}
+
+[cron.delete_old_system_notices]
+{% if gitea_cron_delete_old_system_notices_enabled is not none %}
+ENABLED = {{ gitea_cron_delete_old_system_notices_enabled|lower }}
+{% endif %}
+{% if gitea_cron_delete_old_system_notices_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_delete_old_system_notices_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_delete_old_system_notices_no_success_notice is not none %}
+NO_SUCCESS_NOTICE = {{ gitea_cron_delete_old_system_notices_no_success_notice|lower }}
+{% endif %}
+{% if gitea_cron_delete_old_system_notices_schedule is not none %}
+SCHEDULE = {{ gitea_cron_delete_old_system_notices_schedule }}
+{% endif %}
+{% if gitea_cron_delete_old_system_notices_older_than is not none %}
+OLDER_THAN = {{ gitea_cron_delete_old_system_notices_older_than }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_gc_lfs_enabled is not none or gitea_cron_gc_lfs_run_at_start is not none or gitea_cron_gc_lfs_schedule is not none or gitea_cron_gc_lfs_older_than is not none or gitea_cron_gc_lfs_last_updated_more_than_ago is not none or gitea_cron_gc_lfs_number_to_check_per_repo is not none or gitea_cron_gc_lfs_proportion_to_check_per_repo is not none %}
+
+[cron.gc_lfs]
+{% if gitea_cron_gc_lfs_enabled is not none %}
+ENABLED = {{ gitea_cron_gc_lfs_enabled|lower }}
+{% endif %}
+{% if gitea_cron_gc_lfs_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_gc_lfs_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_gc_lfs_schedule is not none %}
+SCHEDULE = {{ gitea_cron_gc_lfs_schedule }}
+{% endif %}
+{% if gitea_cron_gc_lfs_older_than is not none %}
+OLDER_THAN = {{ gitea_cron_gc_lfs_older_than }}
+{% endif %}
+{% if gitea_cron_gc_lfs_last_updated_more_than_ago is not none %}
+LAST_UPDATED_MORE_THAN_AGO = {{ gitea_cron_gc_lfs_last_updated_more_than_ago }}
+{% endif %}
+{% if gitea_cron_gc_lfs_number_to_check_per_repo is not none %}
+NUMBER_TO_CHECK_PER_REPO = {{ gitea_cron_gc_lfs_number_to_check_per_repo }}
+{% endif %}
+{% if gitea_cron_gc_lfs_proportion_to_check_per_repo is not none %}
+PROPORTION_TO_CHECK_PER_REPO = {{ gitea_cron_gc_lfs_proportion_to_check_per_repo }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_rebuild_issue_indexer_enabled is not none or gitea_cron_rebuild_issue_indexer_run_at_start is not none or gitea_cron_rebuild_issue_indexer_no_success_notice is not none or gitea_cron_rebuild_issue_indexer_schedule is not none %}
+
+[cron.rebuild_issue_indexer]
+{% if gitea_cron_rebuild_issue_indexer_enabled is not none %}
+ENABLED = {{ gitea_cron_rebuild_issue_indexer_enabled|lower }}
+{% endif %}
+{% if gitea_cron_rebuild_issue_indexer_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_rebuild_issue_indexer_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_rebuild_issue_indexer_no_success_notice is not none %}
+NO_SUCCESS_NOTICE = {{ gitea_cron_rebuild_issue_indexer_no_success_notice|lower }}
+{% endif %}
+{% if gitea_cron_rebuild_issue_indexer_schedule is not none %}
+SCHEDULE = {{ gitea_cron_rebuild_issue_indexer_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_stop_zombie_tasks_enabled is not none or gitea_cron_stop_zombie_tasks_run_at_start is not none or gitea_cron_stop_zombie_tasks_no_success_notice is not none or gitea_cron_stop_zombie_tasks_schedule is not none %}
+
+[cron.stop_zombie_tasks]
+{% if gitea_cron_stop_zombie_tasks_enabled is not none %}
+ENABLED = {{ gitea_cron_stop_zombie_tasks_enabled|lower }}
+{% endif %}
+{% if gitea_cron_stop_zombie_tasks_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_stop_zombie_tasks_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_stop_zombie_tasks_no_success_notice is not none %}
+NO_SUCCESS_NOTICE = {{ gitea_cron_stop_zombie_tasks_no_success_notice|lower }}
+{% endif %}
+{% if gitea_cron_stop_zombie_tasks_schedule is not none %}
+SCHEDULE = {{ gitea_cron_stop_zombie_tasks_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_stop_endless_tasks_enabled is not none or gitea_cron_stop_endless_tasks_run_at_start is not none or gitea_cron_stop_endless_tasks_no_success_notice is not none or gitea_cron_stop_endless_tasks_schedule is not none %}
+
+[cron.stop_endless_tasks]
+{% if gitea_cron_stop_endless_tasks_enabled is not none %}
+ENABLED = {{ gitea_cron_stop_endless_tasks_enabled|lower }}
+{% endif %}
+{% if gitea_cron_stop_endless_tasks_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_stop_endless_tasks_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_stop_endless_tasks_no_success_notice is not none %}
+NO_SUCCESS_NOTICE = {{ gitea_cron_stop_endless_tasks_no_success_notice|lower }}
+{% endif %}
+{% if gitea_cron_stop_endless_tasks_schedule is not none %}
+SCHEDULE = {{ gitea_cron_stop_endless_tasks_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_cancel_abandoned_jobs_enabled is not none or gitea_cron_cancel_abandoned_jobs_run_at_start is not none or gitea_cron_cancel_abandoned_jobs_no_success_notice is not none or gitea_cron_cancel_abandoned_jobs_schedule is not none %}
+
+[cron.cancel_abandoned_jobs]
+{% if gitea_cron_cancel_abandoned_jobs_enabled is not none %}
+ENABLED = {{ gitea_cron_cancel_abandoned_jobs_enabled|lower }}
+{% endif %}
+{% if gitea_cron_cancel_abandoned_jobs_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_cancel_abandoned_jobs_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_cancel_abandoned_jobs_no_success_notice is not none %}
+NO_SUCCESS_NOTICE = {{ gitea_cron_cancel_abandoned_jobs_no_success_notice|lower }}
+{% endif %}
+{% if gitea_cron_cancel_abandoned_jobs_schedule is not none %}
+SCHEDULE = {{ gitea_cron_cancel_abandoned_jobs_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_cron_start_schedule_tasks_enabled is not none or gitea_cron_start_schedule_tasks_run_at_start is not none or gitea_cron_start_schedule_tasks_no_success_notice is not none or gitea_cron_start_schedule_tasks_schedule is not none %}
+
+[cron.start_schedule_tasks]
+{% if gitea_cron_start_schedule_tasks_enabled is not none %}
+ENABLED = {{ gitea_cron_start_schedule_tasks_enabled|lower }}
+{% endif %}
+{% if gitea_cron_start_schedule_tasks_run_at_start is not none %}
+RUN_AT_START = {{ gitea_cron_start_schedule_tasks_run_at_start|lower }}
+{% endif %}
+{% if gitea_cron_start_schedule_tasks_no_success_notice is not none %}
+NO_SUCCESS_NOTICE = {{ gitea_cron_start_schedule_tasks_no_success_notice|lower }}
+{% endif %}
+{% if gitea_cron_start_schedule_tasks_schedule is not none %}
+SCHEDULE = {{ gitea_cron_start_schedule_tasks_schedule }}
+{% endif %}
+{% endif %}
+{% if gitea_mirror_enabled is not none or gitea_mirror_disable_new_pull is not none or gitea_mirror_disable_new_push is not none or gitea_mirror_default_interval is not none or gitea_mirror_min_interval is not none %}
+
+[mirror]
+{% if gitea_mirror_enabled is not none %}
+ENABLED = {{ gitea_mirror_enabled|lower }}
+{% endif %}
+{% if gitea_mirror_disable_new_pull is not none %}
+DISABLE_NEW_PULL = {{ gitea_mirror_disable_new_pull|lower }}
+{% endif %}
+{% if gitea_mirror_disable_new_push is not none %}
+DISABLE_NEW_PUSH = {{ gitea_mirror_disable_new_push|lower }}
+{% endif %}
+{% if gitea_mirror_default_interval is not none %}
+DEFAULT_INTERVAL = {{ gitea_mirror_default_interval }}
+{% endif %}
+{% if gitea_mirror_min_interval is not none %}
+MIN_INTERVAL = {{ gitea_mirror_min_interval }}
+{% endif %}
+{% endif %}
+{% if gitea_api_enable_swagger is not none or gitea_api_max_response_items is not none or gitea_api_default_paging_num is not none or gitea_api_default_git_trees_per_page is not none or gitea_api_default_max_blob_size is not none or gitea_api_default_max_response_size is not none %}
+
+[api]
+{% if gitea_api_enable_swagger is not none %}
+ENABLE_SWAGGER = {{ gitea_api_enable_swagger|lower }}
+{% endif %}
+{% if gitea_api_max_response_items is not none %}
+MAX_RESPONSE_ITEMS = {{ gitea_api_max_response_items }}
+{% endif %}
+{% if gitea_api_default_paging_num is not none %}
+DEFAULT_PAGING_NUM = {{ gitea_api_default_paging_num }}
+{% endif %}
+{% if gitea_api_default_git_trees_per_page is not none %}
+DEFAULT_GIT_TREES_PER_PAGE = {{ gitea_api_default_git_trees_per_page }}
+{% endif %}
+{% if gitea_api_default_max_blob_size is not none %}
+DEFAULT_MAX_BLOB_SIZE = {{ gitea_api_default_max_blob_size }}
+{% endif %}
+{% if gitea_api_default_max_response_size is not none %}
+DEFAULT_MAX_RESPONSE_SIZE = {{ gitea_api_default_max_response_size }}
+{% endif %}
+{% endif %}
+{% if gitea_i18n_langs is not none or gitea_i18n_names is not none %}
+
+[i18n]
+{% if gitea_i18n_langs is not none %}
+LANGS = {{ gitea_i18n_langs }}
+{% endif %}
+{% if gitea_i18n_names is not none %}
+NAMES = {{ gitea_i18n_names }}
+{% endif %}
+{% endif %}
+{% if gitea_other_show_footer_version is not none or gitea_other_show_footer_template_load_time is not none or gitea_other_show_footer_powered_by is not none or gitea_other_enable_sitemap is not none or gitea_other_enable_feed is not none %}
+
+[other]
+{% if gitea_other_show_footer_version is not none %}
+SHOW_FOOTER_VERSION = {{ gitea_other_show_footer_version|lower }}
+{% endif %}
+{% if gitea_other_show_footer_template_load_time is not none %}
+SHOW_FOOTER_TEMPLATE_LOAD_TIME = {{ gitea_other_show_footer_template_load_time|lower }}
+{% endif %}
+{% if gitea_other_show_footer_powered_by is not none %}
+SHOW_FOOTER_POWERED_BY = {{ gitea_other_show_footer_powered_by|lower }}
+{% endif %}
+{% if gitea_other_enable_sitemap is not none %}
+ENABLE_SITEMAP = {{ gitea_other_enable_sitemap|lower }}
+{% endif %}
+{% if gitea_other_enable_feed is not none %}
+ENABLE_FEED = {{ gitea_other_enable_feed|lower }}
+{% endif %}
+{% endif %}
+{% if gitea_markup_mermaid_max_source_characters is not none %}
+
+[markup]
+{% if gitea_markup_mermaid_max_source_characters is not none %}
+MERMAID_MAX_SOURCE_CHARACTERS = {{ gitea_markup_mermaid_max_source_characters }}
+{% endif %}
+{% endif %}
+{% if gitea_markup_sanitizer_1_element is not none or gitea_markup_sanitizer_1_allow_attr is not none or gitea_markup_sanitizer_1_regexp is not none %}
+
+[markup.sanitizer.1]
+{% if gitea_markup_sanitizer_1_element is not none %}
+ELEMENT = {{ gitea_markup_sanitizer_1_element }}
+{% endif %}
+{% if gitea_markup_sanitizer_1_allow_attr is not none %}
+ALLOW_ATTR = {{ gitea_markup_sanitizer_1_allow_attr }}
+{% endif %}
+{% if gitea_markup_sanitizer_1_regexp is not none %}
+REGEXP = {{ gitea_markup_sanitizer_1_regexp }}
+{% endif %}
+{% endif %}
+{% if gitea_markup_asciidoc_enabled is not none or gitea_markup_asciidoc_file_extensions is not none or gitea_markup_asciidoc_render_command is not none or gitea_markup_asciidoc_is_input_file is not none or gitea_markup_asciidoc_render_content_mode is not none or gitea_markup_asciidoc_render_content_sandbox is not none or gitea_markup_asciidoc_need_post_process is not none %}
+
+[markup.asciidoc]
+{% if gitea_markup_asciidoc_enabled is not none %}
+ENABLED = {{ gitea_markup_asciidoc_enabled|lower }}
+{% endif %}
+{% if gitea_markup_asciidoc_file_extensions is not none %}
+FILE_EXTENSIONS = {{ gitea_markup_asciidoc_file_extensions }}
+{% endif %}
+{% if gitea_markup_asciidoc_render_command is not none %}
+RENDER_COMMAND = {{ gitea_markup_asciidoc_render_command }}
+{% endif %}
+{% if gitea_markup_asciidoc_is_input_file is not none %}
+IS_INPUT_FILE = {{ gitea_markup_asciidoc_is_input_file|lower }}
+{% endif %}
+{% if gitea_markup_asciidoc_render_content_mode is not none %}
+RENDER_CONTENT_MODE = {{ gitea_markup_asciidoc_render_content_mode }}
+{% endif %}
+{% if gitea_markup_asciidoc_render_content_sandbox is not none %}
+RENDER_CONTENT_SANDBOX = {{ gitea_markup_asciidoc_render_content_sandbox }}
+{% endif %}
+{% if gitea_markup_asciidoc_need_post_process is not none %}
+NEED_POST_PROCESS = {{ gitea_markup_asciidoc_need_post_process|lower }}
+{% endif %}
+{% endif %}
+{% if gitea_migrations_max_attempts is not none or gitea_migrations_retry_backoff is not none or gitea_migrations_allowed_domains is not none or gitea_migrations_blocked_domains is not none or gitea_migrations_allow_localnetworks is not none %}
+
+[migrations]
+{% if gitea_migrations_max_attempts is not none %}
+MAX_ATTEMPTS = {{ gitea_migrations_max_attempts }}
+{% endif %}
+{% if gitea_migrations_retry_backoff is not none %}
+RETRY_BACKOFF = {{ gitea_migrations_retry_backoff }}
+{% endif %}
+{% if gitea_migrations_allowed_domains is not none %}
+ALLOWED_DOMAINS = {{ gitea_migrations_allowed_domains }}
+{% endif %}
+{% if gitea_migrations_blocked_domains is not none %}
+BLOCKED_DOMAINS = {{ gitea_migrations_blocked_domains }}
+{% endif %}
+{% if gitea_migrations_allow_localnetworks is not none %}
+ALLOW_LOCALNETWORKS = {{ gitea_migrations_allow_localnetworks|lower }}
+{% endif %}
+{% endif %}
+{% if gitea_federation_enabled is not none or gitea_federation_share_user_statistics is not none or gitea_federation_max_size is not none or gitea_federation_algorithms is not none or gitea_federation_digest_algorithm is not none or gitea_federation_get_headers is not none or gitea_federation_post_headers is not none %}
+
+[federation]
+{% if gitea_federation_enabled is not none %}
+ENABLED = {{ gitea_federation_enabled|lower }}
+{% endif %}
+{% if gitea_federation_share_user_statistics is not none %}
+SHARE_USER_STATISTICS = {{ gitea_federation_share_user_statistics|lower }}
+{% endif %}
+{% if gitea_federation_max_size is not none %}
+MAX_SIZE = {{ gitea_federation_max_size }}
+{% endif %}
+{% if gitea_federation_algorithms is not none %}
+ALGORITHMS = {{ gitea_federation_algorithms }}
+{% endif %}
+{% if gitea_federation_digest_algorithm is not none %}
+DIGEST_ALGORITHM = {{ gitea_federation_digest_algorithm }}
+{% endif %}
+{% if gitea_federation_get_headers is not none %}
+GET_HEADERS = {{ gitea_federation_get_headers }}
+{% endif %}
+{% if gitea_federation_post_headers is not none %}
+POST_HEADERS = {{ gitea_federation_post_headers }}
+{% endif %}
+{% endif %}
+{% if gitea_packages_enabled is not none or gitea_packages_storage_type is not none or gitea_packages_minio_base_path is not none or gitea_packages_azure_blob_base_path is not none or gitea_packages_serve_direct is not none or gitea_packages_limit_total_owner_count is not none or gitea_packages_limit_total_owner_size is not none or gitea_packages_limit_size_alpine is not none or gitea_packages_limit_size_cargo is not none or gitea_packages_limit_size_chef is not none or gitea_packages_limit_size_composer is not none or gitea_packages_limit_size_conan is not none or gitea_packages_limit_size_conda is not none or gitea_packages_limit_size_container is not none or gitea_packages_limit_size_cran is not none or gitea_packages_limit_size_debian is not none or gitea_packages_limit_size_generic is not none or gitea_packages_limit_size_go is not none or gitea_packages_limit_size_helm is not none or gitea_packages_limit_size_maven is not none or gitea_packages_limit_size_npm is not none or gitea_packages_limit_size_nuget is not none or gitea_packages_limit_size_pub is not none or gitea_packages_limit_size_pypi is not none or gitea_packages_limit_size_rpm is not none or gitea_packages_limit_size_rubygems is not none or gitea_packages_limit_size_swift is not none or gitea_packages_limit_size_vagrant is not none or gitea_packages_limit_size_terraform_state is not none or gitea_packages_default_rpm_sign_enabled is not none %}
+
+[packages]
+{% if gitea_packages_enabled is not none %}
+ENABLED = {{ gitea_packages_enabled|lower }}
+{% endif %}
+{% if gitea_packages_storage_type is not none %}
+STORAGE_TYPE = {{ gitea_packages_storage_type }}
+{% endif %}
+{% if gitea_packages_minio_base_path is not none %}
+MINIO_BASE_PATH = {{ gitea_packages_minio_base_path }}
+{% endif %}
+{% if gitea_packages_azure_blob_base_path is not none %}
+AZURE_BLOB_BASE_PATH = {{ gitea_packages_azure_blob_base_path }}
+{% endif %}
+{% if gitea_packages_serve_direct is not none %}
+SERVE_DIRECT = {{ gitea_packages_serve_direct|lower }}
+{% endif %}
+{% if gitea_packages_limit_total_owner_count is not none %}
+LIMIT_TOTAL_OWNER_COUNT = {{ gitea_packages_limit_total_owner_count }}
+{% endif %}
+{% if gitea_packages_limit_total_owner_size is not none %}
+LIMIT_TOTAL_OWNER_SIZE = {{ gitea_packages_limit_total_owner_size }}
+{% endif %}
+{% if gitea_packages_limit_size_alpine is not none %}
+LIMIT_SIZE_ALPINE = {{ gitea_packages_limit_size_alpine }}
+{% endif %}
+{% if gitea_packages_limit_size_cargo is not none %}
+LIMIT_SIZE_CARGO = {{ gitea_packages_limit_size_cargo }}
+{% endif %}
+{% if gitea_packages_limit_size_chef is not none %}
+LIMIT_SIZE_CHEF = {{ gitea_packages_limit_size_chef }}
+{% endif %}
+{% if gitea_packages_limit_size_composer is not none %}
+LIMIT_SIZE_COMPOSER = {{ gitea_packages_limit_size_composer }}
+{% endif %}
+{% if gitea_packages_limit_size_conan is not none %}
+LIMIT_SIZE_CONAN = {{ gitea_packages_limit_size_conan }}
+{% endif %}
+{% if gitea_packages_limit_size_conda is not none %}
+LIMIT_SIZE_CONDA = {{ gitea_packages_limit_size_conda }}
+{% endif %}
+{% if gitea_packages_limit_size_container is not none %}
+LIMIT_SIZE_CONTAINER = {{ gitea_packages_limit_size_container }}
+{% endif %}
+{% if gitea_packages_limit_size_cran is not none %}
+LIMIT_SIZE_CRAN = {{ gitea_packages_limit_size_cran }}
+{% endif %}
+{% if gitea_packages_limit_size_debian is not none %}
+LIMIT_SIZE_DEBIAN = {{ gitea_packages_limit_size_debian }}
+{% endif %}
+{% if gitea_packages_limit_size_generic is not none %}
+LIMIT_SIZE_GENERIC = {{ gitea_packages_limit_size_generic }}
+{% endif %}
+{% if gitea_packages_limit_size_go is not none %}
+LIMIT_SIZE_GO = {{ gitea_packages_limit_size_go }}
+{% endif %}
+{% if gitea_packages_limit_size_helm is not none %}
+LIMIT_SIZE_HELM = {{ gitea_packages_limit_size_helm }}
+{% endif %}
+{% if gitea_packages_limit_size_maven is not none %}
+LIMIT_SIZE_MAVEN = {{ gitea_packages_limit_size_maven }}
+{% endif %}
+{% if gitea_packages_limit_size_npm is not none %}
+LIMIT_SIZE_NPM = {{ gitea_packages_limit_size_npm }}
+{% endif %}
+{% if gitea_packages_limit_size_nuget is not none %}
+LIMIT_SIZE_NUGET = {{ gitea_packages_limit_size_nuget }}
+{% endif %}
+{% if gitea_packages_limit_size_pub is not none %}
+LIMIT_SIZE_PUB = {{ gitea_packages_limit_size_pub }}
+{% endif %}
+{% if gitea_packages_limit_size_pypi is not none %}
+LIMIT_SIZE_PYPI = {{ gitea_packages_limit_size_pypi }}
+{% endif %}
+{% if gitea_packages_limit_size_rpm is not none %}
+LIMIT_SIZE_RPM = {{ gitea_packages_limit_size_rpm }}
+{% endif %}
+{% if gitea_packages_limit_size_rubygems is not none %}
+LIMIT_SIZE_RUBYGEMS = {{ gitea_packages_limit_size_rubygems }}
+{% endif %}
+{% if gitea_packages_limit_size_swift is not none %}
+LIMIT_SIZE_SWIFT = {{ gitea_packages_limit_size_swift }}
+{% endif %}
+{% if gitea_packages_limit_size_vagrant is not none %}
+LIMIT_SIZE_VAGRANT = {{ gitea_packages_limit_size_vagrant }}
+{% endif %}
+{% if gitea_packages_limit_size_terraform_state is not none %}
+LIMIT_SIZE_TERRAFORM_STATE = {{ gitea_packages_limit_size_terraform_state }}
+{% endif %}
+{% if gitea_packages_default_rpm_sign_enabled is not none %}
+DEFAULT_RPM_SIGN_ENABLED = {{ gitea_packages_default_rpm_sign_enabled|lower }}
+{% endif %}
+{% endif %}
+{% if gitea_storage_storage_type is not none %}
+
+[storage]
+{% if gitea_storage_storage_type is not none %}
+STORAGE_TYPE = {{ gitea_storage_storage_type }}
+{% endif %}
+{% endif %}
+{% if gitea_repo_archive_storage_type is not none or gitea_repo_archive_path is not none or gitea_repo_archive_minio_base_path is not none or gitea_repo_archive_azure_blob_base_path is not none %}
+
+[repo-archive]
+{% if gitea_repo_archive_storage_type is not none %}
+STORAGE_TYPE = {{ gitea_repo_archive_storage_type }}
+{% endif %}
+{% if gitea_repo_archive_path is not none %}
+PATH = {{ gitea_repo_archive_path }}
+{% endif %}
+{% if gitea_repo_archive_minio_base_path is not none %}
+MINIO_BASE_PATH = {{ gitea_repo_archive_minio_base_path }}
+{% endif %}
+{% if gitea_repo_archive_azure_blob_base_path is not none %}
+AZURE_BLOB_BASE_PATH = {{ gitea_repo_archive_azure_blob_base_path }}
+{% endif %}
+{% endif %}
+{% if gitea_storage_repo_archive_storage_type is not none %}
+
+[storage.repo-archive]
+{% if gitea_storage_repo_archive_storage_type is not none %}
+STORAGE_TYPE = {{ gitea_storage_repo_archive_storage_type }}
+{% endif %}
+{% endif %}
+{% if gitea_lfs_client_batch_size is not none or gitea_lfs_client_batch_operation_concurrency is not none %}
+
+[lfs_client]
+{% if gitea_lfs_client_batch_size is not none %}
+BATCH_SIZE = {{ gitea_lfs_client_batch_size }}
+{% endif %}
+{% if gitea_lfs_client_batch_operation_concurrency is not none %}
+BATCH_OPERATION_CONCURRENCY = {{ gitea_lfs_client_batch_operation_concurrency }}
+{% endif %}
+{% endif %}
+{% if gitea_storage_packages_storage_type is not none %}
+
+[storage.packages]
+{% if gitea_storage_packages_storage_type is not none %}
+STORAGE_TYPE = {{ gitea_storage_packages_storage_type }}
+{% endif %}
+{% endif %}
+{% if gitea_storage_minio_storage_type is not none or gitea_storage_minio_minio_endpoint is not none or gitea_storage_minio_minio_access_key_id is not none or gitea_storage_minio_minio_secret_access_key is not none or gitea_storage_minio_minio_iam_endpoint is not none or gitea_storage_minio_minio_bucket is not none or gitea_storage_minio_minio_location is not none or gitea_storage_minio_minio_use_ssl is not none or gitea_storage_minio_minio_insecure_skip_verify is not none or gitea_storage_minio_minio_bucket_lookup_type is not none %}
+
+[storage.minio]
+{% if gitea_storage_minio_storage_type is not none %}
+STORAGE_TYPE = {{ gitea_storage_minio_storage_type }}
+{% endif %}
+{% if gitea_storage_minio_minio_endpoint is not none %}
+MINIO_ENDPOINT = {{ gitea_storage_minio_minio_endpoint }}
+{% endif %}
+{% if gitea_storage_minio_minio_access_key_id is not none %}
+MINIO_ACCESS_KEY_ID = {{ gitea_storage_minio_minio_access_key_id }}
+{% endif %}
+{% if gitea_storage_minio_minio_secret_access_key is not none %}
+MINIO_SECRET_ACCESS_KEY = {{ gitea_storage_minio_minio_secret_access_key }}
+{% endif %}
+{% if gitea_storage_minio_minio_iam_endpoint is not none %}
+MINIO_IAM_ENDPOINT = {{ gitea_storage_minio_minio_iam_endpoint }}
+{% endif %}
+{% if gitea_storage_minio_minio_bucket is not none %}
+MINIO_BUCKET = {{ gitea_storage_minio_minio_bucket }}
+{% endif %}
+{% if gitea_storage_minio_minio_location is not none %}
+MINIO_LOCATION = {{ gitea_storage_minio_minio_location }}
+{% endif %}
+{% if gitea_storage_minio_minio_use_ssl is not none %}
+MINIO_USE_SSL = {{ gitea_storage_minio_minio_use_ssl|lower }}
+{% endif %}
+{% if gitea_storage_minio_minio_insecure_skip_verify is not none %}
+MINIO_INSECURE_SKIP_VERIFY = {{ gitea_storage_minio_minio_insecure_skip_verify|lower }}
+{% endif %}
+{% if gitea_storage_minio_minio_bucket_lookup_type is not none %}
+MINIO_BUCKET_LOOKUP_TYPE = {{ gitea_storage_minio_minio_bucket_lookup_type }}
+{% endif %}
+{% endif %}
+{% if gitea_storage_azureblob_storage_type is not none or gitea_storage_azureblob_azure_blob_endpoint is not none or gitea_storage_azureblob_azure_blob_account_name is not none or gitea_storage_azureblob_azure_blob_account_key is not none or gitea_storage_azureblob_azure_blob_container is not none %}
+
+[storage.azureblob]
+{% if gitea_storage_azureblob_storage_type is not none %}
+STORAGE_TYPE = {{ gitea_storage_azureblob_storage_type }}
+{% endif %}
+{% if gitea_storage_azureblob_azure_blob_endpoint is not none %}
+AZURE_BLOB_ENDPOINT = {{ gitea_storage_azureblob_azure_blob_endpoint }}
+{% endif %}
+{% if gitea_storage_azureblob_azure_blob_account_name is not none %}
+AZURE_BLOB_ACCOUNT_NAME = {{ gitea_storage_azureblob_azure_blob_account_name }}
+{% endif %}
+{% if gitea_storage_azureblob_azure_blob_account_key is not none %}
+AZURE_BLOB_ACCOUNT_KEY = {{ gitea_storage_azureblob_azure_blob_account_key }}
+{% endif %}
+{% if gitea_storage_azureblob_azure_blob_container is not none %}
+AZURE_BLOB_CONTAINER = {{ gitea_storage_azureblob_azure_blob_container }}
+{% endif %}
+{% endif %}
+{% if gitea_proxy_proxy_enabled is not none or gitea_proxy_proxy_url is not none or gitea_proxy_proxy_hosts is not none or gitea_proxy_enabled is not none or gitea_proxy_default_actions_url is not none or gitea_proxy_log_retention_days is not none or gitea_proxy_log_compression is not none or gitea_proxy_artifact_retention_days is not none or gitea_proxy_zombie_task_timeout is not none or gitea_proxy_endless_task_timeout is not none or gitea_proxy_abandoned_job_timeout is not none or gitea_proxy_skip_workflow_strings is not none or gitea_proxy_workflow_dirs is not none %}
+
+[proxy]
+{% if gitea_proxy_proxy_enabled is not none %}
+PROXY_ENABLED = {{ gitea_proxy_proxy_enabled|lower }}
+{% endif %}
+{% if gitea_proxy_proxy_url is not none %}
+PROXY_URL = {{ gitea_proxy_proxy_url }}
+{% endif %}
+{% if gitea_proxy_proxy_hosts is not none %}
+PROXY_HOSTS = {{ gitea_proxy_proxy_hosts }}
+{% endif %}
+{% if gitea_proxy_enabled is not none %}
+ENABLED = {{ gitea_proxy_enabled|lower }}
+{% endif %}
+{% if gitea_proxy_default_actions_url is not none %}
+DEFAULT_ACTIONS_URL = {{ gitea_proxy_default_actions_url }}
+{% endif %}
+{% if gitea_proxy_log_retention_days is not none %}
+LOG_RETENTION_DAYS = {{ gitea_proxy_log_retention_days }}
+{% endif %}
+{% if gitea_proxy_log_compression is not none %}
+LOG_COMPRESSION = {{ gitea_proxy_log_compression }}
+{% endif %}
+{% if gitea_proxy_artifact_retention_days is not none %}
+ARTIFACT_RETENTION_DAYS = {{ gitea_proxy_artifact_retention_days }}
+{% endif %}
+{% if gitea_proxy_zombie_task_timeout is not none %}
+ZOMBIE_TASK_TIMEOUT = {{ gitea_proxy_zombie_task_timeout }}
+{% endif %}
+{% if gitea_proxy_endless_task_timeout is not none %}
+ENDLESS_TASK_TIMEOUT = {{ gitea_proxy_endless_task_timeout }}
+{% endif %}
+{% if gitea_proxy_abandoned_job_timeout is not none %}
+ABANDONED_JOB_TIMEOUT = {{ gitea_proxy_abandoned_job_timeout }}
+{% endif %}
+{% if gitea_proxy_skip_workflow_strings is not none %}
+SKIP_WORKFLOW_STRINGS = {{ gitea_proxy_skip_workflow_strings }}
+{% endif %}
+{% if gitea_proxy_workflow_dirs is not none %}
+WORKFLOW_DIRS = {{ gitea_proxy_workflow_dirs }}
+{% endif %}
+{% endif %}
+{% if gitea_storage_actions_log_storage_type is not none %}
+
+[storage.actions_log]
+{% if gitea_storage_actions_log_storage_type is not none %}
+STORAGE_TYPE = {{ gitea_storage_actions_log_storage_type }}
+{% endif %}
+{% endif %}
+{% if gitea_global_lock_service_type is not none or gitea_global_lock_service_conn_str is not none %}
+
+[global_lock]
+{% if gitea_global_lock_service_type is not none %}
+SERVICE_TYPE = {{ gitea_global_lock_service_type }}
+{% endif %}
+{% if gitea_global_lock_service_conn_str is not none %}
+SERVICE_CONN_STR = {{ gitea_global_lock_service_conn_str }}
+{% endif %}
+{% endif %}
