@@ -55,10 +55,6 @@ DEFAULT_ALLOW_CREATE_ORGANIZATION = {{ gitea_service_default_allow_create_organi
 DEFAULT_ENABLE_TIMETRACKING       = {{ gitea_service_default_enable_timetracking|lower }}
 NO_REPLY_ADDRESS                  = {{ gitea_service_no_reply_address }}
 
-[picture]
-DISABLE_GRAVATAR        = {{ gitea_picture_disable_gravatar|lower }}
-ENABLE_FEDERATED_AVATAR = {{ gitea_picture_enable_federated_avatar|lower }}
-
 [openid]
 ENABLE_OPENID_SIGNIN = {{ gitea_openid_enable_openid_signin|lower }}
 ENABLE_OPENID_SIGNUP = {{ gitea_openid_enable_openid_signup|lower }}
@@ -94,3 +90,16 @@ PROXY_HOSTS: {{ gitea_webhook_proxy_hosts }}
 
 [actions]
 ENABLED = {{ gitea_actions_enabled }}
+
+[oauth2]
+ENABLED = {{ gitea_oauth2_enabled }}
+ACCESS_TOKEN_EXPIRATION_TIME = {{ gitea_oauth2_access_token_expiration_time }}
+REFRESH_TOKEN_EXPIRATION_TIME = {{ gitea_oauth2_refresh_token_expiration }}
+INVALIDATE_REFRESH_TOKENS = {{ gitea_oauth2_invalidate_refresh_tokens }}
+JWT_SIGNING_ALGORITHM = {{ gitea_oauth2_jwt_signing_algorithm }}
+JWT_SECRET = {{ gitea_oauth2_jwt_secret }}
+JWT_SECRET_URI = {{ gitea_oauth2_jwt_secret_uri }}
+JWT_SIGNING_PRIVATE_KEY_FILE = {{ gitea_oauth2_jwt_signing_private_key_file }}
+MAX_TOKEN_LENGTH = {{ gitea_oauth2_max_token_length }}
+DEFAULT_APPLICATIONS = {{ gitea_oauth2_default_applications }}
+CUSTOM_SCHEMES = {{ gitea_oauth2_custom_schemes }}

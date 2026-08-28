@@ -85,3 +85,15 @@ gitea_webhook_proxy_url: ""
 gitea_webhook_proxy_hosts: []
 
 gitea_actions_enabled: false
+
+gitea_oauth2_enabled: true
+gitea_oauth2_access_token_expiration_time: 3600
+gitea_oauth2_refresh_token_expiration: 730
+gitea_oauth2_invalidate_refresh_tokens: false
+gitea_oauth2_jwt_signing_algorithm: RS256
+gitea_oauth2_jwt_secret: ""
+gitea_oauth2_jwt_secret_uri: ""
+gitea_oauth2_jwt_signing_private_key_file: jwt/private.pem
+gitea_oauth2_max_token_length: 32767
+gitea_oauth2_default_applications: git-credential-oauth,git-credential-manager,tea
+gitea_oauth2_custom_schemes: ""
